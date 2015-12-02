@@ -1,0 +1,163 @@
+body{
+	margin: 0px;
+}
+
+.w{
+    width: 990px;
+    height: auto;
+    margin: 0px 179.5px;
+}
+
+a:-webkit-any-link{
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto;
+}
+
+#logo{
+    position:relative;
+    width: 300px;
+    height: 60px;
+    margin-top: 15px;
+}
+
+.content{
+    //background-color: #18b4ed;
+    height: 500px;
+    margin: 15px 0px;
+}
+
+.login-box{
+    margin: 30px 0 0 0;
+    float: right;
+    width: 360px;
+    position: relative;
+    z-index: 1000;
+    background: #fff;
+    border: 1px solid #cfd6de;
+    box-shadow: 0 2px 2px #cfd6de;
+    overflow: hidden;
+}
+
+.radiusimg {
+    border: 1px solid #fff;
+    width: 100px;
+    height: 100px;
+    margin: 29px auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.radiusimg .shadow {
+    width: 100px;
+    height: 100px;
+    z-index: 10;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.radiusimg .pic {
+    width: 100px;
+    height: 100px;
+    z-index: 5;
+    _z-index: 10;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+.login-wrap .login-form {
+    padding: 0 30px;
+}
+
+.login-form dl {
+    position: relative;
+}
+
+dd{
+    display: block;
+    -webkit-margin-start: 0px;
+    position: relative;
+    width: 296px;
+    border: 1px solid #c0c7cd;
+    border-radius: 3px;
+    height: 44px;
+    box-shadow: 0 0 1px #FFF;
+    padding: 1px;
+}
+
+.login-form .input-text {
+background: 0 0;
+background: url(about:blank) no-repeat\9;
+font-size: 16px;
+height: 44px;
+line-height: 44px\9;
+padding: 0 0 0 15px;
+width: 281px;
+border: none;
+}
+
+.login-btn{
+width: 300px;
+height: 47px;
+border: none;
+background-color: #18b4ed;
+color: #fff;
+font-size: 20px;
+font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
+letter-spacing: 10px;
+}
+
+.regist{
+    margin: 18px 30px 20px ;
+}
+
+.choise_autoLogin{
+    float: left;
+}
+
+.login-form .labelCheckbox {
+font-weight: 400;
+color: #666;
+font-size: 14px;
+cursor: pointer;
+line-height: 25px;
+}
+
+.login-form .labelCheckbox input {
+margin-right: 15px;
+width: 13px;
+}
+
+.forgotpassword{
+    float: right;
+}
+
+#forgotpassword a{
+    color: #aaa;
+    font-size: 14px;
+    cursor:pointer;
+    line-height: 25px;
+}
+
+a:link{
+    text-decoration: none;
+    
+}
+
+#forgotpassword a:hover{
+    color: #18b4ed;
+}
+
+.login-banner {
+width: 100%;
+height: 550px;
+background: #18b4ed;
+}
+
+.i-inner {
+position: relative;
+z-index: 3;
+height: 550px;
+}
