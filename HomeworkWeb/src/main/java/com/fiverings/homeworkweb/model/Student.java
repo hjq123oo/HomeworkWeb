@@ -17,7 +17,8 @@ import javax.persistence.JoinColumn;
 @Entity
 @Table(name = "student")
 public class Student implements Serializable{
-	
+	private static final long serialVersionUID = 1632712622140728756L;
+
 	@Id @Column(name="student_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long studentId;
@@ -58,5 +59,116 @@ public class Student implements Serializable{
     	inverseJoinColumns=@JoinColumn(name="homework_id",referencedColumnName="homework_id")
     )
     private List<Course> homeworks = new ArrayList<>();
+    
+    
+	public Long getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(Long studentId) {
+		this.studentId = studentId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
+	public String getSchool() {
+		return school;
+	}
+
+	public void setSchool(String school) {
+		this.school = school;
+	}
+
+	public String getCollege() {
+		return college;
+	}
+
+	public void setCollege(String college) {
+		this.college = college;
+	}
+
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
+	}
+
+	public String getStudentNO() {
+		return studentNO;
+	}
+
+	public void setStudentNO(String studentNO) {
+		this.studentNO = studentNO;
+	}
+
+	public String getRealname() {
+		return realname;
+	}
+
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public List<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
+
+	public List<Course> getHomeworks() {
+		return homeworks;
+	}
+
+	public void setHomeworks(List<Course> homeworks) {
+		this.homeworks = homeworks;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
     
 }

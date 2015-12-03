@@ -19,6 +19,9 @@ import javax.persistence.Table;
 @Entity
 @Table (name = "homework")
 public class Homework implements Serializable{
+
+	private static final long serialVersionUID = -3598183672399456282L;
+
 	@Id @Column(name="homework_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long homeworkId;
@@ -45,5 +48,75 @@ public class Homework implements Serializable{
     	joinColumns=@JoinColumn(name="homework_id",referencedColumnName="homework_id"),
     	inverseJoinColumns=@JoinColumn(name="student_id",referencedColumnName="student_id")
     )
+    
     private List<Course> students = new ArrayList<>();
+	
+	public Long getHomeworkId() {
+		return homeworkId;
+	}
+
+	public void setHomeworkId(Long homeworkId) {
+		this.homeworkId = homeworkId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public Long getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
+	}
+
+	public List<Course> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Course> students) {
+		this.students = students;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 }

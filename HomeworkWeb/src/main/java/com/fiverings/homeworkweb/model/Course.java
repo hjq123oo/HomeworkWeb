@@ -20,6 +20,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "course")
 public class Course implements Serializable{
+	private static final long serialVersionUID = -2583801459718005437L;
+
 	@Id @Column(name="course_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long courseId;
@@ -60,5 +62,123 @@ public class Course implements Serializable{
     	inverseJoinColumns=@JoinColumn(name="student_id",referencedColumnName="student_id")
     )
     private List<Course> students = new ArrayList<>();
+    
+	public Long getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public String getPlace() {
+		return place;
+	}
+
+	public void setPlace(String place) {
+		this.place = place;
+	}
+
+	public String getCollege() {
+		return college;
+	}
+
+	public void setCollege(String college) {
+		this.college = college;
+	}
+
+	public String getSpecialty() {
+		return specialty;
+	}
+
+	public void setSpecialty(String specialty) {
+		this.specialty = specialty;
+	}
+
+	public String getIntroduction() {
+		return introduction;
+	}
+
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+
+	public Date getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public Long getTeacherId() {
+		return teacherId;
+	}
+
+	public void setTeacherId(Long teacherId) {
+		this.teacherId = teacherId;
+	}
+
+	public List<Homework> getHomeworks() {
+		return homeworks;
+	}
+
+	public void setHomeworks(List<Homework> homeworks) {
+		this.homeworks = homeworks;
+	}
+
+	public List<Course> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Course> students) {
+		this.students = students;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 }
 
