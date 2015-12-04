@@ -4,4 +4,6 @@ import com.fiverings.homeworkweb.model.Course;
 
 public interface ManageCourseService {
 	Course create(Course course);
+	
+	Course getCourse(Integer courseId);
 }

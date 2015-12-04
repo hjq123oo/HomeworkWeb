@@ -1,7 +1,7 @@
 package com.fiverings.homeworkweb.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class Homework implements Serializable{
 	
 	@ManyToOne(targetEntity=Course.class)
 	@JoinColumn(name="course_id" , referencedColumnName="course_id",nullable=false)
-	private Integer courseId;
+	private Course course;
 	
     @ManyToMany(targetEntity=Student.class)
     @JoinTable(name="student_homework",
@@ -98,12 +98,13 @@ public class Homework implements Serializable{
 		this.filePath = filePath;
 	}
 
-	public Integer getCourseId() {
-		return courseId;
+
+	public Course getCourse() {
+		return course;
 	}
 
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public List<Student> getStudents() {

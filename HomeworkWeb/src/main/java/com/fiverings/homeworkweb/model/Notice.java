@@ -32,7 +32,7 @@ public class Notice implements Serializable{
 	
 	@ManyToOne(targetEntity=Course.class)
 	@JoinColumn(name="course_id" , referencedColumnName="course_id",nullable=false)
-	private Integer courseId;
+	private Course course;
 	
 	public Integer getNoticeId() {
 		return noticeId;

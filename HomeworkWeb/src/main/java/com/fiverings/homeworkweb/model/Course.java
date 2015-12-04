@@ -51,9 +51,9 @@ public class Course implements Serializable{
 	
 	@ManyToOne(targetEntity=Teacher.class)
 	@JoinColumn(name="teacher_id" , referencedColumnName="teacher_id",nullable=false)
-	private Integer teacherId;
+	private Teacher teacher;
 	
-	@OneToMany(targetEntity=Homework.class,mappedBy="courseId")
+	@OneToMany(targetEntity=Homework.class,mappedBy="course")
 	private List<Homework> homeworks = new ArrayList<>();
 	
     @ManyToMany(targetEntity=Student.class)
@@ -63,7 +63,7 @@ public class Course implements Serializable{
     )
     private List<Student> students = new ArrayList<>();
     
-    @OneToMany(targetEntity=Notice.class,mappedBy="courseId")
+    @OneToMany(targetEntity=Notice.class,mappedBy="course")
 	private List<Notice> notices = new ArrayList<>();
     
 	public Integer getCourseId() {
@@ -154,12 +154,22 @@ public class Course implements Serializable{
 		this.filePath = filePath;
 	}
 
-	public Integer getTeacherId() {
-		return teacherId;
+
+
+	public Teacher getTeacher() {
+		return teacher;
 	}
 
-	public void setTeacherId(Integer teacherId) {
-		this.teacherId = teacherId;
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+
+	public List<Notice> getNotices() {
+		return notices;
+	}
+
+	public void setNotices(List<Notice> notices) {
+		this.notices = notices;
 	}
 
 	public List<Homework> getHomeworks() {

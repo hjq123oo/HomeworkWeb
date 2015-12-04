@@ -17,4 +17,9 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 		return teacherJpaRepository.save(teacher);
 	}
 
+	
+	public Teacher getTeacher(Integer teacherId) {
+		return teacherJpaRepository.findOne(teacherId);
+	}
+
 }
