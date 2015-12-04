@@ -63,6 +63,9 @@ public class Course implements Serializable{
     )
     private List<Student> students = new ArrayList<>();
     
+    @OneToMany(targetEntity=Notice.class,mappedBy="courseId")
+	private List<Notice> notices = new ArrayList<>();
+    
 	public Long getCourseId() {
 		return courseId;
 	}

@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -28,6 +30,9 @@ public class Notice implements Serializable{
 	@Column(name="start_time")
 	private Timestamp startTime;
 	
+	@ManyToOne(targetEntity=Course.class)
+	@JoinColumn(name="course_id" , referencedColumnName="course_id",nullable=false)
+	private Long courseId;
 	
 	public Long getNoticeId() {
 		return noticeId;
