@@ -58,7 +58,7 @@ public class Student implements Serializable{
     	joinColumns=@JoinColumn(name="student_id",referencedColumnName="student_id"),
     	inverseJoinColumns=@JoinColumn(name="homework_id",referencedColumnName="homework_id")
     )
-    private List<Course> homeworks = new ArrayList<>();
+    private List<Homework> homeworks = new ArrayList<>();
     
     
 	public Long getStudentId() {
@@ -157,11 +157,11 @@ public class Student implements Serializable{
 		this.courses = courses;
 	}
 
-	public List<Course> getHomeworks() {
+	public List<Homework> getHomeworks() {
 		return homeworks;
 	}
 
-	public void setHomeworks(List<Course> homeworks) {
+	public void setHomeworks(List<Homework> homeworks) {
 		this.homeworks = homeworks;
 	}
 

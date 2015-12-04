@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,9 +18,9 @@ import javax.persistence.Table;
 public class Teacher implements Serializable{
 	private static final long serialVersionUID = 2664295856342100507L;
 
-	@Id
+	@Id @Column(name="teacher_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
+	private Long teacherId;
 	
 	private String name;
 	
@@ -38,17 +39,19 @@ public class Teacher implements Serializable{
     private String filePath;
     
 
-	@OneToMany(targetEntity=Course.class,mappedBy="teacher")
+	@OneToMany(targetEntity=Course.class,mappedBy="teacherId")
 	private List<Course> courses = new ArrayList<>();
     
 	
-	public Long getId() {
-		return id;
+
+
+	public Long getTeacherId() {
+		return teacherId;
 	}
 
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setTeacherId(Long teacherId) {
+		this.teacherId = teacherId;
 	}
 
 

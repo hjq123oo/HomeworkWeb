@@ -53,7 +53,7 @@ public class Course implements Serializable{
 	@JoinColumn(name="teacher_id" , referencedColumnName="teacher_id",nullable=false)
 	private Long teacherId;
 	
-	@OneToMany(targetEntity=Homework.class,mappedBy="course")
+	@OneToMany(targetEntity=Homework.class,mappedBy="courseId")
 	private List<Homework> homeworks = new ArrayList<>();
 	
     @ManyToMany(targetEntity=Student.class)
@@ -61,7 +61,7 @@ public class Course implements Serializable{
     	joinColumns=@JoinColumn(name="course_id",referencedColumnName="course_id"),
     	inverseJoinColumns=@JoinColumn(name="student_id",referencedColumnName="student_id")
     )
-    private List<Course> students = new ArrayList<>();
+    private List<Student> students = new ArrayList<>();
     
 	public Long getCourseId() {
 		return courseId;
@@ -167,11 +167,11 @@ public class Course implements Serializable{
 		this.homeworks = homeworks;
 	}
 
-	public List<Course> getStudents() {
+	public List<Student> getStudents() {
 		return students;
 	}
 
-	public void setStudents(List<Course> students) {
+	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
 
