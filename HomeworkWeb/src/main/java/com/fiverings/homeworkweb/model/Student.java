@@ -21,7 +21,7 @@ public class Student implements Serializable{
 
 	@Id @Column(name="student_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long studentId;
+	private Integer studentId;
 	
 	private String name;
 	
@@ -61,11 +61,11 @@ public class Student implements Serializable{
     private List<Homework> homeworks = new ArrayList<>();
     
     
-	public Long getStudentId() {
+	public Integer getStudentId() {
 		return studentId;
 	}
 
-	public void setStudentId(Long studentId) {
+	public void setStudentId(Integer studentId) {
 		this.studentId = studentId;
 	}
 

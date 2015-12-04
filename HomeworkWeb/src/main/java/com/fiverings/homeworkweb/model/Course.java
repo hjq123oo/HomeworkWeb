@@ -24,7 +24,7 @@ public class Course implements Serializable{
 
 	@Id @Column(name="course_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long courseId;
+	private Integer courseId;
 	
 	private String name;
 	
@@ -51,7 +51,7 @@ public class Course implements Serializable{
 	
 	@ManyToOne(targetEntity=Teacher.class)
 	@JoinColumn(name="teacher_id" , referencedColumnName="teacher_id",nullable=false)
-	private Long teacherId;
+	private Integer teacherId;
 	
 	@OneToMany(targetEntity=Homework.class,mappedBy="courseId")
 	private List<Homework> homeworks = new ArrayList<>();
@@ -66,11 +66,11 @@ public class Course implements Serializable{
     @OneToMany(targetEntity=Notice.class,mappedBy="courseId")
 	private List<Notice> notices = new ArrayList<>();
     
-	public Long getCourseId() {
+	public Integer getCourseId() {
 		return courseId;
 	}
 
-	public void setCourseId(Long courseId) {
+	public void setCourseId(Integer courseId) {
 		this.courseId = courseId;
 	}
 
@@ -154,11 +154,11 @@ public class Course implements Serializable{
 		this.filePath = filePath;
 	}
 
-	public Long getTeacherId() {
+	public Integer getTeacherId() {
 		return teacherId;
 	}
 
-	public void setTeacherId(Long teacherId) {
+	public void setTeacherId(Integer teacherId) {
 		this.teacherId = teacherId;
 	}
 

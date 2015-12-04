@@ -24,7 +24,7 @@ public class Homework implements Serializable{
 
 	@Id @Column(name="homework_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long homeworkId;
+	private Integer homeworkId;
 	
 	private String name;
 	
@@ -41,7 +41,7 @@ public class Homework implements Serializable{
 	
 	@ManyToOne(targetEntity=Course.class)
 	@JoinColumn(name="course_id" , referencedColumnName="course_id",nullable=false)
-	private Long courseId;
+	private Integer courseId;
 	
     @ManyToMany(targetEntity=Student.class)
     @JoinTable(name="student_homework",
@@ -50,11 +50,11 @@ public class Homework implements Serializable{
     )
     private List<Student> students = new ArrayList<>();
 	
-	public Long getHomeworkId() {
+	public Integer getHomeworkId() {
 		return homeworkId;
 	}
 
-	public void setHomeworkId(Long homeworkId) {
+	public void setHomeworkId(Integer homeworkId) {
 		this.homeworkId = homeworkId;
 	}
 
@@ -98,11 +98,11 @@ public class Homework implements Serializable{
 		this.filePath = filePath;
 	}
 
-	public Long getCourseId() {
+	public Integer getCourseId() {
 		return courseId;
 	}
 
-	public void setCourseId(Long courseId) {
+	public void setCourseId(Integer courseId) {
 		this.courseId = courseId;
 	}
 

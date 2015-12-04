@@ -1,7 +1,7 @@
 package com.fiverings.homeworkweb.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,24 +21,24 @@ public class Notice implements Serializable{
 
 	@Id @Column(name="notice_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long noticeId;
+	private Integer noticeId;
 	
 	private String title;
 	
 	private String content;
 	
 	@Column(name="start_time")
-	private Timestamp startTime;
+	private  Date startTime;
 	
 	@ManyToOne(targetEntity=Course.class)
 	@JoinColumn(name="course_id" , referencedColumnName="course_id",nullable=false)
-	private Long courseId;
+	private Integer courseId;
 	
-	public Long getNoticeId() {
+	public Integer getNoticeId() {
 		return noticeId;
 	}
 
-	public void setNoticeId(Long noticeId) {
+	public void setNoticeId(Integer noticeId) {
 		this.noticeId = noticeId;
 	}
 
@@ -58,11 +58,11 @@ public class Notice implements Serializable{
 		this.content = content;
 	}
 
-	public Timestamp getStartTime() {
+	public Date getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Timestamp startTime) {
+	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
 
