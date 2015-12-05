@@ -25,6 +25,8 @@ public class Notice implements Serializable{
 	
 	private String title;
 	
+
+
 	private String content;
 	
 	@Column(name="start_time")
@@ -66,6 +68,14 @@ public class Notice implements Serializable{
 		this.startTime = startTime;
 	}
 
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

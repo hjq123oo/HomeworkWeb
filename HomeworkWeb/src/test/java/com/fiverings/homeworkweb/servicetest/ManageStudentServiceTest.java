@@ -34,14 +34,6 @@ public class ManageStudentServiceTest {
 		student.setEmail("13301036@bjtu.edu.cn");
 		student.setPhone("18813097649");
 		student.setFilePath("F:/jeeServer/student/hjq/");
-/*
-		mockMvc.perform(post("registerStudent.do").param("name","hjq")
-				.param("pwd", "hjq").param("school", "北京交通大学")
-				.param("college", "软件学院").param("className", "1302")
-				.param("studentNO", "13301036").param("realname", "黄坚强")
-				.param("email", "13301036@bjtu.edu.cn").param("phone", "18813097649")
-				.characterEncoding("UTF-8"));
-		*/
 		
 		manageStudentService.create(student);
 	}

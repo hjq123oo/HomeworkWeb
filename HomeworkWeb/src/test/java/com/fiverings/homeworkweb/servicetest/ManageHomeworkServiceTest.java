@@ -1,5 +1,7 @@
 package com.fiverings.homeworkweb.servicetest;
 
+import static org.junit.Assert.*;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -45,8 +47,17 @@ public class ManageHomeworkServiceTest {
 		
 		homework.setFilePath("F:/jeeServer/course/"+course.getCourseId()+"/1.zip");
 		
-		homework.setStudents(course.getStudents());
 		
 		manageHomeworkService.create(homework);
+	}
+	
+	
+	@Test
+	public void testGetHomework() throws Exception{
+	
+		
+		Homework homework = manageHomeworkService.getHomework(1);
+		
+		assertEquals("第一次作业",homework.getName());
 	}
 }

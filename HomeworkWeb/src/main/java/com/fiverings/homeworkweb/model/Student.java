@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
@@ -53,12 +54,9 @@ public class Student implements Serializable{
     )
     private List<Course> courses = new ArrayList<>();
     
-    @ManyToMany(targetEntity=Homework.class)
-    @JoinTable(name="student_homework",
-    	joinColumns=@JoinColumn(name="student_id",referencedColumnName="student_id"),
-    	inverseJoinColumns=@JoinColumn(name="homework_id",referencedColumnName="homework_id")
-    )
-    private List<Homework> homeworks = new ArrayList<>();
+    
+    @OneToMany(targetEntity=StudentHomework.class,mappedBy="student")
+    private List<StudentHomework> studentHomeworks = new ArrayList<>();
     
     
 	public Integer getStudentId() {
@@ -157,12 +155,14 @@ public class Student implements Serializable{
 		this.courses = courses;
 	}
 
-	public List<Homework> getHomeworks() {
-		return homeworks;
+
+
+	public List<StudentHomework> getStudentHomeworks() {
+		return studentHomeworks;
 	}
 
-	public void setHomeworks(List<Homework> homeworks) {
-		this.homeworks = homeworks;
+	public void setStudentHomeworks(List<StudentHomework> studentHomeworks) {
+		this.studentHomeworks = studentHomeworks;
 	}
 
 	public static long getSerialversionuid() {

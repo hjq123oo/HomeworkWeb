@@ -17,6 +17,12 @@ public class ManageHomeworkServiceImpl implements ManageHomeworkService{
 	public Homework create(Homework homework) {
 		return homeworkJpaRepository.save(homework);
 	}
+
+
+	
+	public Homework getHomework(Integer homework_id) {
+		return homeworkJpaRepository.findOne(homework_id);
+	}
 	
 	
 }

@@ -6,4 +6,5 @@ public interface ManageHomeworkService {
 	
 	Homework create(Homework homework);
 	
+	Homework getHomework(Integer homework_id);
 }
