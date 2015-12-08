@@ -28,7 +28,7 @@ public class CourseCenterController {
 
 	@RequestMapping(value = "/teacherCourseCenter", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> courseCenter(@RequestParam("teacherId") String strTeacherId) {
+	public Map<String, String> teacherCourseCenter(@RequestParam("teacherId") String strTeacherId) {
 		Integer teacherId = Integer.parseInt(strTeacherId);
 
 		List<Course> courses = manageTeacherService.getCourses(teacherId);
