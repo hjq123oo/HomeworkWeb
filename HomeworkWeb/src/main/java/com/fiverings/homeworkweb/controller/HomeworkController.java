@@ -1,6 +1,8 @@
 package com.fiverings.homeworkweb.controller;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +40,40 @@ public class HomeworkController {
 
 	@Resource
 	HttpServletRequest request;
+	
+	
+	@RequestMapping(value = "/createHomework", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> createHomework(@RequestParam("courseId") String strCourseId,
+			@RequestParam("name") String name,@RequestParam("content") String content,
+			@RequestParam("endTime") String strEndTime) {
+		Integer courseId = Integer.parseInt(strCourseId);
+
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		
+		Date endTime = null;
+		try {
+			endTime = sdf.parse(strEndTime);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		Homework homework = new Homework();
+		
+		homework.setName(name);
+		homework.setContent(content);
+		homework.setEndTime(endTime);
+		homework.setStartTime(new Date());
+		
+		manageCourseService.addHomework(courseId, homework);
+
+		Map<String, String> result = new HashMap<String, String>();
+
+		result.put("successful", "true");
+	
+		return result;
+	}
+	
 	
 	@RequestMapping(value = "/homeworkList", method = RequestMethod.GET)
 	@ResponseBody
@@ -146,4 +182,7 @@ public class HomeworkController {
 		
 		return result;
 	}
+	
+	
+	
 }
