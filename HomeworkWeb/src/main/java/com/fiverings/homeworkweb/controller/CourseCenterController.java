@@ -50,7 +50,8 @@ public class CourseCenterController {
 
 	@RequestMapping(value = "/createCourse", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> createCourse(@RequestParam("teacherId") String strTeacherId,
+	public Map<String, String> createCourse(
+			@RequestParam("teacherId") String strTeacherId,
 			@RequestParam("college") String college,
 			@RequestParam("name") String name,
 			@RequestParam("number") String number,
