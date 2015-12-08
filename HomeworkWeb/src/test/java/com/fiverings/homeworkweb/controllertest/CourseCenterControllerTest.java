@@ -1,8 +1,12 @@
 package com.fiverings.homeworkweb.controllertest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+
 import javax.annotation.Resource;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -25,6 +29,31 @@ public class CourseCenterControllerTest {
 	@Before
 	public void setup() {
 		mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
+	}
+	
+	@Test
+	public void teacherCourseCenter() throws Exception {
+		
+		mockMvc.perform((post("/registerTeacher").param("name","ggf")
+				.param("number", "A380").param("teacher", "郭关飞")
+				.param("time", "Wed-10-12").param("place", "YF313"))).andDo(print());
+	}
+	
+	@Test
+	public void createCourse() throws Exception {
+		
+		mockMvc.perform((post("/createCourse")
+				.param("teacherId","1001").param("college", "software").param("name", "JavaEE")
+				.param("number", "A380").param("specialty", "112233").param("introduction","software_java")
+				.param("time", "Wed-10-12").param("place", "YF313").param("lateInterval", "24H")
+				.param("latePercent", "10%").param("endTime", "11-8"))).andDo(print());
+	}
+	
+	@Test
+	public void joinCourse() throws Exception {
+		
+		mockMvc.perform((post("/joinCourse")
+				.param("studentId","13301043").param("courseId", "A380"))).andDo(print());
 	}
 	
 }

@@ -37,9 +37,9 @@ public class RegisterControllerTest {
 	@Test
 	public void testRegisterTeacher() throws Exception {
 		
-		mockMvc.perform((post("/registerTeacher").param("name","ggf").param("pwd", "123").param("school", "±±½»")
+		mockMvc.perform((post("/registerTeacher").param("name","ggf").param("pwd", "123").param("school", "åŒ—äº¬äº¤é€šå¤§å­¦")
 				.param("teacherNO", "abc123").param("email", "123@qq.com")
-				.param("phone", "18813091234").param("realname", "¹ù¹Ø·É"))).andDo(print());
+				.param("phone", "18813091234").param("realname", "é»„åš"))).andDo(print());
 		
 		
 	}
@@ -48,9 +48,9 @@ public class RegisterControllerTest {
 	public void testRegisterStudent() throws Exception {
 		
 		
-		mockMvc.perform((post("/registerStudent").param("name","hjq").param("pwd", "123").param("school", "±±½»")
-				.param("college", "Èí¼şÑ§Ôº").param("className", "1302").param("studentNO", "13301036")
-				.param("realname", "»Æ¼áÇ¿").param("email", "13301036@bjtu.edu.cn"))
+		mockMvc.perform((post("/registerStudent").param("name","hjq").param("pwd", "123").param("school", "åŒ—äº¬äº¤é€šå¤§å­¦")
+				.param("college", "è½¯ä»¶å­¦é™¢").param("className", "1302").param("studentNO", "13301036")
+				.param("realname", "é»„åšå¼º").param("email", "13301036@bjtu.edu.cn"))
 				.param("phone", "18813097649")).andDo(print());
 		
 		

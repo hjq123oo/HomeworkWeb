@@ -5,7 +5,6 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.fiverings.homeworkweb.jparepository.CourseJpaRepository;
 import com.fiverings.homeworkweb.jparepository.StudentHomeworkJpaRepository;
@@ -57,13 +56,13 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 	}
 
 	/*
-	 * ¸ù¾İÑ§Éúid¸øÑ§Éú¼ÓÈë¿Î³Ì
+	 * å­¦ç”ŸåŠ å…¥è¯¾ç¨‹
 	 * 
-	 * @param student_id Òª¼ÓÈë¿Î³ÌµÄÑ§ÉúµÄid
+	 * @param student_id å­¦ç”Ÿid
 	 * 
-	 * @param course_id ¼ÓÈëµÄ¿Î³Ìid
+	 * @param course_id è¦åŠ å…¥è¯¾ç¨‹çš„id
 	 * 
-	 * @return Student ·µ»Ø±»ĞŞ¸ÄµÄÑ§Éú
+	 * @return Student è¿”å›è¢«ä¿®æ”¹çš„å­¦ç”Ÿ
 	 */
 
 	public Student addCourse(Integer studentId, Integer courseId) {
@@ -87,11 +86,11 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 	}
 
 	/*
-	 * ¸ù¾İÑ§ÉúidµÃµ½¿Î³ÌÁĞ±í
+	 * å¾—åˆ°å­¦ç”Ÿå‚åŠ çš„æ‰€æœ‰è¯¾ç¨‹
 	 * 
-	 * @param studentId Ñ§ÉúµÄid
+	 * @param studentId å­¦ç”Ÿçš„id
 	 * 
-	 * @return List ·µ»Ø¿Î³ÌÁĞ±í
+	 * @return List è¿”å›çš„è¯¾ç¨‹åˆ—è¡¨
 	 */
 	public List<Course> getCourses(Integer studentId) {
 		return studentJpaRepository.findOne(studentId).getCourses();
