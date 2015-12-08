@@ -1,4 +1,4 @@
-package com.fiverings.homeworkweb.servicetest;
+package com.fiverings.homeworkweb.controllertest;
 
 import javax.annotation.Resource;
 
