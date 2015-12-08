@@ -11,8 +11,13 @@ import com.fiverings.homeworkweb.model.StudentHomework;
 public class ManageStudentHomeworkServiceImpl implements ManageStudentHomeworkService{
 	@Resource
 	private StudentHomeworkJpaRepository studentHomeworkJpaRepository;
-	
-	public StudentHomework create(StudentHomework studentHomework) {
-		return studentHomeworkJpaRepository.save(studentHomework);
+
+
+	public StudentHomework updateScore(StudentHomework studentHomework) {
+		StudentHomework persistStudentHomework = studentHomeworkJpaRepository.findOne(studentHomework.getId());
+		persistStudentHomework.setScore(studentHomework.getScore());
+		return studentHomeworkJpaRepository.save(persistStudentHomework);
 	}
+	
+	
 }

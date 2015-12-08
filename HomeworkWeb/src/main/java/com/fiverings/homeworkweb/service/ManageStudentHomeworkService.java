@@ -1,5 +1,7 @@
 package com.fiverings.homeworkweb.service;
 
-public interface ManageStudentHomeworkService {
+import com.fiverings.homeworkweb.model.StudentHomework;
 
+public interface ManageStudentHomeworkService {
+	StudentHomework updateScore(StudentHomework studentHomework);
 }

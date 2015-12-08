@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fiverings.homeworkweb.model.Student;
 import com.fiverings.homeworkweb.service.ManageStudentService;
+import com.fiverings.homeworkweb.service.ManageTeacherService;
 
 @Controller
 public class RegisterController {
@@ -20,6 +21,12 @@ public class RegisterController {
 	@Resource
 	private ManageStudentService manageStudentService;
 
+	@Resource
+	private ManageTeacherService manageTeacherService;
+	
+	
+	
+	
 	@RequestMapping(value = "/registerStudent.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> registerStudent(@RequestParam("name") String name, @RequestParam("pwd") String pwd,
@@ -41,8 +48,12 @@ public class RegisterController {
 		student.setFilePath("F:/server/student/" + name + "/");
 
 		manageStudentService.create(student);
+		
+		
 		Map<String, String> result = new HashMap<String, String>();
 
+		result.put("successful", "true");
+		
 		return result;
 	}
 }

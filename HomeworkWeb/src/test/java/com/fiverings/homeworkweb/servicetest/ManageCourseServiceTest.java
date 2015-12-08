@@ -40,7 +40,7 @@ public class ManageCourseServiceTest {
 		course.setTime("星期五第二节");
 		course.setTeacher(manageTeacherService.getTeacher(1));
 		
-		manageCourseService.create(course);
+		
 		
 		
 	}

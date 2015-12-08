@@ -47,8 +47,7 @@ public class ManageHomeworkServiceTest {
 		
 		homework.setFilePath("F:/jeeServer/course/"+course.getCourseId()+"/1.zip");
 		
-		
-		manageHomeworkService.create(homework);
+	
 	}
 	
 	

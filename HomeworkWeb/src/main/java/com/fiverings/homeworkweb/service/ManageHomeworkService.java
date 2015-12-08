@@ -1,10 +1,13 @@
 package com.fiverings.homeworkweb.service;
 
+import java.util.List;
+
 import com.fiverings.homeworkweb.model.Homework;
+import com.fiverings.homeworkweb.model.StudentHomework;
 
 public interface ManageHomeworkService {
 	
-	Homework create(Homework homework);
+	Homework getHomework(Integer homeworkId);
 	
-	Homework getHomework(Integer homework_id);
+	List<StudentHomework> getStudentHomeworks(Integer homeworkId); 
 }

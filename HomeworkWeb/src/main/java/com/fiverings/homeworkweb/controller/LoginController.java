@@ -11,18 +11,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fiverings.homeworkweb.service.ManageStudentService;
+import com.fiverings.homeworkweb.service.ManageTeacherService;
+
 
 @Controller
 public class LoginController {
-	/*
+
 	@Resource
-	private ManageUserService manageUserService;
+	private ManageStudentService manageStudentService;
+	
+	@Resource
+	private ManageTeacherService manageTeacherService;
 	
 	@RequestMapping("/")
 	public String index() {
 		return "index";
 	}
-	
+	/*
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> login(@RequestParam("name") String name, @RequestParam("pwd") String pwd) {
