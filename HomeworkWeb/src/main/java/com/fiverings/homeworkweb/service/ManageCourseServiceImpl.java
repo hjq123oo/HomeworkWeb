@@ -36,7 +36,7 @@ public class ManageCourseServiceImpl implements ManageCourseService{
 		return courseJpaRepository.findOne(courseId).getHomeworks();
 	}
 
-	@Transactional
+
 	public Homework addHomework(Integer courseId, Homework homework) {
 		Course course = courseJpaRepository.findOne(courseId);
 		homework.setCourse(course);

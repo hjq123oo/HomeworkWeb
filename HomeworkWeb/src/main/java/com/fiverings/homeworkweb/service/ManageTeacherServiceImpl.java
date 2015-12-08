@@ -37,7 +37,7 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 		
 		persistTeacher.setEmail(teacher.getEmail());
 		persistTeacher.setPhone(teacher.getPhone());
-		persistTeacher.setRealName(teacher.getRealName());
+		persistTeacher.setRealname(teacher.getRealname());
 		persistTeacher.setSchool(teacher.getSchool());
 		persistTeacher.setTeacherNO(teacher.getTeacherNO());
 		

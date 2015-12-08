@@ -40,6 +40,30 @@ public class Course implements Serializable{
 	
 	private String introduction;
 	
+	
+	@Column(name="late_interval")
+	private Integer  lateInterval;//迟交间隔小时
+	
+	
+	@Column(name="late_percent")
+	private Integer latePercent;//迟交所扣百分比
+	
+	public Integer getLateInterval() {
+		return lateInterval;
+	}
+
+	public void setLateInterval(Integer lateInterval) {
+		this.lateInterval = lateInterval;
+	}
+
+	public Integer getLatePercent() {
+		return latePercent;
+	}
+
+	public void setLatePercent(Integer latePercent) {
+		this.latePercent = latePercent;
+	}
+
 	@Column(name="start_time")
 	private Date startTime;
 

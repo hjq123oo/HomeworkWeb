@@ -65,7 +65,7 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 	 * 
 	 * @return Student 返回被修改的学生
 	 */
-	@Transactional
+
 	public Student addCourse(Integer studentId, Integer courseId) {
 		Student student = studentJpaRepository.findOne(studentId);
 

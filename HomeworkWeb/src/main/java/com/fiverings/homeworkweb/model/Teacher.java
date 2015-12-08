@@ -30,7 +30,7 @@ public class Teacher implements Serializable{
     
     private String teacherNO;
     
-    private String realName;
+    private String realname;
     
     private String email;
     
@@ -95,13 +95,16 @@ public class Teacher implements Serializable{
 	}
 
 
-	public String getRealName() {
-		return realName;
+
+
+
+	public String getRealname() {
+		return realname;
 	}
 
 
-	public void setRealName(String realName) {
-		this.realName = realName;
+	public void setRealname(String realname) {
+		this.realname = realname;
 	}
 
 

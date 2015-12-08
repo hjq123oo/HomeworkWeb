@@ -28,7 +28,7 @@ public class ManageTeacherServiceTest {
 		teacher.setEmail("123");
 		teacher.setFilePath("123");
 		teacher.setPhone("123");
-		teacher.setRealName("¹ù¹Ø·É");
+		teacher.setRealname("¹ù¹Ø·É");
 		
 		manageTeacherService.create(teacher);
 	}
