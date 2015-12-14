@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,7 +48,7 @@ public class Student implements Serializable{
     @Column(name="file_path")
     private String filePath;
 
-    @ManyToMany(targetEntity=Course.class)
+    @ManyToMany(targetEntity=Course.class,fetch=FetchType.EAGER)
     @JoinTable(name="student_course",
     	joinColumns=@JoinColumn(name="student_id",referencedColumnName="student_id"),
     	inverseJoinColumns=@JoinColumn(name="course_id",referencedColumnName="course_id")
@@ -55,7 +56,7 @@ public class Student implements Serializable{
     private List<Course> courses = new ArrayList<>();
     
     
-    @OneToMany(targetEntity=StudentHomework.class,mappedBy="student")
+    @OneToMany(targetEntity=StudentHomework.class,mappedBy="student",fetch=FetchType.EAGER)
     private List<StudentHomework> studentHomeworks = new ArrayList<>();
     
     

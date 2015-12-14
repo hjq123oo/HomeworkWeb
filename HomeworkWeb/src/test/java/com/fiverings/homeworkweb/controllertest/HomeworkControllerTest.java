@@ -80,7 +80,7 @@ public class HomeworkControllerTest {
 	public void testSaveCorrect() throws Exception {
 		
 		
-		mockMvc.perform((get("/saveCorrect").param("homeworkId","1").param("score1", "1").param("score2", "2").param("score3", "3"))).andDo(print());
+		mockMvc.perform((post("/saveCorrect").param("homeworkId","1").param("score1", "1").param("score2", "2").param("score3", "3"))).andDo(print());
 		
 		
 	}

@@ -33,7 +33,7 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 
 	
 	public Teacher updateInfo(Teacher teacher) {
-		Teacher persistTeacher = teacherJpaRepository.getOne(teacher.getTeacherId());
+		Teacher persistTeacher = teacherJpaRepository.findOne(teacher.getTeacherId());
 		
 		persistTeacher.setEmail(teacher.getEmail());
 		persistTeacher.setPhone(teacher.getPhone());
@@ -47,7 +47,7 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 
 	
 	public Teacher updatePwd(Teacher teacher) {
-		Teacher persistTeacher = teacherJpaRepository.getOne(teacher.getTeacherId());
+		Teacher persistTeacher = teacherJpaRepository.findOne(teacher.getTeacherId());
 		
 		persistTeacher.setPwd(teacher.getPwd());
 		
@@ -56,7 +56,7 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 
 	
 	public List<Course> getCourses(Integer teacherId) {
-		return teacherJpaRepository.getOne(teacherId).getCourses();
+		return teacherJpaRepository.findOne(teacherId).getCourses();
 	}
 	
 	

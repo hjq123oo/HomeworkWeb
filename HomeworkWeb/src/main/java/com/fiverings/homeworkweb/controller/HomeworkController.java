@@ -88,11 +88,13 @@ public class HomeworkController {
 
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		
-		for (Homework homework : homeworks) {
-			result.put("id", ""+homework.getHomeworkId());
-			result.put("name", homework.getName());
-			result.put("startTime", sdf.format(homework.getStartTime()));
-			result.put("endTime",  sdf.format(homework.getEndTime()));
+		int size = homeworks.size();
+		for (int i=0;i<size;i++){
+			Homework homework = homeworks.get(i);
+			result.put("id"+i, ""+homework.getHomeworkId());
+			result.put("name"+i, homework.getName());
+			result.put("startTime"+i, sdf.format(homework.getStartTime()));
+			result.put("endTime"+i,  sdf.format(homework.getEndTime()));
 			
 
 		}

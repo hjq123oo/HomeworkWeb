@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,11 +43,11 @@ public class Course implements Serializable{
 	
 	
 	@Column(name="late_interval")
-	private Integer  lateInterval;//迟交间隔小时
+	private Integer  lateInterval;//杩熶氦闂撮殧鏃堕棿
 	
 	
 	@Column(name="late_percent")
-	private Integer latePercent;//迟交所扣百分比
+	private Integer latePercent;//杩熶氦鎵�鎵ｇ櫨鍒嗘瘮
 	
 	public Integer getLateInterval() {
 		return lateInterval;
@@ -73,21 +74,21 @@ public class Course implements Serializable{
 	@Column(name="file_path")
 	private String filePath;
 	
-	@ManyToOne(targetEntity=Teacher.class)
+	@ManyToOne(targetEntity=Teacher.class) 
 	@JoinColumn(name="teacher_id" , referencedColumnName="teacher_id",nullable=false)
 	private Teacher teacher;
 	
-	@OneToMany(targetEntity=Homework.class,mappedBy="course")
+	@OneToMany(targetEntity=Homework.class,mappedBy="course",fetch=FetchType.EAGER)
 	private List<Homework> homeworks = new ArrayList<>();
 	
-    @ManyToMany(targetEntity=Student.class)
+    @ManyToMany(targetEntity=Student.class,fetch=FetchType.EAGER)
     @JoinTable(name="student_course",
     	joinColumns=@JoinColumn(name="course_id",referencedColumnName="course_id"),
     	inverseJoinColumns=@JoinColumn(name="student_id",referencedColumnName="student_id")
     )
     private List<Student> students = new ArrayList<>();
     
-    @OneToMany(targetEntity=Notice.class,mappedBy="course")
+    @OneToMany(targetEntity=Notice.class,mappedBy="course",fetch=FetchType.EAGER)
 	private List<Notice> notices = new ArrayList<>();
     
 	public Integer getCourseId() {

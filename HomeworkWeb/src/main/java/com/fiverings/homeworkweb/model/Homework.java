@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,7 +46,7 @@ public class Homework implements Serializable{
 	private Course course;
 	
 	
-	@OneToMany(targetEntity=StudentHomework.class,mappedBy="homework")
+	@OneToMany(targetEntity=StudentHomework.class,mappedBy="homework",fetch=FetchType.EAGER)
 	private List<StudentHomework> studentHomeworks = new ArrayList<>();
    
 	

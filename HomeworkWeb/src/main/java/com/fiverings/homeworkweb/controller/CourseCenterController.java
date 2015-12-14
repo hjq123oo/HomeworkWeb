@@ -36,12 +36,14 @@ public class CourseCenterController {
 
 		Map<String, String> result = new HashMap<String, String>();
 
-		for (Course course : courses) {
-			result.put("name", course.getName());
-			result.put("number", course.getNumber());
-			result.put("teacher", course.getTeacher().getRealname());
-			result.put("time", course.getTime());
-			result.put("place", course.getPlace());
+		int size = courses.size();
+		for (int i=0;i<size;i++){
+			Course course = courses.get(i);
+			result.put("name"+i, course.getName());
+			result.put("number"+i, course.getNumber());
+			result.put("teacher"+i, course.getTeacher().getRealname());
+			result.put("time"+i, course.getTime());
+			result.put("place"+i, course.getPlace());
 
 		}
 

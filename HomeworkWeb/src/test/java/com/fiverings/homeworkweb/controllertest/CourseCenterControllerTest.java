@@ -1,6 +1,7 @@
 package com.fiverings.homeworkweb.controllertest;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 import javax.annotation.Resource;
@@ -34,26 +35,24 @@ public class CourseCenterControllerTest {
 	@Test
 	public void teacherCourseCenter() throws Exception {
 		
-		mockMvc.perform((post("/registerTeacher").param("name","ggf")
-				.param("number", "A380").param("teacher", "郭关飞")
-				.param("time", "Wed-10-12").param("place", "YF313"))).andDo(print());
+		mockMvc.perform((get("/teacherCourseCenter").param("teacherId","1"))).andDo(print());
 	}
 	
 	@Test
 	public void createCourse() throws Exception {
 		
 		mockMvc.perform((post("/createCourse")
-				.param("teacherId","1001").param("college", "software").param("name", "JavaEE")
+				.param("teacherId","1").param("college", "software").param("name", "JavaEE")
 				.param("number", "A380").param("specialty", "112233").param("introduction","software_java")
-				.param("time", "Wed-10-12").param("place", "YF313").param("lateInterval", "24H")
-				.param("latePercent", "10%").param("endTime", "11-8"))).andDo(print());
+				.param("time", "Wed-10-12").param("place", "YF313").param("lateInterval", "24")
+				.param("latePercent", "10").param("endTime", "2015-12-15 8:00"))).andDo(print());
 	}
 	
 	@Test
 	public void joinCourse() throws Exception {
 		
 		mockMvc.perform((post("/joinCourse")
-				.param("studentId","13301043").param("courseId", "A380"))).andDo(print());
+				.param("studentId","1").param("courseId", "1"))).andDo(print());
 	}
 	
 }

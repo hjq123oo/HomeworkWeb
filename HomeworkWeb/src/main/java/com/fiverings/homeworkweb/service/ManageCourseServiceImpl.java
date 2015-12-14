@@ -49,6 +49,7 @@ public class ManageCourseServiceImpl implements ManageCourseService{
 			StudentHomework studentHomework = new StudentHomework();
 			studentHomework.setStudent(students.get(i));
 			studentHomework.setHomework(homework);
+			studentHomeworkJpaRepository.save(studentHomework);
 		}
 		
 		return homework;
