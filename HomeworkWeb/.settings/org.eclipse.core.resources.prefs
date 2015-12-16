@@ -3,10 +3,7 @@
 >>>>>>>=bd6a529cfde749ce29c6d8f12e79ab4c45419e4b
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
-encoding//src/main/java/com/fiverings/homeworkweb/controller/CourseCenterController.java=UTF-8
-encoding//src/main/java/com/fiverings/homeworkweb/controller/HomeworkController.java=UTF-8
 encoding//src/main/java/com/fiverings/homeworkweb/controller/LoginController.java=UTF-8
-encoding//src/main/java/com/fiverings/homeworkweb/controller/RegisterController.java=UTF-8
 encoding//src/main/java/com/fiverings/homeworkweb/model/Course.java=UTF-8
 encoding//src/main/java/com/fiverings/homeworkweb/model/Homework.java=UTF-8
 encoding//src/main/java/com/fiverings/homeworkweb/model/Notice.java=UTF-8
@@ -26,6 +23,11 @@ encoding//src/main/java/com/fiverings/homeworkweb/service/ManageStudentServiceIm
 encoding//src/main/java/com/fiverings/homeworkweb/service/ManageTeacherService.java=UTF-8
 encoding//src/main/java/com/fiverings/homeworkweb/service/ManageTeacherServiceImpl.java=UTF-8
 encoding//src/main/resources=UTF-8
+encoding//src/main/resources/applicationContext-persistence.xml=UTF-8
+encoding//src/main/resources/applicationContext.xml=UTF-8
+encoding//src/main/resources/fileLocation.properties=UTF-8
+encoding//src/main/resources/jdbc.properties=UTF-8
+encoding//src/main/resources/spring-servlet.xml=UTF-8
 encoding//src/test/java=UTF-8
 encoding//src/test/java/com/fiverings/homeworkweb/controllertest/CourseCenterControllerTest.java=UTF-8
 encoding//src/test/java/com/fiverings/homeworkweb/controllertest/HomeworkControllerTest.java=UTF-8

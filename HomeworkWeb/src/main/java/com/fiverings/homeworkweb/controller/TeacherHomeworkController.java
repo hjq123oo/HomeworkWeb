@@ -8,18 +8,15 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fiverings.homeworkweb.model.Course;
 import com.fiverings.homeworkweb.model.Homework;
-import com.fiverings.homeworkweb.model.Student;
-import com.fiverings.homeworkweb.model.StudentHomework;
 import com.fiverings.homeworkweb.service.ManageCourseService;
 import com.fiverings.homeworkweb.service.ManageHomeworkService;
 import com.fiverings.homeworkweb.service.ManageStudentHomeworkService;
@@ -27,29 +24,24 @@ import com.fiverings.homeworkweb.service.ManageStudentHomeworkService;
 
 
 @Controller
-public class HomeworkController {
-
-	@Resource
-	ManageCourseService manageCourseService;
-	
+public class TeacherHomeworkController {
 	@Resource
 	ManageHomeworkService manageHomeworkService;
 	
 	@Resource
-	ManageStudentHomeworkService manageStudentHomeworkService;
-
+	ManageCourseService manageCourseService;
+	
 	@Resource
-	HttpServletRequest request;
+	ManageStudentHomeworkService manageStudentHomeworkService;
 	
 	
-	@RequestMapping(value = "/createHomework", method = RequestMethod.POST)
+	@RequestMapping(value = "/teacher/course/{courseId}/homework/add", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> createHomework(@RequestParam("courseId") String strCourseId,
+	public Map<String, String> addHomework(@PathVariable("courseId") Integer courseId,
 			@RequestParam("name") String name,@RequestParam("content") String content,
 			@RequestParam("endTime") String strEndTime) {
-		Integer courseId = Integer.parseInt(strCourseId);
-
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
 		Date endTime = null;
 		try {
@@ -69,17 +61,15 @@ public class HomeworkController {
 
 		Map<String, String> result = new HashMap<String, String>();
 
-		result.put("successful", "true");
+		result.put("success", "true");
 	
 		return result;
 	}
 	
 	
-	@RequestMapping(value = "/homeworkList", method = RequestMethod.GET)
+	@RequestMapping(value = "/teacher/course/{courseId}/homework/all", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> homeworkList(@RequestParam("courseId") String strCourseId) {
-		Integer courseId = Integer.parseInt(strCourseId);
-
+	public Map<String, String> getAllHomework(@PathVariable("courseId") Integer courseId) {
 		
 		List<Homework> homeworks = manageCourseService.getHomeworks(courseId);
 		
@@ -104,14 +94,11 @@ public class HomeworkController {
 	
 	
 	
-	@RequestMapping(value = "/homeworkDetail", method = RequestMethod.GET)
+	@RequestMapping(value = "/teacher/course/{courseId}/homework/{homeworkId}", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> homeworkDetail(@RequestParam("homeworkId") String strHomeworkId) {
-		Integer homeworkId = Integer.parseInt(strHomeworkId);
+	public Map<String, String> getHomework(@PathVariable("courseId") Integer courseId,@PathVariable("homeworkId") Integer homeworkId) {
 
 		Homework homework = manageHomeworkService.getHomework(homeworkId);
-		
-		
 
 		Map<String, String> result = new HashMap<String, String>();
 
@@ -129,24 +116,36 @@ public class HomeworkController {
 		return result;
 	}
 	
-	
-	@RequestMapping(value = "/correct", method = RequestMethod.GET)
+	/*
+	@RequestMapping(value = "/teacher/homework/all/student_homework/all", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> correct(@RequestParam("homeworkId") String strHomeworkId) {
-		Integer homeworkId = Integer.parseInt(strHomeworkId);
+	public Map<String, String> saveCorrect() {
+		
+
+		Map<String, String> result = new HashMap<String, String>();
+
+		result.put("success", "true");
+		
+		return result;
+	}
+	
+	
+	
+	@RequestMapping(value = "/teacher/homework/{homeworkId}/student_homework/all", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, String> getStudentHomeworkByHoemwork(@RequestParam("homeworkId") Integer homeworkId) {
+		
 
 		Homework homework = manageHomeworkService.getHomework(homeworkId);
 		
 		List<StudentHomework> studentHomeworks = homework.getStudentHomeworks();
 		
-		
-
 		Map<String, String> result = new HashMap<String, String>();
 
 		for(StudentHomework studentHomework : studentHomeworks){
 			Student student = studentHomework.getStudent();
 			result.put("studentId", ""+student.getStudentId());
-			result.put("homeworkId", strHomeworkId);
+			result.put("homeworkId", homeworkId);
 			result.put("studentNO",student.getStudentNO());
 			result.put("name",student.getStudentNO());
 			result.put("college",student.getCollege());
@@ -154,37 +153,24 @@ public class HomeworkController {
 			
 		}
 
-		
+	
 
 		return result;
 	}
 	
 	
-	@RequestMapping(value = "/saveCorrect", method = RequestMethod.POST)
+	@RequestMapping(value = "/teacher/homework/all/student_homework/all", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> saveCorrect(@RequestParam("homeworkId") String strHomeworkId) {
-		Integer homeworkId = Integer.parseInt(strHomeworkId);
-		
-		Homework homework = manageHomeworkService.getHomework(homeworkId);
-		List<StudentHomework> studentHomeworks = homework.getStudentHomeworks();
-		
-		
-		int size = studentHomeworks.size();
-		
-		for(int i=0;i<size;i++){
-			studentHomeworks.get(i).setScore(Integer.parseInt(request.getParameter("score"+i)));
-			manageStudentHomeworkService.updateScore(studentHomeworks.get(i));
-		}
-		
+	public Map<String, String> saveCorrect() {
 		
 
 		Map<String, String> result = new HashMap<String, String>();
 
-		result.put("successful", "true");
+		result.put("success", "true");
 		
 		return result;
 	}
 	
-	
+	*/
 	
 }

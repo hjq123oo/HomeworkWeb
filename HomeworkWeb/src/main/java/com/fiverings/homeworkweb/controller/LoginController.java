@@ -19,7 +19,7 @@ public class LoginController {
 	
 	@RequestMapping("/")
 	public String index() {
-		return "index.html";
+		return "index";
 	}
 	/*
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)

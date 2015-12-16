@@ -4,33 +4,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fiverings.homeworkweb.model.Student;
-import com.fiverings.homeworkweb.model.Teacher;
 import com.fiverings.homeworkweb.service.ManageStudentService;
-import com.fiverings.homeworkweb.service.ManageTeacherService;
+
 
 @Controller
-public class RegisterController {
+public class StudentController {
 
 	@Resource
 	private ManageStudentService manageStudentService;
-
+	
 	@Resource
-	private ManageTeacherService manageTeacherService;
+	private HttpSession session;
 	
 	
-	
-	
-	@RequestMapping(value = "/registerStudent", method = RequestMethod.POST)
+	@RequestMapping(value = "/student/add", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> registerStudent(@RequestParam("name") String name, @RequestParam("pwd") String pwd,
+	public Map<String, String> addStudent(@RequestParam("name") String name, @RequestParam("pwd") String pwd,
 			@RequestParam("school") String school, @RequestParam("college") String college,
 			@RequestParam("className") String className, @RequestParam("studentNO") String studentNO,
 			@RequestParam("realname") String realname, @RequestParam("email") String email,
@@ -46,43 +45,41 @@ public class RegisterController {
 		student.setRealname(realname);
 		student.setEmail(email);
 		student.setPhone(phone);
-		student.setFilePath("F:/server/student/" + name + "/");
 
 		manageStudentService.create(student);
 		
 		
 		Map<String, String> result = new HashMap<String, String>();
 
-		result.put("successful", "true");
+		result.put("success", "true");
 		
 		return result;
 	}
 	
 	
-	@RequestMapping(value = "/registerTeacher", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/student/info", method = RequestMethod.PUT)
 	@ResponseBody
-	public Map<String, String> registerTeacher(@RequestParam("name") String name, @RequestParam("pwd") String pwd,
-			@RequestParam("school") String school,@RequestParam("teacherNO") String teacherNo,
+	public Map<String, String> updateStudentInfo(@PathVariable Integer id,
+			@RequestParam("school") String school, @RequestParam("college") String college,
+			@RequestParam("className") String className, @RequestParam("studentNO") String studentNO,
 			@RequestParam("realname") String realname, @RequestParam("email") String email,
 			@RequestParam("phone") String phone) {
-
-		Teacher teacher = new Teacher();
-		teacher.setName(name);
-		teacher.setPwd(pwd);
-		teacher.setSchool(school);
-		teacher.setTeacherNO(teacherNo);
-		teacher.setRealname(realname);
-		teacher.setEmail(email);
-		teacher.setPhone(phone);
-		teacher.setFilePath("F:/server/teacher/" + name + "/");
-
-		manageTeacherService.create(teacher);
-		
 		
 		Map<String, String> result = new HashMap<String, String>();
 
-		result.put("successful", "true");
+		result.put("success", "true");
 		
+		return result;
+	}
+	
+	
+	@RequestMapping(value = "/student/pwd", method = RequestMethod.PUT)
+	@ResponseBody
+	public Map<String, String> updateStudentPwd(@PathVariable Integer id,@RequestParam("oldPwd") String oldPwd, @RequestParam("newPwd") String newPwd){
+		Map<String, String> result = new HashMap<String, String>();
+
+		result.put("success", "true");
 		return result;
 	}
 }
