@@ -1,0 +1,159 @@
+body{
+    font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
+    background: rgb(241,244,245);
+}
+
+.header{
+    /*background-color: #18b4ed;*/
+    position: fixed;
+    z-index: 999;
+    background-color: rgb(33,121,193);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.w{
+    width: 990px;
+    height: auto;
+    margin: 0px 179.5px;  
+}
+
+/*右上角登录区域*/
+.to_login{
+    position: absolute;
+    left: 1200px;
+    top: 53px;
+    width: 120px;
+    height: auto;
+}
+
+.to_login a{
+    color: #fff;
+    text-decoration: none; 
+}
+
+.to_login a:hover{
+    color: #000;
+     
+}
+
+#logo{
+    position:relative;
+    width: 300px;
+    height: 60px;
+}
+
+/*内容区域*/
+.content{
+    height: 710px;
+    
+}
+
+.login-wrap .login-form {
+    padding: 0 30px;
+}
+
+.login-form{
+    border:1px solid #000;
+}
+
+/*注册区域*/
+.reg_part{
+    position: absolute;
+    width: 800px;
+    height: 750px;
+    left: 300px;
+    margin-top: 80px;
+}
+
+.reg_part p{
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 10px;
+}
+
+.reg_part span{
+    color: rgb(255,0,0);
+}
+
+.reg_part #role_teacher{
+	margin-left: 270px;
+	margin-bottom: 10px;
+}
+
+.reg_part #role_student{
+	margin-left: 70px;
+	margin-bottom: 10px;
+}
+
+/*注册表格*/
+.reg_table{
+    border-collapse:   separate;   
+    border-spacing:   15px; 
+    margin-left: 100px;
+}
+
+.reg_table tr{
+margin:10px 0 10px 0;
+}
+
+.reg_table td{
+    padding-left: 10px;  
+}
+
+.reg_table input{
+    width: 220px;
+}
+
+.input_info{
+    color: #000;
+}
+
+.input-text{
+    display: block;
+    -webkit-margin-start: 0px;
+    position: relative;
+    width: 296px;
+    border: 1px solid #c0c7cd;
+    border-radius: 5px;
+    height: 30px;
+    box-shadow: 0 0 1px #FFF;
+    padding: 1px;
+    margin-left: 5px;
+    padding-left: 7px;
+    font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
+}
+
+.input-text:focus{
+    border: none;
+    /*border: 1px solid #c0c7cd;*/
+}
+
+.reg_btn{
+    width: 300px;
+    height: 47px;
+    border: none;
+    border-radius: 5px;
+    background-color: #18b4ed;
+    color: #fff;
+    font-size: 20px;
+    font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
+    letter-spacing: 10px;
+    margin-left: 240px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.first_col{
+	text-align: right;
+}
+
+.info_remind_required{
+    font-size: 10px;
+    color: rgb(255,0,0);
+}
+
+.info_remind{
+    font-size: 10px;
+    color: rgb(0,0,0);
+}

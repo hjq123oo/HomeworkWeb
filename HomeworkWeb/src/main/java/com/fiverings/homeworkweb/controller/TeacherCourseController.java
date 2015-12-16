@@ -2,6 +2,7 @@ package com.fiverings.homeworkweb.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -34,27 +35,15 @@ public class TeacherCourseController {
 
 	@RequestMapping(value = "/teacher/course/all", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, Object> getAllTeacherCourse() {
-		Integer teacherId = (Integer)session.getAttribute("id");
-
-		Map<String, Object> result = new HashMap<String, Object>();
+	public Map<String, List<Course>> getAllTeacherCourse() {
+		//Integer teacherId = (Integer)session.getAttribute("id");
+		Integer teacherId = 1;
+		Map<String, List<Course>> result = new HashMap<String, List<Course>>();
 
 		List<Course> courses = manageTeacherService.getCourses(teacherId);
+	
 		
-		
-		int size = courses.size();
-		for (int i=0;i<size;i++){
-			Course course = courses.get(i);
-			result.put("course"+i, course);
-			/*
-			result.put("name"+i, course.getName());
-			result.put("number"+i, course.getNumber());
-			result.put("teacher"+i, course.getTeacher().getRealname());
-			result.put("time"+i, course.getTime());
-			result.put("place"+i, course.getPlace());
-*/
-		}
-
+		result.put("courses", courses);
 		
 		return result;
 	}

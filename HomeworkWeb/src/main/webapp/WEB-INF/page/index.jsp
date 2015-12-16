@@ -61,7 +61,7 @@
 						</form>
 						<div class="regist">
 							<input type="button"
-								onclick="window.location.href='register.html'" id="reg"
+								onclick="window.location.href='/HomeworkWeb/register'" id="reg"
 								class="login-btn" value="注册" tabindex="6">
 						</div>
 					</div>

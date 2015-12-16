@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fiverings.homeworkweb.model.Teacher;
 import com.fiverings.homeworkweb.service.ManageTeacherService;
+import com.mysql.fabric.xmlrpc.base.Data;
 
 @Controller
 public class TeacherController {
@@ -41,10 +42,14 @@ public class TeacherController {
 
 		manageTeacherService.create(teacher);
 		
-		
+	
 		Map<String, String> result = new HashMap<String, String>();
-
-		result.put("success", "true");
+		if(phone == phone){
+			result.put("success", "true");
+		}else{
+			result.put("success", "false");
+		}
+		
 		return result;
 	}
 	

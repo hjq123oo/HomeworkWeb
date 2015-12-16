@@ -17,10 +17,7 @@ public class LoginController {
 	@Resource
 	private ManageTeacherService manageTeacherService;
 	
-	@RequestMapping("/")
-	public String index() {
-		return "index";
-	}
+
 	/*
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	@ResponseBody
