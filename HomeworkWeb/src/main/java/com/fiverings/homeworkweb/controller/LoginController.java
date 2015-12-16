@@ -19,7 +19,7 @@ public class LoginController {
 	
 	@RequestMapping("/")
 	public String index() {
-		return "index";
+		return "index.html";
 	}
 	/*
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
@@ -31,7 +31,7 @@ public class LoginController {
 		if ("name".equalsIgnoreCase(name) && "pwd".equals(pwd)) {
 			isLoggedin = true;
 		}
-		result.put("result", isLoggedin ? "µÇÂ¼³É¹¦" : "µÇÂ¼Ê§°Ü");
+		result.put("result", isLoggedin ? "ï¿½ï¿½Â¼ï¿½É¹ï¿½" : "ï¿½ï¿½Â¼Ê§ï¿½ï¿½");
 
 		User user = new User();
 		user.setId(1);
