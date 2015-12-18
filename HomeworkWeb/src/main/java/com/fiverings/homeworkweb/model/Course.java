@@ -78,17 +78,17 @@ public class Course implements Serializable{
 	@JoinColumn(name="teacher_id" , referencedColumnName="teacher_id",nullable=false)
 	private Teacher teacher;
 	
-	@OneToMany(targetEntity=Homework.class,mappedBy="course",fetch=FetchType.EAGER)
+	@OneToMany(targetEntity=Homework.class,mappedBy="course")
 	private List<Homework> homeworks = new ArrayList<>();
 	
-    @ManyToMany(targetEntity=Student.class,fetch=FetchType.EAGER)
+    @ManyToMany(targetEntity=Student.class)
     @JoinTable(name="student_course",
     	joinColumns=@JoinColumn(name="course_id",referencedColumnName="course_id"),
     	inverseJoinColumns=@JoinColumn(name="student_id",referencedColumnName="student_id")
     )
     private List<Student> students = new ArrayList<>();
     
-    @OneToMany(targetEntity=Notice.class,mappedBy="course",fetch=FetchType.EAGER)
+    @OneToMany(targetEntity=Notice.class,mappedBy="course")
 	private List<Notice> notices = new ArrayList<>();
     
 	public Integer getCourseId() {

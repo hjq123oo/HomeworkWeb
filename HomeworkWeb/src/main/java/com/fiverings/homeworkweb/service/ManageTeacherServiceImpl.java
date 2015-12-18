@@ -1,5 +1,7 @@
 package com.fiverings.homeworkweb.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -25,6 +27,9 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 		return teacherJpaRepository.save(teacher);
 	}
 
+	public List<Teacher> getAllTeacher(){
+		return teacherJpaRepository.findAll();
+	}
 	
 	public Teacher getTeacher(Integer teacherId) {
 		return teacherJpaRepository.findOne(teacherId);
@@ -54,9 +59,19 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 		return teacherJpaRepository.save(persistTeacher);
 	}
 
-	
+	@Transactional
 	public List<Course> getCourses(Integer teacherId) {
-		return teacherJpaRepository.findOne(teacherId).getCourses();
+	
+		List<Course> courses = teacherJpaRepository.findOne(teacherId).getCourses();
+		
+		List<Course> returnCourses = new ArrayList<Course>();
+		
+		Iterator<Course> it = courses.iterator();
+		while(it.hasNext()){
+			returnCourses.add(it.next());
+		}
+	
+		return returnCourses;
 	}
 	
 	

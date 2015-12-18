@@ -184,8 +184,9 @@
     <script>
    
 	  $.getJSON("/HomeworkWeb/teacher/course/all",function(data){
-		
-	    $.each(data.courses, function(i, item){
+	
+		var json = $.parseJSON(data);
+	    $.each(json.courses, function(i, item){
 	    	
 	     	alert(item.name); 
 	    });

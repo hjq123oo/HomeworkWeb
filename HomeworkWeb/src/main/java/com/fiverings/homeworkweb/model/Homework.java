@@ -46,7 +46,7 @@ public class Homework implements Serializable{
 	private Course course;
 	
 	
-	@OneToMany(targetEntity=StudentHomework.class,mappedBy="homework",fetch=FetchType.EAGER)
+	@OneToMany(targetEntity=StudentHomework.class,mappedBy="homework")
 	private List<StudentHomework> studentHomeworks = new ArrayList<>();
    
 	
