@@ -1,0 +1,98 @@
+body{
+	font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
+}
+
+.courseCreate_table{
+    margin-left: 230px;
+    margin-top: 30px;
+}
+
+.courseCreate_table tr td{
+    padding-top: 8px;
+    padding-bottom: 8px;
+	padding-left: 10px;
+}
+
+/*信息输入框*/
+.courseCreate_input input{
+    display: block;
+    -webkit-margin-start: 0px;
+    position: relative;
+    width: 230px;
+    border: 1px solid #c0c7cd;
+    border-radius: 5px;
+    height: 30px;
+    box-shadow: 0 0 1px #FFF;
+    padding: 1px;
+    margin-left: 5px;
+    padding-left: 7px;
+    font-size: 15px;
+    font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
+}
+
+.time_input input{
+    -webkit-margin-start: 0px;
+    position: relative;
+    width: 50px;
+    border: 1px solid #c0c7cd;
+    border-radius: 5px;
+    height: 30px;
+    box-shadow: 0 0 1px #FFF;
+    padding: 1px;
+    margin-left: 5px;
+    padding-left: 7px;
+    font-size: 15px;
+    font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
+}
+
+.courseCreate_radio label{
+	margin-left: 10px;
+    font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
+}
+
+.first_col{
+	text-align:right;
+}
+
+/*按钮区域*/
+.btn_area input{
+	margin-left: 40px;
+}
+
+button{
+	cursor: pointer;
+    letter-spacing: 5px;
+    width: 100px;
+    border:none;
+    border-radius: 5px;
+    height: 30px;
+    font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
+	
+	margin-top: 10px;
+	margin-left: 50px;
+	font-size: 13px;
+	border-color: #3072b3;
+    border-bottom-color: #2a65a0;
+    text-decoration: none; 
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); 
+    color: #fff; 
+	letter-spacing: 5px;
+    background-color: #3072b3;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#599bdc), to(#3072b3));
+    background-image: -moz-linear-gradient(#599bdc, #3072b3);
+    background-image: -o-linear-gradient(#599bdc, #3072b3);
+    background-image: linear-gradient(#599bdc, #3072b3);
+}
+
+textarea{
+	border: 1px solid #c0c7cd;
+    border-radius: 5px;
+    height: 130px;
+	width: 230px;
+    box-shadow: 0 0 1px #FFF;
+    padding: 1px;    margin-left: 5px;
+	padding-top: 7px;
+    padding-left: 7px;
+    font-size: 15px;
+    font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
+}
