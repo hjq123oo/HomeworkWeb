@@ -21,12 +21,13 @@ public class PageController {
 		return "teacher/courseCenter";
 	}
 	
-<<<<<<< HEAD
+
 	
 	@RequestMapping("/student/course")
 	public String studentCourse() {
 		return "student/course";
-=======
+	}
+	
 	@RequestMapping("/student/personalInfo")
 	public String studentInfo() {
 		return "/student/personalInfo";
@@ -40,6 +41,6 @@ public class PageController {
 	@RequestMapping("/student/home")
 	public String studentHome() {
 		return "/student/home";
->>>>>>> 74569399b3333582259ac40364043e71556c522b
+
 	}
 }
