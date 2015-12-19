@@ -1,13 +1,14 @@
 ï»¿
-/* Öá */
+/* ï¿½ï¿½ */
 #container:before {
 	content: '';
 	
 	position: absolute;
-	top: 65px;
+	top: 15px;
 	bottom: 0;
 	
 	width: 2px;
+	height:100%;
 	background: rgb(33,121,193);
 	left: 15%;
 	
@@ -16,7 +17,7 @@
 
 
 
-/* Í¼±ê */
+/* Í¼ï¿½ï¿½ */
 .point {
 	width: 20px;
 	height: 20px;
@@ -44,6 +45,6 @@
 
 .form{
 	margin-left:25%;
-	margin-top:5%;
+	margin-top:0%;
 }
 

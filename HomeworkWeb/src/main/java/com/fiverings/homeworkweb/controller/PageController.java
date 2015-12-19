@@ -43,4 +43,9 @@ public class PageController {
 		return "/student/home";
 
 	}
+	
+	@RequestMapping("/teacher/courseCreate")
+	public String courseCreate(){
+		return "/teacher/courseCreate";
+	}
 }
