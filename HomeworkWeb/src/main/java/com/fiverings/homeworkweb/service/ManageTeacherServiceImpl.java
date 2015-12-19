@@ -27,7 +27,7 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 		return teacherJpaRepository.save(teacher);
 	}
 
-	public List<Teacher> getAllTeacher(){
+	public List<Teacher> getAllTeachers(){
 		return teacherJpaRepository.findAll();
 	}
 	
