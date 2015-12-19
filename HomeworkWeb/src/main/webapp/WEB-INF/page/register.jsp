@@ -28,8 +28,7 @@
 				<p>用户注册</p>
                 <label><input type = "radio" name = "role" id = "role_student" onclick = "checkRole()" checked>学生</label>
 				<label><input type = "radio" name = "role" id = "role_teacher" onclick = "checkRole()">教师</label>
-                <form method="post" class="reg_form" id="regForm" action="表单信息！！" onsubmit="return checkSubmit()">
-					
+                <div class="reg_form" id="regDiv_stu">
                     <table class = "reg_table">
                         <tr>
                             <td class = "first_col"><span>*</span>帐号：</td>
@@ -91,10 +90,10 @@
                             <td class = "info_remind">请填写有效联系方式</td>
                         </tr>
                     </table>
-                    <input type = "submit" class="reg_btn" id = "stu_reg" value="注册" />
-                </form>
+                    <input type = "button" class="reg_btn" id = "stu_reg" value="注册" />
+                </div>
 				
-				<form method="post" class="reg_form" id="regForm2" action="表单信息！！"  style="display:none;">
+				<div class="reg_form" id="regDiv_tea" style="display:none;">
                     <table class = "reg_table">
                         <tr>
                             <td class = "first_col"><span>*</span>帐号：</td>
@@ -136,9 +135,9 @@
                             <td class = "info_remind">请填写有效联系方式</td>
                         </tr>
                     </table>
-                    <div class="reg_btn" id = "tea_reg" value="注册"></div>
+                    <input type = "button" class="reg_btn" id = "tea_reg" value="注册"></div>
                     
-                </form>
+                </div>
             </div>
         </div>
         <div class="footer"></div>

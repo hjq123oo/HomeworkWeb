@@ -16,9 +16,23 @@ public class PageController {
 		return "register";
 	}
 	
-	
 	@RequestMapping("/teacher/courseCenter")
 	public String courseCenter() {
 		return "teacher/courseCenter";
+	}
+	
+	@RequestMapping("/student/personalInfo")
+	public String studentInfo() {
+		return "/student/personalInfo";
+	}
+	
+	@RequestMapping("/teacher/personalInfo")
+	public String teacherInfo() {
+		return "/teacher/personalInfo";
+	}
+	
+	@RequestMapping("/student/home")
+	public String studentHome() {
+		return "/student/home";
 	}
 }
