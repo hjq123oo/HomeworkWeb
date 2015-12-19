@@ -31,8 +31,12 @@ encoding//src/main/resources/spring-servlet.xml=UTF-8
 encoding//src/main/webapp/WEB-INF=UTF-8
 encoding//src/main/webapp/WEB-INF/page=UTF-8
 encoding//src/main/webapp/WEB-INF/page/register.jsp=UTF-8
+<<<<<<< HEAD
+encoding//src/main/webapp/WEB-INF/page/student/course.jsp=UTF-8
+=======
 encoding//src/main/webapp/WEB-INF/page/student/home.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/page/student/personalInfo.jsp=UTF-8
+>>>>>>> 74569399b3333582259ac40364043e71556c522b
 encoding//src/main/webapp/WEB-INF/page/teacher/courseCenter.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/page/teacher/personalInfo.jsp=UTF-8
 encoding//src/main/webapp/css/register.css=UTF-8

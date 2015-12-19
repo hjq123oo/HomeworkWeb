@@ -17,8 +17,15 @@ public class PageController {
 	}
 	
 	@RequestMapping("/teacher/courseCenter")
-	public String courseCenter() {
+	public String teacherCourseCenter() {
 		return "teacher/courseCenter";
+	}
+	
+
+	
+	@RequestMapping("/student/course")
+	public String studentCourse() {
+		return "student/course";
 	}
 	
 	@RequestMapping("/student/personalInfo")
@@ -34,5 +41,6 @@ public class PageController {
 	@RequestMapping("/student/home")
 	public String studentHome() {
 		return "/student/home";
+
 	}
 }
