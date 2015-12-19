@@ -46,6 +46,7 @@ public class LoginController {
 			if(name.equals(studentList.get(i).getName())){
 				if(pwd.equals(studentList.get(i).getPwd())){
 					result.put("result", "true");
+					result.put("user", "student");
 					result.put("name", name);
 					result.put("pwd", pwd);
 					return result;
@@ -61,6 +62,7 @@ public class LoginController {
 			if(name.equals(teacherList.get(i).getName())){
 				if(pwd.equals(teacherList.get(i).getPwd())){
 					result.put("result", "true");
+					result.put("user", "teacher");
 					result.put("name", name);
 					result.put("pwd", pwd);
 					return result;

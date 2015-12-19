@@ -84,6 +84,7 @@ public class StudentController {
 		
 		manageStudentService.create(student);
 		result.put("success", "true");
+		
 		return result;
 	}
 	

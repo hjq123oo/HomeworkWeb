@@ -75,7 +75,7 @@ public class TeacherController {
 			}else{
 				continue;
 			}
-		}	
+		}
 		
 		manageTeacherService.create(teacher);
 		result.put("success", "true");

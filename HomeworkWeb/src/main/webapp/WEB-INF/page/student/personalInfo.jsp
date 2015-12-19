@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		
-		<link rel="stylesheet" type="text/css" href="css/default.css" />
-		<link rel="stylesheet" type="text/css" href="css/form.css" />
-		<link rel="stylesheet" type="text/css" href="css/info.css" />
+		<link rel="stylesheet" type="text/css" href="../css/default.css" />
+		<link rel="stylesheet" type="text/css" href="../css/form.css" />
+		<link rel="stylesheet" type="text/css" href="../css/info.css" />
 		
-		<script type="text/javascript" src = "js/jquery-2.1.3.min.js"></script>
-		<script type="text/javascript" src = "js/personalInfo.js"></script>
+		<script type="text/javascript" src = "../js/jquery-2.1.3.min.js"></script>
+		<script type="text/javascript" src = "../js/personalInfo.js"></script>
 
 		<title>个人信息修改</title>
 		
@@ -19,16 +19,15 @@
 	<body>
 
     <div id="nav">
-		<div id="logo"><a href="home.html"><img src="images/logo.png" alt="LOGO" width="200" height="60"/></a></div>
+		<div id="logo"><img src="../images/logo.png" alt="LOGO" width="200" height="60"/></a></div>
         <div id="navarea">
 			
             <ul id="navs">
                 <li class="navItem"><a href="home.html"><span>首页</span></a></li>
                 <li class="navItem"><a href="courseCenter.html"><span>课程中心</span></a></li>
                 <li class="navItem"><a href="notice.html"><span>公告</span></a></li>
-               
-
-                <li id = "info"><a href="personalInfo.html" ><img src="images/user.jpg"></a></li>
+                
+                <li id = "info"><a href="personalInfo.html" ><img src="../images/user.jpg"></a></li>
 				<li id = "logout"><a href="index.html"><span>注销</span></a></li>
             </ul>
         </div>

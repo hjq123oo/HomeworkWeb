@@ -13,8 +13,12 @@ $(document).ready(function(){
 			dataType : "json",
 			success : function(data) {
 				if(data.result == "true"){
-					alert("suc");
-					window.location.href = "/HomeworkWeb/student/home";
+					if(data.user == "student"){
+						window.location.href = "/HomeworkWeb/student/home";
+					}
+					else if(data.user == "teacher"){
+						window.location.href = "/HomeworkWeb/teacher/courseCenter";
+					}
 					$("#loginBtn").removeAttr("disabled");
 				}else if(data.result == "false"){
 					alert("账号或密码有误");

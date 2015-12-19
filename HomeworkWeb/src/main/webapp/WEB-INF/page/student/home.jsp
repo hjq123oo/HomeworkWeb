@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 	<head>
@@ -8,24 +8,23 @@
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		
-		<link rel="stylesheet" type="text/css" href="css/default.css" />
-		<link rel="stylesheet" type="text/css" href="css/home.css" />
+		<link rel="stylesheet" type="text/css" href="../css/default.css" />
+		<link rel="stylesheet" type="text/css" href="../css/home.css" />
 		
 	</head>
 
 	<body>
 
     <div id="nav">
-		<div id="logo"><a href="home.html"><img src="images/logo.png" alt="LOGO" width="200" height="60"/></a></div>
+		<div id="logo"><a href="home.html"><img src="../images/logo.png" alt="LOGO" width="200" height="60"/></a></div>
         <div id="navarea">
 			
             <ul id="navs">
-                <li class="navItem"><a href="home.html"><span>首页</span></a></li>
-                <li class="navItem"><a href="courseCenter.html"><span>课程中心</span></a></li>
-                <li class="navItem"><a href="notice.html"><span>公告</span></a></li>
+                <li class="navItem"><a href="home"><span>首页</span></a></li>
+                <li class="navItem"><a href="courseCenter"><span>课程中心</span></a></li>
+                <li class="navItem"><a href="notice"><span>公告</span></a></li>
                
-
-                <li id = "info"><a href="personalInfo.html" ><img src="images/user.jpg"></a></li>
+                <li id = "info"><a href="personalInfo" ><img src="../images/user.jpg"></a></li>
 				<li id = "logout"><a href="index.html"><span>注销</span></a></li>
             </ul>
         </div>
