@@ -68,7 +68,18 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 		
 		Iterator<Course> it = courses.iterator();
 		while(it.hasNext()){
-			returnCourses.add(it.next());
+			Course returnCourse = new Course();
+			Course course = it.next();
+			returnCourse.setCourseId(course.getCourseId());
+			returnCourse.setName(course.getName());
+			returnCourse.setNumber(course.getNumber());
+			returnCourse.setTime(course.getTime());
+			returnCourse.setPlace(course.getPlace());
+			Teacher teacher = new Teacher();
+			teacher.setRealname(course.getTeacher().getName());
+			returnCourse.setTeacher(teacher);
+		
+			returnCourses.add(returnCourse);
 		}
 	
 		return returnCourses;
