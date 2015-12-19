@@ -76,7 +76,7 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 			returnCourse.setTime(course.getTime());
 			returnCourse.setPlace(course.getPlace());
 			Teacher teacher = new Teacher();
-			teacher.setRealname(course.getTeacher().getName());
+			teacher.setRealname(course.getTeacher().getRealname());
 			returnCourse.setTeacher(teacher);
 		
 			returnCourses.add(returnCourse);
