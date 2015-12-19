@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
 	margin:0;
 	padding:0;
@@ -9,6 +10,17 @@
 
 
 
+=======
+﻿* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	
+}
+
+>>>>>>> 10ed9a028b0d2d839a32b2566a6b092ee1d75fe2
 img {
 	border: 0;
 }
@@ -20,8 +32,11 @@ body {
 	
 }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 10ed9a028b0d2d839a32b2566a6b092ee1d75fe2
 #container{
 	
 	padding-top:65px;
@@ -58,7 +73,10 @@ body {
 	height: 58px;
 	padding-left:100px;
 	float:left;
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 10ed9a028b0d2d839a32b2566a6b092ee1d75fe2
 }
 
 #navarea a {

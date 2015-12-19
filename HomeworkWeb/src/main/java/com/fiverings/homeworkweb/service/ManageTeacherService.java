@@ -18,4 +18,6 @@ public interface ManageTeacherService {
 	List<Course> getCourses(Integer teacherId);
 	
 	Course addCourse(Integer teacherId,Course course);
+	
+	List<Teacher> getAllTeachers();
 }

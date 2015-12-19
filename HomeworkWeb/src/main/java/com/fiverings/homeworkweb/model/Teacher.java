@@ -40,7 +40,7 @@ public class Teacher implements Serializable{
     private String filePath;
     
 
-	@OneToMany(targetEntity=Course.class,mappedBy="teacher",fetch=FetchType.EAGER)
+	@OneToMany(targetEntity=Course.class,mappedBy="teacher")
 	private List<Course> courses = new ArrayList<>();
     
 	

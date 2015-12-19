@@ -5,6 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/login.css" rel="stylesheet" type="text/css"/>
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src = "js/index.js"></script>
 <title>欢迎登陆五环作业网</title>
 </head>
 <body>
@@ -30,17 +32,16 @@
 								<img src="images/person.jpg" />
 							</div>
 						</div>
-						<form method="post" class="login-form" id="loginForm"
-							action="login.do">
+						<div class="login-form" id="loginForm">
 							<dl class="username">
 								<dd style="border-color: rgb(173, 182, 201);">
-									<input type="text" name="name" class="input-text" id="name"
+									<input type="text" name="name" class="input-text" id="login_name"
 										tabindex="1" value="" style="" placeholder="请输入用户名">
 								</dd>
 							</dl>
 							<dl class="password">
 								<dd style="border-color: rgb(142, 150, 161)">
-									<input type="password" id="pwd" name="pwd"
+									<input type="password" id="login_pwd" name="pwd"
 										class="input-text" tabindex="2" style="" placeholder="请输入密码">
 								</dd>
 							</dl>
@@ -55,14 +56,11 @@
 								</span>
 							</dl>
 							<dl class="button">
-								<input type="submit" id="login" class="login-btn" value="登录"
-									tabindex="5">
+								<input type="button" id="loginBtn" class="login-btn" value="登录" tabindex="5">
 							</dl>
-						</form>
+						</div>
 						<div class="regist">
-							<input type="button"
-								onclick="window.location.href='/HomeworkWeb/register'" id="reg"
-								class="login-btn" value="注册" tabindex="6">
+							<input type="button" id="regBtn" class="login-btn" value="注册" tabindex="6">
 						</div>
 					</div>
 				</div>

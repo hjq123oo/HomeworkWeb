@@ -7,7 +7,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../css/default.css" />
+<<<<<<< HEAD
         <link href="../css/courseCenter.css" type="text/css" rel="stylesheet">
+=======
+        <link type="text/css" rel="stylesheet" href="../css/courseCenter.css">
+>>>>>>> 10ed9a028b0d2d839a32b2566a6b092ee1d75fe2
         <script src="../js/jquery-2.1.3.min.js"></script>
         <script src="../js/courseCenter.js" type="text/javascript"></script>
     </head>
@@ -22,7 +26,11 @@
                 <li class="navItem"><a href="notice.html"><span>公告</span></a></li>
                
 
+<<<<<<< HEAD
                 <li id = "info"><a href="personalInfo.html" ><img src="../images/user.jpg"></a></li>
+=======
+                <li id = "info"><a href="personalInfo" ><img src="../images/user.jpg"></a></li>
+>>>>>>> 10ed9a028b0d2d839a32b2566a6b092ee1d75fe2
 				<li id = "logout"><a href="index.html"><span>注销</span></a></li>
             </ul>
         </div>
@@ -47,4 +55,19 @@
         <script src="js/prefixfree.min.js" type="text/javascript"></script>
     </body>
     
+<<<<<<< HEAD
+=======
+    <script>
+   
+	  $.getJSON("/HomeworkWeb/teacher/course/all",function(data){
+	
+		var json = $.parseJSON(data);
+	    $.each(json.courses, function(i, item){
+	    	
+	     	alert(item.name); 
+	    });
+	  });
+	
+    </script>
+>>>>>>> 10ed9a028b0d2d839a32b2566a6b092ee1d75fe2
 </html>

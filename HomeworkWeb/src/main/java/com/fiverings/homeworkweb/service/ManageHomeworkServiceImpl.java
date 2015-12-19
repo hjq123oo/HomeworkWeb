@@ -1,5 +1,7 @@
 package com.fiverings.homeworkweb.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -26,10 +28,20 @@ public class ManageHomeworkServiceImpl implements ManageHomeworkService{
 
 
 
-
+	@Transactional
 	public List<StudentHomework> getStudentHomeworks(Integer homeworkId) {
-		return homeworkJpaRepository.findOne(homeworkId).getStudentHomeworks();
-	
+		
+		List<StudentHomework> studentHomeworks = homeworkJpaRepository.findOne(homeworkId).getStudentHomeworks();
+		
+		List<StudentHomework> returnStudentHomeworks = new ArrayList<StudentHomework>();
+		
+		Iterator<StudentHomework> it = studentHomeworks.iterator();
+		
+		while(it.hasNext()){
+			returnStudentHomeworks.add(it.next());
+		}
+		
+		return returnStudentHomeworks;
 	}
 	
 	

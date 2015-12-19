@@ -11,11 +11,11 @@ function checkRole(){
 	var stuEle = document.getElementById("role_student");
 	
 	if(teaEle.checked){
-		document.getElementById("regForm2").style.display="block"; 
-		document.getElementById("regForm").style.display="none";  
+		document.getElementById("regDiv_tea").style.display="block"; 
+		document.getElementById("regDiv_stu").style.display="none";  
 	}else if(stuEle.checked){
-		document.getElementById("regForm2").style.display="none";  
-		document.getElementById("regForm").style.display="block";  
+		document.getElementById("regDiv_tea").style.display="none";  
+		document.getElementById("regDiv_stu").style.display="block";  
 	}
 }
 
@@ -112,8 +112,8 @@ function checkEmailInfo(infoId){
 
 //只允许输入整数
 function onlyNum() {
-    if(!(event.keyCode==46) && !(event.keyCode==8) && !(event.keyCode==37) && !(event.keyCode==39))
-
+    if(!(event.keyCode==46) && !(event.keyCode==8) && !(event.keyCode==37) && !(event.keyCode == 39))
+    	
     if( !( (event.keyCode>=48 && event.keyCode<=57) || (event.keyCode>=96 && event.keyCode<=105) ) )
     	event.returnValue=false;
 }
@@ -133,8 +133,46 @@ function checkSubmit(){
 	return true;
 }
 
+//ajax响应学生注册
+$(document).ready(function(){
+	$("#stu_reg").click(function (){
+		
+		 $("#stu_reg").attr({"disabled":"disabled"});
+		
+		 $.ajax({
+			type: "post",
+			url: "/HomeworkWeb/student/add",
+			data: {name:$("#reg_account_stu").val(),
+				pwd:$("#reg_password_stu").val(),
+				school:$("#reg_school_stu").val(),
+				college:$("#reg_dept_stu").val(),
+				className:$("#reg_class_stu").val(),
+				studentNO:$("#reg_number_stu").val(),
+				realname:$("#reg_name_stu").val(),
+				email:$("#reg_email_stu").val(),
+				phone:$("#reg_phone_stu").val()
+				},
+			dataType : "json",
+			success : function(data) {
+				
+				if(data.success == "true"){
+					window.location.href = "/HomeworkWeb/";
+					
+				}else if(data.success == "false"){
+					alert("信息有误");
+					$("#stu_reg").removeAttr("disabled");
+				}
+				
+			},
+			error : function() {
+				$("#stu_reg").removeAttr("disabled");
+			}
+		});	
+	});
+});
 
 
+//ajax响应教师注册
 $(document).ready(function(){
 	$("#tea_reg").click(function (){
 		
@@ -153,12 +191,16 @@ $(document).ready(function(){
 				},
 			dataType : "json",
 			success : function(data) {
-				alert(data.success);
-				
+				if(data.success == "true"){
+					window.location.href = "/HomeworkWeb/";
+					
+				}else if(data.success == "false"){
+					alert("信息有误");
+					$("#stu_reg").removeAttr("disabled");
+				}
 			},
 			error : function() {
-				
-				$("#postBtn").removeAttr("disabled");
+				$("#tea_reg").removeAttr("disabled");
 			}
 		});	
 	});

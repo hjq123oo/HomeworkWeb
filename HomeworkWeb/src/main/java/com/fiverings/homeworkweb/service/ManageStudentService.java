@@ -16,5 +16,5 @@ public interface ManageStudentService {
 	
 	List<Course> getCourses(Integer studentId);
 	
-	
+	List<Student> getAllStudents();
 }

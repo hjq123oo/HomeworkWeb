@@ -77,12 +77,12 @@ body{
 }
 
 .reg_part #role_teacher{
-	margin-left: 270px;
+	margin-left: 70px;
 	margin-bottom: 10px;
 }
 
 .reg_part #role_student{
-	margin-left: 70px;
+	margin-left: 270px;
 	margin-bottom: 10px;
 }
 

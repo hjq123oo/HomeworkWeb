@@ -1,10 +1,13 @@
 package com.fiverings.homeworkweb.service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fiverings.homeworkweb.jparepository.CourseJpaRepository;
 import com.fiverings.homeworkweb.jparepository.StudentHomeworkJpaRepository;
@@ -26,6 +29,10 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 	@Resource
 	private StudentHomeworkJpaRepository studentHomeworkJpaRepository;
 
+	public List<Student> getAllStudents(){
+		return studentJpaRepository.findAll();
+	}
+	
 	public Student create(Student student) {
 
 		return studentJpaRepository.save(student);
@@ -64,7 +71,7 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 	 * 
 	 * @return Student 返回被修改的学生
 	 */
-
+	@Transactional
 	public Student addCourse(Integer studentId, Integer courseId) {
 		Student student = studentJpaRepository.findOne(studentId);
 
@@ -74,13 +81,15 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 
 		List<Homework> homeworks = course.getHomeworks();
 
-		int size = homeworks.size();
-		for (int i = 0; i < size; i++) {
+		Iterator<Homework> it = homeworks.iterator();
+		
+		while(it.hasNext()){
 			StudentHomework studentHomework = new StudentHomework();
 			studentHomework.setStudent(student);
-			studentHomework.setHomework(homeworks.get(i));
+			studentHomework.setHomework(it.next());
 			studentHomeworkJpaRepository.save(studentHomework);
 		}
+		
 
 		return studentJpaRepository.save(student);
 	}
@@ -92,9 +101,18 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 	 * 
 	 * @return List 返回的课程列表
 	 */
+	@Transactional
 	public List<Course> getCourses(Integer studentId) {
-		return studentJpaRepository.findOne(studentId).getCourses();
-
+		List<Course> courses = studentJpaRepository.findOne(studentId).getCourses();
+		
+		List<Course> returnCourses = new ArrayList<Course>();
+		
+		Iterator<Course> it = courses.iterator();
+		while(it.hasNext()){
+			returnCourses.add(it.next());
+		}
+		
+		return returnCourses;
 	}
 
 }
