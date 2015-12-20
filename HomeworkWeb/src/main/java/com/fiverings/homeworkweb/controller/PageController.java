@@ -57,4 +57,9 @@ public class PageController {
 		return "/teacher/courseCreate";
 
 	}
+	
+	@RequestMapping("/student/courseCenter")
+	public String studentCourseCenter() {
+		return "student/courseCenter";
+	}
 }

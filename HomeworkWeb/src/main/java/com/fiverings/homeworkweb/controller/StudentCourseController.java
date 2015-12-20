@@ -1,6 +1,7 @@
 package com.fiverings.homeworkweb.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fiverings.homeworkweb.model.Course;
 import com.fiverings.homeworkweb.service.ManageCourseService;
 import com.fiverings.homeworkweb.service.ManageStudentService;
 
@@ -29,12 +31,14 @@ public class StudentCourseController {
 	
 	@RequestMapping(value = "/student/course/all", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> getAllStudentCourse(){
-		Integer studentId = (Integer)session.getAttribute("id");
+	public Map<String, List<Course>> getAllStudentCourse(){
+		//Integer studentId = (Integer)session.getAttribute("id");
+		Integer studentId = 1;
 		
-		Map<String, String> result = new HashMap<String, String>();
+		Map<String, List<Course>> result = new HashMap<String, List<Course>>();
+		List<Course> courses = manageStudentService.getCourses(studentId);
 
-		result.put("success", "true");
+		result.put("courses", courses);
 		
 		return result;
 	}
