@@ -13,7 +13,6 @@
 		<script type="text/javascript" src = "../js/personalInfo.js"></script>
 
 		<title>个人信息修改</title>
-		
 	</head>
 
 	<body>
@@ -79,7 +78,6 @@
 									<input type="button" class = "btn" id = "modify_btn" value = "修改信息">
 									<input type="button" class = "btn" id = "save_btn" value = "保存信息">
 								</td>
-
 							</tr>
 						</table>
 					</div>
