@@ -5,6 +5,7 @@
         <title>课程搜索</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../js/jquery-2.1.3.min.js"></script>
         <link href="../css/default.css" rel="stylesheet" type="text/css">
         <link href="../css/searchPage.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="../css/table.css" type="text/css">
@@ -30,9 +31,10 @@
             <div id="center" style="margin-left: 30px;margin-right: 30px;">
                 <div id="centerlogo"><a href="#"><img src="../images/centerlogo.png" alt="LOGO" width="250"/></a></div>
                 <div class="form-wrapper cf">
-                    <input type="text" placeholder="输入课程编号进行查询" required>
-                    <button onclick="search();">Search</button>
+                    <input id="courseId" type="text" placeholder="输入课程编号进行查询" required="required">
+                    <button id="search">Search</button>
                 </div>
+                
                 <table class="bordered" id="courselist" style="display:none">
                     <thead>
                         <tr>
@@ -45,16 +47,9 @@
                             <th>加入课程</th>
                         </tr>
                     </thead>
-                        <tr>
-                            <td>000000001</td>        
-                            <td>软件系统分析与设计技术</td>
-                            <td>张红延</td>
-                            <td>星期2第4节</td>
-                            <td>逸夫教学楼308</td>
-                           
-                            <td><input type="image" value="submit" class="image" src="../images/join.png" width="25px" height="25px"></td>
-					</tr>
-              
+                    <tbody id="tbody">
+                    	
+                    </tbody>
 				</table>
             </div>
         </div>

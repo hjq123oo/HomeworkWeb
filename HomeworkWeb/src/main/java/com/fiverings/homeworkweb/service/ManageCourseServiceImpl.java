@@ -39,6 +39,10 @@ public class ManageCourseServiceImpl implements ManageCourseService{
 		
 		Course course = courseJpaRepository.findOne(courseId);
 		
+		if (course==null){
+			return null;
+		}
+		
 		Course returnCourse = new Course();
 		returnCourse.setCourseId(course.getCourseId());
 		

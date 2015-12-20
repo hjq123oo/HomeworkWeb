@@ -69,4 +69,20 @@ public class StudentCourseController {
 		return result;
 	}
 	
+	@RequestMapping(value = "/student/search/{courseId}", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> searchCourse(@PathVariable Integer courseId){
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		Course course = manageCourseService.getCourse(courseId);
+		if (course==null){
+			result.put("success", "false");
+			return result;
+		}
+		
+		result.put("success", "true");
+		result.put("course", course);
+		return result;
+	}
+	
 }
