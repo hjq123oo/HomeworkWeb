@@ -1,9 +1,14 @@
+#main{
+	margin-top:50px;	
+}
+
 lable{
    font-family:"楷体";
    font-size:17px;
    text-align:center;
    vertical-align:center;
-   height=32px；lineheight：32px；
+   height:32px；
+   lineheight:32px；
 }
 
 input{

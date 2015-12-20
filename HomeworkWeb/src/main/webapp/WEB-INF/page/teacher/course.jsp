@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="../css/table.css">
 		
 		<script src="../js/jquery-2.1.3.min.js"></script>
+		<script src="../js/util.js"></script>
 		<title>五环作业网</title>
 		
 		
@@ -42,7 +43,7 @@
                 <div class="profile-image">
                     <img src="../images/person.jpg" alt="user">
                 </div>
-                <h3 class="profile-title" id="#teacherName"></h3>
+                <h3 class="profile-title" id="teacherName"></h3>
                 
             </div>
             <div>
@@ -119,12 +120,20 @@
     	});
     	
     	function addHomework(homework){
+    		var date = new Date();
+    		date.setTime(homework.startTime);
+    		var startTime = date.getString();
+    		
+    		date.setTime(homework.endTime);
+    		var endTime = date.getString();
+    		
     		$("#homeworks").append(
     				"<tr>"
     				+"<td>"+homework.homeworkId+"</td>"
     				+"<td>"+homework.name+"</td>"
-    				+"<td>"+homework.startTime+"</td>"
-    				+"<td>"+homework.endTime+"</td>"
+    				+"<td>"+startTime+"</td>"
+    				+"<td>"+endTime+"</td>"
+    				+"<td>"+homework.submitStudentNum+"</td>"
     				+"<td><input type='image' value='detail' class='image' src='../images/detail.jpg' onclick='window.location.href='/HomeworkWeb/teacher/homework?homeworkId="+homework.homeworkId+"''></td>"
     				+"<td><input type='image' value='submit' class='image' src='../images/edit.jpg' onclick='window.location.href='/HomeworkWeb/teacher/correct?homeworkId="+homework.homeworkId+"''></td>"
  					+"</tr>"
@@ -132,15 +141,7 @@
     	          
     	}
     	
-    	function getUrlParam(name){  
-    	    //构造一个含有目标参数的正则表达式对象  
-    	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");  
-    	    //匹配目标参数  
-    	    var r = window.location.search.substr(1).match(reg);  
-    	    //返回参数值  
-    	    if (r!=null) return unescape(r[2]);  
-    	    return null;  
-    	}  
+   
     </script>
     
 	</body>
