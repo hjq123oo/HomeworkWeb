@@ -62,4 +62,9 @@ public class PageController {
 	public String studentCourseCenter() {
 		return "student/courseCenter";
 	}
+	
+	@RequestMapping("/student/searchPage")
+	public String searchPage() {
+		return "student/searchPage";
+	}
 }
