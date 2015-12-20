@@ -2,7 +2,6 @@ package com.fiverings.homeworkweb.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -53,9 +52,11 @@ public class TeacherCourseController {
 	@ResponseBody
 	public Map<String, Object> getTeacherCourse(@PathVariable Integer courseId) {
 		
-
+		Course course = manageCourseService.getCourse(courseId);
+		
 		Map<String, Object> result = new HashMap<String, Object>();
 
+		result.put("course", course);
 		
 		return result;
 	}

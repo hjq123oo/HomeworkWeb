@@ -43,4 +43,11 @@ public class PageController {
 		return "/student/home";
 
 	}
+	
+	
+	@RequestMapping("/teacher/course")
+	public String teacherCourse() {
+		return "/teacher/course";
+
+	}
 }

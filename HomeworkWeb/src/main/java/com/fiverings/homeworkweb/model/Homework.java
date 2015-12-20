@@ -7,13 +7,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -41,6 +39,17 @@ public class Homework implements Serializable{
 	@Column(name="file_path")
 	private String filePath;
 	
+	@Column(name="submit_student_num",nullable=false,columnDefinition = "int default 0")
+	private Integer submitStudentNum;
+	
+	public Integer getSubmitStudentNum() {
+		return submitStudentNum;
+	}
+
+	public void setSubmitStudentNum(Integer submitStudentNum) {
+		this.submitStudentNum = submitStudentNum;
+	}
+
 	@ManyToOne(targetEntity=Course.class)
 	@JoinColumn(name="course_id" , referencedColumnName="course_id",nullable=false)
 	private Course course;

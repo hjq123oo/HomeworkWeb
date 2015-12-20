@@ -5,10 +5,10 @@
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		
-		<link rel="stylesheet" type="text/css" href="css/default.css" />
-		<link rel="stylesheet" href="css/templatemo-style.css">
-		<link rel="stylesheet" href="css/course.css">
-		<link rel="stylesheet" href="css/table.css">
+		<link rel="stylesheet" type="text/css" href="../css/default.css" />
+		<link rel="stylesheet" href="../css/templatemo-style.css">
+		<link rel="stylesheet" href="../css/course.css">
+		<link rel="stylesheet" href="../css/table.css">
 		<script src="../js/jquery-2.1.3.min.js"></script>
 		
 		<script src="../js/jquery.ui.widget.js"></script>
@@ -49,7 +49,7 @@
 	</div>
 	
     <div id="nav">
-		<div id="logo"><a href="home.html"><img src="images/logo.png" alt="LOGO" width="200" height="60"/></a></div>
+		<div id="logo"><a href="home.html"><img src="../images/logo.png" alt="LOGO" width="200" height="60"/></a></div>
         <div id="navarea">
 			
             <ul id="navs">
@@ -58,7 +58,7 @@
                 <li class="navItem"><a href="notice.html"><span>公告</span></a></li>
                
 
-                <li id = "info"><a href="personalInfo.html" ><img src="images/user.jpg"></a></li>
+                <li id = "info"><a href="personalInfo.html" ><img src="../images/user.jpg"></a></li>
 				<li id = "logout"><a href="index.html"><span>注销</span></a></li>
             </ul>
         </div>
@@ -70,7 +70,7 @@
         <div class="sidebar-menu hidden-xs hidden-sm">
             <div>
                 <div class="profile-image">
-                    <img src="images/郭关飞.jpg" alt="user">
+                    <img src="../images/郭关飞.jpg" alt="user">
                 </div>
                 <h3 class="profile-title">郭关飞</h3>
                 <h3 class="profile-title">北京交通大学</h3>
@@ -119,40 +119,11 @@
 									<td>2015.9.25</td>
                                     <td>2015.10.5</td>
 									<td>45</td>
-									<td><input type="image" value="detail" class="image" src="images/detail.jpg" onclick="window.location.href='homework.html'"></td>
-									<td><input type="image" value="submit" class="image" src="images/edit.jpg" onclick="document.getElementById('file').click();"></td>
+									<td><input type="image" value="detail" class="image" src="../images/detail.jpg" onclick="window.location.href='homework.html'"></td>
+									<td><input type="image" value="submit" class="image" src="../images/edit.jpg" onclick="document.getElementById('file').click();"></td>
 									<td>15</td>
 							    </tr>        
-								<tr> 
-								    <td>145</td>        
-									<td>原型开发</td>
-									<td>2015.10.5</td>
-									<td>2015.10.25</td>
-									<td>30</td>
-									<td><input type="image" value="detail" class="image" src="images/detail.jpg" onclick="window.location.href='homework.html'"></td>
-									<td><input type="image" value="submit" class="image" src="images/edit.jpg" onclick="document.getElementById('file').click();"></td>
-									<td>20</td>
-								</tr>
-								<tr>
-								    <td>457</td>        
-									<td>详细设计</td>
-									<td>2015.10.25</td>
-									<td>2015.11.15</td>
-									<td>27</td>
-									<td><input type="image" value="detail" class="image" src="images/detail.jpg" onclick="window.location.href='homework.html'"></td>
-									<td><input type="image" value="submit" class="image" src="images/edit.jpg" onclick="document.getElementById('file').click();"></td>
-									<td>20</td>
-								</tr>    
-								<tr>
-								    <td>785</td>        
-									<td>完成整个项目</td>
-									<td>2015.11.15</td>
-									<td>2015.12.5</td>
-									<td>100</td>
-									<td><input type="image" value="detail" class="image" src="images/detail.jpg" onclick="window.location.href='homework.html'"></td>
-									<td><input type="image" value="submit" class="image" src="images/edit.jpg" onclick="document.getElementById('file').click();"></td>
-									<td>15</td>
-                                </tr>
+						
 								
 							
 					</table>

@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +17,7 @@ import com.fiverings.homeworkweb.model.Course;
 import com.fiverings.homeworkweb.model.Homework;
 import com.fiverings.homeworkweb.model.Student;
 import com.fiverings.homeworkweb.model.StudentHomework;
+import com.fiverings.homeworkweb.model.Teacher;
 
 @Service("manageCourseService")
 public class ManageCourseServiceImpl implements ManageCourseService{
@@ -29,10 +31,70 @@ public class ManageCourseServiceImpl implements ManageCourseService{
 	@Resource
 	private StudentHomeworkJpaRepository studentHomeworkJpaRepository;
 	
+	@Resource
+	private EntityManager em;
 	
+	@Transactional
 	public Course getCourse(Integer courseId) {
-		return courseJpaRepository.findOne(courseId);
+		
+		Course course = courseJpaRepository.findOne(courseId);
+		
+		Course returnCourse = new Course();
+		returnCourse.setCourseId(course.getCourseId());
+		
+		returnCourse.setCollege(course.getCollege());
+		returnCourse.setName(course.getName());
+		returnCourse.setNumber(course.getCollege());
+		returnCourse.setSpecialty(course.getSpecialty());
+		returnCourse.setTime(course.getTime());
+		returnCourse.setPlace(course.getPlace());
+		returnCourse.setLateInterval(course.getLateInterval());
+		returnCourse.setLatePercent(course.getLatePercent());
+		returnCourse.setIntroduction(course.getIntroduction());
+		returnCourse.setStudentNum(course.getStudentNum());
+		
+		Teacher teacher = course.getTeacher();
+		Teacher returnTeacher = new Teacher();
+		
+		returnTeacher.setTeacherId(teacher.getTeacherId());
+		returnTeacher.setRealname(teacher.getRealname());
+		returnTeacher.setSchool(teacher.getSchool());
+		
+		returnCourse.setTeacher(returnTeacher);
+		
+		List<Homework> homeworks = course.getHomeworks();
+		
+		List<Homework> returnHomeworks = new ArrayList<Homework>();
+		
+		Iterator<Homework> it = homeworks.iterator();
+		
+		while(it.hasNext()){
+			Homework returnHomework = new Homework();
+			
+			Homework homework = it.next();
+			
+			returnHomework.setHomeworkId(homework.getHomeworkId());
+			returnHomework.setName(homework.getName());
+			returnHomework.setStartTime(homework.getStartTime());
+			returnHomework.setEndTime(homework.getEndTime());
+			returnHomework.setSubmitStudentNum(homework.getSubmitStudentNum());
+			returnHomeworks.add(returnHomework);
+		}
+		
+		returnCourse.setHomeworks(returnHomeworks);
+		
+		return returnCourse;
 	}
+	
+	/*
+	public Integer getStudentNum(Integer courseId){
+		String jpql = "select count(*) from table student_course sc where sc.course_id= :courseId";
+		
+		Query query = em.createQuery(jpql);  
+		query.setParameter("courseId", courseId);
+		return (Integer)query.getSingleResult();
+	}*/
+	
 	
 	@Transactional
 	public List<Homework> getHomeworks(Integer courseId){

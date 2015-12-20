@@ -12,4 +12,6 @@ public interface ManageCourseService {
 	List<Homework> getHomeworks(Integer courseId);
 	
 	Homework addHomework(Integer courseId,Homework homework);
+	
+	/*Integer getStudentNum(Integer courseId);*/
 }

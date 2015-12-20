@@ -26,6 +26,20 @@ public class StudentHomework implements Serializable{
 	@Column(name="file_path")
 	String filePath;
 	
+	@ManyToOne(targetEntity=Student.class)
+	@JoinColumn(name="student_id" , referencedColumnName="student_id",nullable=false)
+	private Student student;
+	
+	
+	@ManyToOne(targetEntity=Homework.class)
+	@JoinColumn(name="homework_id" , referencedColumnName="homework_id",nullable=false)
+	private Homework homework;
+	
+	@Column(name="submit_num",nullable=false,columnDefinition = "int default 0")
+	Integer submitNum;
+	
+	
+
 	public Integer getId() {
 		return id;
 	}
@@ -75,19 +89,20 @@ public class StudentHomework implements Serializable{
 		this.homework = homework;
 	}
 
+	public Integer getSubmitNum() {
+		return submitNum;
+	}
+
+
+	public void setSubmitNum(Integer submitNum) {
+		this.submitNum = submitNum;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
 
-	@ManyToOne(targetEntity=Student.class)
-	@JoinColumn(name="student_id" , referencedColumnName="student_id",nullable=false)
-	private Student student;
-	
-	
-	@ManyToOne(targetEntity=Homework.class)
-	@JoinColumn(name="homework_id" , referencedColumnName="homework_id",nullable=false)
-	private Homework homework;
+
 	
 }

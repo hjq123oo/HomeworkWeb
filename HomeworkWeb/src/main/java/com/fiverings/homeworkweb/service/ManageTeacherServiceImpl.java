@@ -32,7 +32,18 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 	}
 	
 	public Teacher getTeacher(Integer teacherId) {
-		return teacherJpaRepository.findOne(teacherId);
+		Teacher teacher =  teacherJpaRepository.findOne(teacherId);
+		
+		Teacher returnTeacher = new Teacher();
+		returnTeacher.setTeacherId(teacher.getTeacherId());
+		returnTeacher.setName(teacher.getName());
+		returnTeacher.setSchool(teacher.getSchool());
+		returnTeacher.setTeacherNO(teacher.getTeacherNO());
+		returnTeacher.setRealname(teacher.getRealname());
+		returnTeacher.setEmail(teacher.getEmail());
+		returnTeacher.setPhone(teacher.getPhone());
+		
+		return returnTeacher;
 	}
 
 

@@ -79,6 +79,8 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 
 		student.getCourses().add(course);
 
+		course.setStudentNum(course.getStudentNum()+1);
+		
 		List<Homework> homeworks = course.getHomeworks();
 
 		Iterator<Homework> it = homeworks.iterator();
@@ -90,7 +92,7 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 			studentHomeworkJpaRepository.save(studentHomework);
 		}
 		
-
+		courseJpaRepository.save(course);
 		return studentJpaRepository.save(student);
 	}
 

@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,13 +34,36 @@ public class Course implements Serializable{
 	
 	private String place;
 	
+	private String school;
+	
+
+
 	private String college;
 	
 	private String specialty;
 	
 	private String introduction;
 	
+	@Column(name="student_num",nullable=false,columnDefinition = "int default 0")
+	private Integer studentNum;
 	
+	public String getSchool() {
+		return school;
+	}
+
+	public void setSchool(String school) {
+		this.school = school;
+	}
+	
+	
+	public Integer getStudentNum() {
+		return studentNum;
+	}
+
+	public void setStudentNum(Integer studentNum) {
+		this.studentNum = studentNum;
+	}
+
 	@Column(name="late_interval")
 	private Integer  lateInterval;//迟交间隔时间
 	
