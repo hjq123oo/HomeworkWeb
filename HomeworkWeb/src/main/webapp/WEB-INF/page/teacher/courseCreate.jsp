@@ -46,44 +46,48 @@
 			<form name="create">
 				<table class = "courseCreate_table">
 					<tr>
+						<td class = "first_col"><label for="create-0">所属学校：</label></td>
+						<td class = "courseCreate_input"><input type="text" id="school"></td>
+					</tr>
+					<tr>
 						<td class = "first_col"><label for="create-0">课程院系：</label></td>
-						<td class = "courseCreate_input"><input type="text"></td>
+						<td class = "courseCreate_input"><input type="text" id="college"></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-1">课程名称：</label></td>
-						<td class = "courseCreate_input"><input type="text"></td>
+						<td class = "courseCreate_input"><input type="text" id="name"></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-0">课程编号：</label></td>
-						<td class = "courseCreate_input"><input  type="text"></td>
+						<td class = "courseCreate_input"><input  type="text" id="number"></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-0">所属专业：</label></td>
-						<td class = "courseCreate_input"><input  type="text"></td>
+						<td class = "courseCreate_input"><input  type="text" id="specialty"></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-0">课程简介：</label></td>
-						<td class = "courseCreate_input"><textarea></textarea></td>
+						<td class = "courseCreate_input"><textarea id="introduction"></textarea></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-3">上课时间：</label></td>
-						<td class = "courseCreate_input"><input  type="text"></td>
+						<td class = "courseCreate_input"><input  type="text" id="time"></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-4">上课地点：</label></td>
-						<td class = "courseCreate_input"><input type="text"></td>
+						<td class = "courseCreate_input"><input type="text" id="place"></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-5">作业迟交扣分：</label></td>
 						
 						<td class = "courseCreate_input">
-							每迟交<select>
+							每迟交<select id="late_interval">
 									<option value="1">1</option>
 									<option value="2">12</option>
 									<option value="3">24</option>
 									<option value="4">48</option>
 								</select>
-							小时扣<select>
+							小时扣<select id="late_percent">
 									<option value="1">10</option>
 									<option value="2">20</option>
 									<option value="3">50</option>
@@ -93,7 +97,7 @@
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-5">课程截止时间：</label></td>
-							<td><input id="datetimepicker" type="text" readonly="readonly"><td/>
+							<td><input id="end_time8" type="text" readonly="readonly"><td/>
 							<script>
 							
 							
