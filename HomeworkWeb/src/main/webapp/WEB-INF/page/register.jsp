@@ -102,12 +102,12 @@
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>密码：</td>
-                            <td><input type="text" name="email" class="input-text" id="reg_password_tea" tabindex="1" value=""></td>
+                            <td><input type="password" name="email" class="input-text" id="reg_password_tea" tabindex="1" value=""></td>
                             <td class = "info_remind_required">6-18个字符，请使用字母加数字的组合</td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>确认密码：</td>
-                            <td><input type="text" name="email" class="input-text" id="reg_password2_tea" tabindex="1" value=""></td>
+                            <td><input type="password" name="email" class="input-text" id="reg_password2_tea" tabindex="1" value=""></td>
                             <td class = "info_remind_required">请再次输入密码</td>
                         </tr>
                         <tr>

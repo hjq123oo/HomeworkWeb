@@ -187,7 +187,6 @@ $(document).ready(function(){
 			dataType : "json",
 			success : function(data) {
 				if(data.result == "true"){
-					//window.location.href = "/HomeworkWeb/";
 					
 				}else if(data.result == "false"){
 					alert("错误");
