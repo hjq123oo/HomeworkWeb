@@ -44,7 +44,7 @@ public class Course implements Serializable{
 	
 	private String introduction;
 	
-	@Column(name="student_num",nullable=false,columnDefinition = "int default 0")
+	@Column(name="student_num",columnDefinition = "int default 0" ,nullable = false)
 	private Integer studentNum;
 	
 	public String getSchool() {

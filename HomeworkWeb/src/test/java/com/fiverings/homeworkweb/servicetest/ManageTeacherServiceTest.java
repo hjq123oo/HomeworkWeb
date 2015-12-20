@@ -75,7 +75,7 @@ public class ManageTeacherServiceTest {
 		course.setSpecialty("专业");
 		course.setTime("周三第三节");
 		
-		manageTeacherService.addCourse(3, course);
+		manageTeacherService.addCourse(1, course);
 	}
 	
 	@Test
