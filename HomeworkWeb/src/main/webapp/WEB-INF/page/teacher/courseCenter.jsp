@@ -35,7 +35,7 @@
   
     <div id="container>">
         <ul class="course_table">
-        	<li class="course_block" id="add">
+        	<li class="course_block" id="add" onclick="window.location.href='courseCreate.html'">
               <div id="addcourse" style="background: url(../images/add.png) 0px 0px no-repeat"></div>
           	</li>
           	
