@@ -72,6 +72,9 @@ public class StudentCourseController {
 	@RequestMapping(value = "/student/search/{courseId}", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> searchCourse(@PathVariable Integer courseId){
+		//Integer studentId = (Integer)session.getAttribute("id");
+		Integer studentId = 1;
+		
 		Map<String, Object> result = new HashMap<String, Object>();
 		
 		Course course = manageCourseService.getCourse(courseId);
@@ -79,6 +82,18 @@ public class StudentCourseController {
 			result.put("success", "false");
 			return result;
 		}
+		
+		List<Course> courses = manageStudentService.getCourses(studentId);
+		
+		result.put("choise","false");
+		
+		for (int i=0;i<courses.size();i++){
+			if(courses.get(i).getCourseId()==course.getCourseId()){
+				result.put("choise", "true");
+				break;
+			}
+		}
+		
 		
 		result.put("success", "true");
 		result.put("course", course);
