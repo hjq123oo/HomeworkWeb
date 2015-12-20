@@ -45,7 +45,7 @@ body{
     font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
 }
 
-#datetimepicker{
+#end_time{
     -webkit-margin-start: 0px;
     position: relative;
     width: 230px;

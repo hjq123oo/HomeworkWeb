@@ -97,7 +97,7 @@
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-5">课程截止时间：</label></td>
-							<td><input id="end_time8" type="text" readonly="readonly"><td/>
+							<td><input id="end_time" type="text" readonly="readonly"><td/>
 							<script>
 							
 							
@@ -124,7 +124,7 @@
 								
 							
 								var minDate = new Date().format("yyyy-MM-dd hh:mm:ss");
-								$("#datetimepicker").datetimepicker({
+								$("#end_time").datetimepicker({
 									minDate: minDate
 									//minDate:;
 								});
