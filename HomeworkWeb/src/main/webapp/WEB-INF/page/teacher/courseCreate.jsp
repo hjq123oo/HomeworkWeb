@@ -14,6 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/jquery.datetimepicker.css" />
 		<script src="../js/jquery-2.1.3.min.js"></script>
 		<script src="../js/jquery.datetimepicker.js"></script>
+		<script src="../js/courseCreate.js"></script>
 		
 		<title>五环作业网</title>
 		
@@ -43,7 +44,6 @@
 			<div class="point"></div>
 			<div class="title">创建课程</div>
 			<div class="form">
-			<form name="create">
 				<table class = "courseCreate_table">
 					<tr>
 						<td class = "first_col"><label for="create-0">所属学校：</label></td>
@@ -81,13 +81,13 @@
 						<td class = "first_col"><label for="create-5">作业迟交扣分：</label></td>
 						
 						<td class = "courseCreate_input">
-							每迟交<select id="late_interval">
+							每迟交<select id="lateInterval">
 									<option value="1">1</option>
 									<option value="2">12</option>
 									<option value="3">24</option>
 									<option value="4">48</option>
 								</select>
-							小时扣<select id="late_percent">
+							小时扣<select id="latePercent">
 									<option value="1">10</option>
 									<option value="2">20</option>
 									<option value="3">50</option>
@@ -97,7 +97,7 @@
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-5">课程截止时间：</label></td>
-							<td><input id="end_time" type="text" readonly="readonly"><td/>
+							<td><input id="endTime" type="text" readonly="readonly"><td/>
 							<script>
 							$(function(){
 								Date.prototype.format = function(fmt)   
@@ -121,7 +121,7 @@
 								
 							
 								var minDate = new Date().format("yyyy-MM-dd hh:mm:ss");
-								$("#end_time").datetimepicker({
+								$("#endTime").datetimepicker({
 									minDate: minDate
 									//minDate:;
 								});
@@ -132,11 +132,10 @@
 					<tr>
 						<td></td>
 						<td style="text-align:right">
-							<Button class = "btn" type = "submit" >提交</Button>
+							<Button id="submit" class="btn">提交</Button>
 						</td>
 					</tr>
-				</table>			
-        </form>
+				</table>
 			</div>
 		</div>
 	</div>
