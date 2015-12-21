@@ -37,17 +37,17 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 		Teacher returnTeacher = new Teacher();
 		returnTeacher.setTeacherId(teacher.getTeacherId());
 		returnTeacher.setName(teacher.getName());
+		returnTeacher.setPwd(teacher.getPwd());
 		returnTeacher.setSchool(teacher.getSchool());
 		returnTeacher.setTeacherNO(teacher.getTeacherNO());
 		returnTeacher.setRealname(teacher.getRealname());
 		returnTeacher.setEmail(teacher.getEmail());
 		returnTeacher.setPhone(teacher.getPhone());
 		
+		
 		return returnTeacher;
 	}
 
-
-	
 	public Teacher updateInfo(Teacher teacher) {
 		Teacher persistTeacher = teacherJpaRepository.findOne(teacher.getTeacherId());
 		
@@ -59,8 +59,6 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 		
 		return teacherJpaRepository.save(persistTeacher);
 	}
-
-
 	
 	public Teacher updatePwd(Teacher teacher) {
 		Teacher persistTeacher = teacherJpaRepository.findOne(teacher.getTeacherId());

@@ -18,7 +18,7 @@
 	<body>
 
     <div id="nav">
-		<div id="logo"><img src="../images/logo.png" alt="LOGO" width="200" height="60"/></a></div>
+		<div id="logo"><img src="../images/logo.png" alt="LOGO" width="200" height="60"/></div>
         <div id="navarea">
 			
             <ul id="navs">
@@ -42,36 +42,36 @@
 						<table class = "infomation_table">
 							<tr>
 								<td class = "first_col">账号：</td>
-								<td><input class = "text" type = "text" readonly value="xxxxxx" id = "stu_account"></td>
+								<td><input class = "text" type = "text" readonly value="" id = "stu_account"></td>
 								<td><a href="modifyPwd.html">修改密码</a></td>
 							</tr>
 							<tr>
 								<td class = "first_col">学校：</td>	
-								<td><input class = "text" type = "text" readonly value="北京交通大学" id = "stu_school"></td>
+								<td><input class = "text" type = "text" readonly value="" id = "stu_school"></td>
 							</tr>
 							<tr>
 								<td class = "first_col">学院：</td>	
-								<td><input class = "text" type = "text" readonly value="软件学院" id = "stu_college"></td>
+								<td><input class = "text" type = "text" readonly value="" id = "stu_college"></td>
 							</tr>
 							<tr>
 								<td class = "first_col">班级：</td>	
-								<td><input class = "text" type = "text" readonly value="软件1302" id = "stu_class"></td>
+								<td><input class = "text" type = "text" readonly value="" id = "stu_class"></td>
 							</tr>
 							<tr>
 								<td class = "first_col">学号：</td>
-								<td><input class = "text" type = "text" readonly value="13301043" id = "stu_number"></td>
+								<td><input class = "text" type = "text" readonly value="" id = "stu_number"></td>
 							</tr>
 							<tr>
 								<td class = "first_col">姓名：</td>
-								<td><input class = "text" type = "text" readonly value="宋昌雄" id = "stu_name"></td>
+								<td><input class = "text" type = "text" readonly value="" id = "stu_name"></td>
 							</tr>
 							<tr>
 								<td class = "first_col">常用邮箱：</td>
-								<td><input class = "text" type = "text" readonly value="13301043@bjtu.edu.cn" id = "stu_email"></td>
+								<td><input class = "text" type = "text" readonly value="" id = "stu_email"></td>
 							</tr>
 							<tr>
 								<td class = "first_col">联系方式：</td>
-								<td><input class = "text" type = "text" readonly value="18813090935" id = "stu_phone"></td>
+								<td><input class = "text" type = "text" readonly value="" id = "stu_phone"></td>
 							</tr>
 							<tr>
 								<td colspan="3">

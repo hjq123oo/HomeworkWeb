@@ -44,18 +44,24 @@ public class PageController {
 
 	}
 	
-
-	
 	@RequestMapping("/teacher/course")
 	public String teacherCourse() {
 		return "/teacher/course";
 	}
 
-
 	@RequestMapping("/teacher/courseCreate")
 	public String courseCreate(){
 		return "/teacher/courseCreate";
-
+	}
+	
+	@RequestMapping("/teacher/modifyPwd")
+	public String modifyTeacherPwd(){
+		return "/teacher/modifyPwd";
+	}
+	
+	@RequestMapping("/student/modifyPwd")
+	public String modifyStudentPwd(){
+		return "/student/modifyPwd";
 	}
 	
 	@RequestMapping("/student/courseCenter")

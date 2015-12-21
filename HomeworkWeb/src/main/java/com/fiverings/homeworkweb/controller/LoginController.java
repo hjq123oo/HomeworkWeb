@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,11 +28,14 @@ public class LoginController {
 	@Resource
 	private ManageTeacherService manageTeacherService;
 	
+	@Resource
+	private HttpSession session;
 	
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> login(@RequestParam("name") String name, @RequestParam("pwd") String pwd) {
 		Map<String, String> result = new HashMap<String, String>();
+		Integer id = -1;
 		
 		//学生列表
 		List<Student> studentList = new ArrayList<Student>();
@@ -49,6 +53,8 @@ public class LoginController {
 					result.put("user", "student");
 					result.put("name", name);
 					result.put("pwd", pwd);
+					id = studentList.get(i).getStudentId();
+					session.setAttribute("id", id);
 					return result;
 				}
 				
@@ -65,6 +71,8 @@ public class LoginController {
 					result.put("user", "teacher");
 					result.put("name", name);
 					result.put("pwd", pwd);
+					id = teacherList.get(i).getTeacherId();
+					session.setAttribute("id", id);
 					return result;
 				}
 			}else{

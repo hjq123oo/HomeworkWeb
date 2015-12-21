@@ -46,9 +46,6 @@ public class TeacherController {
 		teacher.setEmail(email);
 		teacher.setPhone(phone);
 
-		
-		
-	
 		Map<String, String> result = new HashMap<String, String>();
 		
 		//判断教师账号是否和其余教师账号重复
@@ -82,13 +79,41 @@ public class TeacherController {
 		return result;
 	}
 	
-	
-	@RequestMapping(value = "/teacher/info", method = RequestMethod.PUT)
+	//获取教师信息
+	@RequestMapping(value = "/teacher/info", method=RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> updateTeacherInfo(@PathVariable Integer id,
-			@RequestParam("school") String school,@RequestParam("teacherNO") String teacherNo,
-			@RequestParam("realname") String realname, @RequestParam("email") String email,
+	public Map<String, String> getTeacherInfo(){
+		
+		Map<String, String> result = new HashMap<String, String>();
+
+		Teacher teacher = new Teacher();
+		
+		Integer id = (Integer)session.getAttribute("id");
+		
+		teacher = manageTeacherService.getTeacher(id);
+		
+		result.put("success", "true");
+		result.put("name", teacher.getName());
+		result.put("pwd", teacher.getPwd());
+		result.put("school", teacher.getSchool());
+		result.put("teacherNO", teacher.getTeacherNO());
+		result.put("realname", teacher.getRealname());
+		result.put("email", teacher.getEmail());
+		result.put("phone", teacher.getPhone());
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/teacher/info", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> updateTeacherInfo(
+			@RequestParam("school") String school,
+			@RequestParam("teacherNO") String teacherNo,
+			@RequestParam("realName") String realname, 
+			@RequestParam("email") String email,
 			@RequestParam("phone") String phone){
+		
+		Integer id = (Integer)session.getAttribute("id");
 		
 		Teacher teacher = new Teacher();
 		teacher.setTeacherId(id);
@@ -105,14 +130,29 @@ public class TeacherController {
 		return result;
 	}
 	
-	
-	@RequestMapping(value = "/teacher/pwd", method = RequestMethod.PUT)
+	//修改教师密码
+	@RequestMapping(value = "/teacher/modifyPwd", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> updateTeacherPwd(@PathVariable Integer id,@RequestParam("oldPwd") String oldPwd, @RequestParam("newPwd") String newPwd){
+	public Map<String, String> updateTeacherPwd(
+			@RequestParam("name") String name, 
+			@RequestParam("oldPwd") String oldPwd, 
+			@RequestParam("newPwd") String newPwd){
+		
 		Map<String, String> result = new HashMap<String, String>();
-
-		result.put("success", "true");
+		
+		Integer id = (Integer)session.getAttribute("id");
+		
+		Teacher teacher = new Teacher();
+		teacher = manageTeacherService.getTeacher(id);
+		
+		if(oldPwd.equals(teacher.getPwd())){
+			teacher.setPwd(newPwd);
+			manageTeacherService.updatePwd(teacher);
+			result.put("success", "true");
+			return result;
+		}
+		
+		result.put("success", "false");
 		return result;
 	}
-	
 }
