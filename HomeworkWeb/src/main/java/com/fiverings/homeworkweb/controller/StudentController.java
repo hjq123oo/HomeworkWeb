@@ -88,19 +88,45 @@ public class StudentController {
 		return result;
 	}
 	
+	//获取学生信息
+	@RequestMapping(value = "/student/info", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, String> getStudentInfo() {
+		
+		Student student = new Student();
+		
+		Integer id = (Integer)session.getAttribute("id");
+		
+		student = manageStudentService.getStudent(id);
+			
+		Map<String, String> result = new HashMap<String, String>();
+		result.put("success", "true");
+		result.put("name", student.getName());
+		result.put("pwd", student.getPwd());
+		result.put("school", student.getSchool());
+		result.put("college", student.getCollege());
+		result.put("className", student.getClassName());
+		result.put("studentNo", student.getStudentNO());
+		result.put("realName", student.getRealname());
+		result.put("email", student.getEmail());
+		result.put("phone", student.getPhone());
+		
+		return result;
+	}
 	
-	
-	@RequestMapping(value = "/student/personalInfo", method = RequestMethod.PUT)
+	//修改学生信息
+	@RequestMapping(value = "/student/info", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> updateStudentInfo(
-			@PathVariable Integer id,
 			@RequestParam("school") String school, 
 			@RequestParam("college") String college,
 			@RequestParam("className") String className, 
 			@RequestParam("studentNO") String studentNO,
-			@RequestParam("realname") String realname, 
+			@RequestParam("realName") String realname, 
 			@RequestParam("email") String email,
 			@RequestParam("phone") String phone) {
+		
+		Integer id = (Integer)session.getAttribute("id");
 		
 		Student student = new Student();
 		student.setStudentId(id);
@@ -121,12 +147,30 @@ public class StudentController {
 	}
 	
 	
-	@RequestMapping(value = "/student/pwd", method = RequestMethod.PUT)
+	//修改学生密码
+	@RequestMapping(value = "/student/modifyPwd", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, String> updateStudentPwd(@PathVariable Integer id,@RequestParam("oldPwd") String oldPwd, @RequestParam("newPwd") String newPwd){
+	public Map<String, String> updateStudentPwd(
+			@RequestParam("name") String name, 
+			@RequestParam("oldPwd") String oldPwd, 
+			@RequestParam("newPwd") String newPwd){
+		
 		Map<String, String> result = new HashMap<String, String>();
-
-		result.put("success", "true");
+		
+		Integer id = (Integer)session.getAttribute("id");
+		
+		Student student = new Student();
+		student = manageStudentService.getStudent(id);
+		
+		if(oldPwd.equals(student.getPwd())){
+			student.setPwd(newPwd);
+			
+			manageStudentService.updatePwd(student);
+			result.put("success", "true");
+			return result;
+		}
+		
+		result.put("success", "false");
 		return result;
 	}
 }

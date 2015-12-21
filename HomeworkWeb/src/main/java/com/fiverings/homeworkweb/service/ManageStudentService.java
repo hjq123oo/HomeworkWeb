@@ -12,6 +12,8 @@ public interface ManageStudentService {
 	
 	Student updatePwd(Student student);
 	
+	Student getStudent(Integer studentId);
+	
 	Student addCourse(Integer studentId,Integer courseId);
 	
 	List<Course> getCourses(Integer studentId);

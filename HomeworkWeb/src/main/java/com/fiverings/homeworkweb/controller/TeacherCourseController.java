@@ -41,7 +41,6 @@ public class TeacherCourseController {
 
 		List<Course> courses = manageTeacherService.getCourses(teacherId);
 	
-		
 		result.put("courses", courses);
 		
 		return result;
