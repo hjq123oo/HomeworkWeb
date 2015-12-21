@@ -31,7 +31,7 @@ $(document).ready(function(){
 						type:"post",
 						url:b,
 						success:function(data){
-							$("#joinCourse").html("已添加");
+							$("#joinCourse").html("已添加"); 
 						},
 						error:function(){
 							alert("加入课程失败");
