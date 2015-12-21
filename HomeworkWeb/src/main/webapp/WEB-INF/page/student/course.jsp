@@ -21,7 +21,6 @@
 	</head>
 
 	<body>
-	<input id="file" type="file" name="file" data-url="/HomeworkWeb/student_homework/add"/>
 	 
 	<script>
 	$(function () {
@@ -145,12 +144,12 @@
     			
     		    
 	    		$.each(course.homeworks, function(i, homework){
-	    			addHomework(homework);
+	    			addHomework(course.studentNum,homework);
 	    		});
 	  		});
     	});
     	
-    	function addHomework(homework){
+    	function addHomework(studentNum,homework){
     		var date = new Date();
     		date.setTime(homework.startTime);
     		var startTime = date.getString();
@@ -163,8 +162,8 @@
     				+"<td>"+homework.name+"</td>"
     				+"<td>"+startTime+"</td>"
     				+"<td>"+endTime+"</td>"
-    				+"<td>"+homework.submitStudentNum+"</td>"
-    				+"<td><input type='image' value='detail' class='image' src='../images/detail.jpg' onclick='window.location.href='/HomeworkWeb/teacher/homework?homeworkId="+homework.homeworkId+"''></td>"
+    				+"<td>"+homework.submitStudentNum+"/"+studentNum+"</td>"
+    				+"<td><input type='image' value='detail' class='image' src='../images/detail.jpg' onclick='window.location.href=&apos;homework.html?homeworkId="+homework.homeworkId+"&apos;'></td>"
     				+"<td><input type='image' value='submit' class='image' src='../images/edit.jpg' onclick='document.getElementById('file').click();'></td>"		
  					+"</tr>"
     		);
