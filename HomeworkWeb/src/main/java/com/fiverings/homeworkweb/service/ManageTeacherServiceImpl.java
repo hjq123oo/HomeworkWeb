@@ -97,6 +97,7 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 	
 	public Course addCourse(Integer teacherId,Course course){
 		course.setTeacher(teacherJpaRepository.findOne(teacherId));
+		course.setStudentNum(0);
 		return courseJpaRepository.save(course);
 	}
 	

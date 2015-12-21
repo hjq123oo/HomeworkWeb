@@ -63,4 +63,19 @@ public class PageController {
 	public String modifyStudentPwd(){
 		return "/student/modifyPwd";
 	}
+	
+	@RequestMapping("/student/courseCenter")
+	public String studentCourseCenter() {
+		return "student/courseCenter";
+	}
+	
+	@RequestMapping("/student/searchPage")
+	public String searchPage() {
+		return "student/searchPage";
+	}
+	
+	@RequestMapping("/teacher/homeworkCreate")
+	public String homeworkCreate() {
+		return "teacher/homeworkCreate";
+	}
 }

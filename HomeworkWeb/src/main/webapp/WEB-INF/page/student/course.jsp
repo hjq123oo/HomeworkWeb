@@ -14,13 +14,14 @@
 		<script src="../js/jquery.ui.widget.js"></script>
 		<script src="../js/jquery.iframe-transport.js"></script>
 		<script src="../js/jquery.fileupload.js"></script>
+		<script src="../js/util.js"></script>
 		<title>五环作业网</title>
 		
 		
 	</head>
 
 	<body>
-	<input id="file" type="file" name="file" data-url="/HomeworkWeb/student_homework/add" multiple/>
+	<input id="file" type="file" name="file" data-url="/HomeworkWeb/student_homework/add"/>
 	 
 	<script>
 	$(function () {
@@ -44,10 +45,7 @@
 	</script>
 	
 	
-	<div id="progress">
-    	<div class="bar" style="width: 0%;height:18px;background:green;"></div>
-	</div>
-	
+
     <div id="nav">
 		<div id="logo"><a href="home.html"><img src="../images/logo.png" alt="LOGO" width="200" height="60"/></a></div>
         <div id="navarea">
@@ -70,25 +68,26 @@
         <div class="sidebar-menu hidden-xs hidden-sm">
             <div>
                 <div class="profile-image">
-                    <img src="../images/郭关飞.jpg" alt="user">
+                    <img src="../images/person.jpg" alt="user">
                 </div>
-                <h3 class="profile-title">郭关飞</h3>
-                <h3 class="profile-title">北京交通大学</h3>
+                <h3 class="profile-title" id="teacherName"></h3>
+                
             </div>
             <div>
                 <ul class="navigation">
-					<li><b>课程ID：</b>00000001</li>
-                    <li><b>课程院系：</b>软件学院</li>
-					<li><b>课程名称：</b>软件系统分析与设计技术</li>
-					<li><b>课程编号：</b>A738129</li>
-					<li><b>所属专业：</b>软件工程</li>
-					<li><b>上课时间：</b>星期五第二节</li>
-					<li><b>上课地点：</b>逸夫楼603</li>
-					<li><b>作业迟交扣分：</b>迟交24小时扣10%</li>
-					<li><b>选课人数：</b>30</li>
-                    <li><b>课程简介：</b>本课程为软件学院高年级本科生开设的一门专业必修课，属于软件工程专业主干课。授课对象需较强的软件工程专业技术基础，是一门融合多门课程知识进行的软件产品或系统从构思、设计到构建的综合技术应用类课程。</li>
+					<li><b>课程ID：</b><span id="courseId"></span></li>
+					<li><b>课程编号：</b><span id="courseNumber"></span></li>
+					<li><b>课程学校：</b><span id="courseSchool"></span></li>
+                    <li><b>课程院系：</b><span id="courseCollege"></span></li>
+                    <li><b>所属专业：</b><span id="courseSpecialty"></span></li>
+					<li><b>课程名称：</b><span id="courseName"></span></li>
+					<li><b>上课时间：</b><span id="courseTime"></span></li>
+					<li><b>上课地点：</b><span id="coursePlace"></span></li>
+					<li><b>作业迟交扣分：</b>迟交<span id="courseLateInterval"></span>小时扣<span id="courseLatePercent"></span>%</li>
+					<li><b>选课人数：</b><span id="courseStudentNum"></span></li>
+                    <li><b>课程简介：</b><span id="courseIntroduction"></span></li>
                 </ul>
-            </div> 
+            </div>
         </div> <!-- .sidebar-menu -->
 
         <!-- MAIN CONTENT -->
@@ -100,7 +99,7 @@
 						 <form enctype="multipart/form-data" style="display:none">
 							<input id="file" type="file" multiple >
 						 </form>
-                          <table class="bordered">
+                          <table id="homeworks" class="bordered">
                               <thead>
                                 <tr>   
                                     <th>ID</th>									
@@ -113,16 +112,7 @@
 									<th>分数</th>
                                 </tr>
                               </thead>
-                                <tr>  
-                                    <td>432</td>								
-                                    <td>需求分析展示</td>
-									<td>2015.9.25</td>
-                                    <td>2015.10.5</td>
-									<td>45</td>
-									<td><input type="image" value="detail" class="image" src="../images/detail.jpg" onclick="window.location.href='homework.html'"></td>
-									<td><input type="image" value="submit" class="image" src="../images/edit.jpg" onclick="document.getElementById('file').click();"></td>
-									<td>15</td>
-							    </tr>        
+                                   
 						
 								
 							
@@ -131,7 +121,58 @@
         </div>
       </div>
 	</div>
+        
+    <script>
+    	$(function(){
+    		var param = window.location.search;
+    		var courseId = getUrlParam("courseId");
+    		$.getJSON("/HomeworkWeb/teacher/course/"+courseId,function(data){
+    			var course = data.course;
+    			$("#teacherName").html(course.teacher.realname);
+
+                $("#courseName").html(course.name);
+    			$("#courseId").html(course.courseId);
+    			$("#courseNumber").html(course.number);
+    			$("#courseSchool").html(course.school);
+    			$("#courseCollege").html(course.college);
+    			$("#courseSpecialty").html(course.specialty);
+    			$("#courseTime").html(course.time);
+    			$("#coursePlace").html(course.place);
+    			$("#courseLateInterval").html(course.lateInterval);
+    			$("#courseLatePercent").html(course.latePercent);
+    			$("#courseStudentNum").html(course.studentNum);
+    			$("#courseIntroduction").html(course.introduction);
+    			
+    		    
+	    		$.each(course.homeworks, function(i, homework){
+	    			addHomework(homework);
+	    		});
+	  		});
+    	});
+    	
+    	function addHomework(homework){
+    		var date = new Date();
+    		date.setTime(homework.startTime);
+    		var startTime = date.getString();
+    		
+    		date.setTime(homework.endTime);
+    		var endTime = date.getString();
+    		$("#homeworks").append(
+    				"<tr>"
+    				+"<td>"+homework.homeworkId+"</td>"
+    				+"<td>"+homework.name+"</td>"
+    				+"<td>"+startTime+"</td>"
+    				+"<td>"+endTime+"</td>"
+    				+"<td>"+homework.submitStudentNum+"</td>"
+    				+"<td><input type='image' value='detail' class='image' src='../images/detail.jpg' onclick='window.location.href='/HomeworkWeb/teacher/homework?homeworkId="+homework.homeworkId+"''></td>"
+    				+"<td><input type='image' value='submit' class='image' src='../images/edit.jpg' onclick='document.getElementById('file').click();'></td>"		
+ 					+"</tr>"
+    		);
+    	          
+    	}
+    	
     
+    </script>
 	</body>
 </html>
 		

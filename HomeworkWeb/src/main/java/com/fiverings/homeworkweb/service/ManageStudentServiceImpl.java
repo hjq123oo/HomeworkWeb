@@ -16,6 +16,7 @@ import com.fiverings.homeworkweb.model.Course;
 import com.fiverings.homeworkweb.model.Homework;
 import com.fiverings.homeworkweb.model.Student;
 import com.fiverings.homeworkweb.model.StudentHomework;
+import com.fiverings.homeworkweb.model.Teacher;
 
 @Service("manageStudentService")
 public class ManageStudentServiceImpl implements ManageStudentService {
@@ -107,6 +108,7 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 			StudentHomework studentHomework = new StudentHomework();
 			studentHomework.setStudent(student);
 			studentHomework.setHomework(it.next());
+			studentHomework.setSubmitNum(0);
 			studentHomeworkJpaRepository.save(studentHomework);
 		}
 		
@@ -129,7 +131,18 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 		
 		Iterator<Course> it = courses.iterator();
 		while(it.hasNext()){
-			returnCourses.add(it.next());
+			Course returnCourse = new Course();
+			Course course = it.next();
+			returnCourse.setCourseId(course.getCourseId());
+			returnCourse.setName(course.getName());
+			returnCourse.setNumber(course.getNumber());
+			returnCourse.setTime(course.getTime());
+			returnCourse.setPlace(course.getPlace());
+			Teacher teacher = new Teacher();
+			teacher.setRealname(course.getTeacher().getRealname());
+			returnCourse.setTeacher(teacher);
+		
+			returnCourses.add(returnCourse);
 		}
 		
 		return returnCourses;

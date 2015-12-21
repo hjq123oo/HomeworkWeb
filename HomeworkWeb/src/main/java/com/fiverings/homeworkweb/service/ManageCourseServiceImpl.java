@@ -39,13 +39,18 @@ public class ManageCourseServiceImpl implements ManageCourseService{
 		
 		Course course = courseJpaRepository.findOne(courseId);
 		
+		if (course==null){
+			return null;
+		}
+		
 		Course returnCourse = new Course();
 		returnCourse.setCourseId(course.getCourseId());
 		
+		returnCourse.setNumber(course.getNumber());
+		returnCourse.setSchool(course.getSchool());
 		returnCourse.setCollege(course.getCollege());
-		returnCourse.setName(course.getName());
-		returnCourse.setNumber(course.getCollege());
 		returnCourse.setSpecialty(course.getSpecialty());
+		returnCourse.setName(course.getName());
 		returnCourse.setTime(course.getTime());
 		returnCourse.setPlace(course.getPlace());
 		returnCourse.setLateInterval(course.getLateInterval());
@@ -116,6 +121,7 @@ public class ManageCourseServiceImpl implements ManageCourseService{
 	public Homework addHomework(Integer courseId, Homework homework) {
 		Course course = courseJpaRepository.findOne(courseId);
 		homework.setCourse(course);
+		homework.setSubmitStudentNum(0);
 		homeworkJpaRepository.save(homework);
 		
 		List<Student> students = course.getStudents();
@@ -126,6 +132,7 @@ public class ManageCourseServiceImpl implements ManageCourseService{
 			StudentHomework studentHomework = new StudentHomework();
 			studentHomework.setStudent(it.next());
 			studentHomework.setHomework(homework);
+			studentHomework.setSubmitNum(0);
 			studentHomeworkJpaRepository.save(studentHomework);
 		}
 		
