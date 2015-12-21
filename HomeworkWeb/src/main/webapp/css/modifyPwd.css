@@ -30,7 +30,7 @@ body{
 }
 
 /*°´Å¥*/
-button{
+#save_btn{
 	cursor: pointer;
     letter-spacing: 5px;
     width: 100px;
@@ -53,4 +53,9 @@ button{
     background-image: -moz-linear-gradient(#599bdc, #3072b3);
     background-image: -o-linear-gradient(#599bdc, #3072b3);
     background-image: linear-gradient(#599bdc, #3072b3);
+}
+
+.messInfo{
+	font-size: 10px;
+	color: red;
 }

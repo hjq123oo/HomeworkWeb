@@ -35,7 +35,6 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 	}
 	
 	public Student create(Student student) {
-
 		return studentJpaRepository.save(student);
 	}
 
@@ -52,6 +51,25 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 
 		return studentJpaRepository.save(persistStudent);
 
+	}
+	
+	public Student getStudent(Integer studentId) {
+		Student student = studentJpaRepository.findOne(studentId);
+		
+		Student returnStudent = new Student();
+		
+		returnStudent.setStudentId(studentId);
+		returnStudent.setName(student.getName());
+		returnStudent.setPwd(student.getPwd());
+		returnStudent.setSchool(student.getSchool());
+		returnStudent.setCollege(student.getCollege());
+		returnStudent.setClassName(student.getClassName());
+		returnStudent.setStudentNO(student.getStudentNO());
+		returnStudent.setRealname(student.getRealname());
+		returnStudent.setEmail(student.getEmail());
+		returnStudent.setPhone(student.getPhone());
+		
+		return returnStudent;
 	}
 
 	public Student updatePwd(Student student) {

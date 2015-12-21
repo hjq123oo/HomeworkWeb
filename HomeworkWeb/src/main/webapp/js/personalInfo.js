@@ -4,7 +4,6 @@ $(document).ready(function(){
 	
 });
 
-
 $(document).ready(function(){
 	$("#modify_btn").click(function(){
 		$("#stu_school").attr("readonly", false);
@@ -67,6 +66,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 	$("#save_btn").click(function(){
+		
 		$("#stu_school").attr("readonly", true);
 		$("#stu_college").attr("readonly", true);
 		$("#stu_class").attr("readonly", true);
@@ -75,36 +75,72 @@ $(document).ready(function(){
 		$("#stu_email").attr("readonly", true);
 		$("#stu_phone").attr("readonly", true);
 		$("#save_btn").hide();
-
+		
 		$.ajax({
-			type: "post",
+			type: "POST",
 			url: "/HomeworkWeb/student/info",
 			data: {
 				school:$("#stu_school").val(),
 				college:$("#stu_college").val(),
 				className:$("#stu_class").val(),
-				studnetNo:$("#stu_number").val(),
+				studentNO:$("#stu_number").val(),
 				realName:$("#stu_name").val(),
-				eamil:$("#stu_email").val(),
+				email:$("#stu_email").val(),
 				phone:$("#stu_phone").val()
 			},
 			dataType : "json",
 			success : function(data) {
 				if(data.result == "true"){
-					//window.location.href = "/HomeworkWeb/";
-					alert("奈斯");
+					$("#stu_school").attr("value", school);
+					$("#stu_college").attr("value", college);
+					$("#stu_class").attr("value", className);
+					$("#stu_number").attr("value", studentNO);
+					$("#stu_name").attr("value", realName);
+					$("#stu_email").attr("value", email);
+					$("#stu_phone").attr("value", phone);
 				}else if(data.result == "false"){
 					alert("错误");
 					$("#save_btn").removeAttr("disabled");
 				}
 			},
 			error : function() {
+				alert("false");
 				$("#save_btn").removeAttr("disabled");
 			}
 		});	
 
 	});
 });
+
+//获取学生信息
+$(document).ready(function(){
+	
+	$.ajax({
+		type: "GET",
+		url: "/HomeworkWeb/student/info",
+		data: {},
+		dataType : "json",
+		success : function(data) {
+			if(data.success == "true"){
+				$("#stu_account").attr("value", data.name);
+				$("#stu_school").attr("value", data.school);
+				$("#stu_college").attr("value", data.college);
+				$("#stu_class").attr("value", data.className);
+				$("#stu_number").attr("value", data.studentNo);
+				$("#stu_name").attr("value", data.realName);
+				$("#stu_email").attr("value", data.email);
+				$("#stu_phone").attr("value", data.phone);
+			}else if(data.success == "false"){
+				alert("错误");
+			}
+		},
+		error : function() {
+		}
+	});
+});
+
+
+
 
 //教师修改信息
 $(document).ready(function(){
@@ -188,6 +224,72 @@ $(document).ready(function(){
 			success : function(data) {
 				if(data.result == "true"){
 					
+				}else if(data.result == "false"){
+					alert("错误");
+					$("#save_btn_tea").removeAttr("disabled");
+				}
+			},
+			error : function() {
+				$("#save_btn_tea").removeAttr("disabled");
+			}
+		});	
+	});
+});
+
+//获取教师信息
+$(document).ready(function(){
+	$.ajax({
+		type: "GET",
+		url: "/HomeworkWeb/teacher/info",
+		data: {
+			
+		},
+		dataType : "json",
+		success : function(data) {
+			if(data.success == "true"){
+				$("#tea_account").attr("value", data.name);
+				$("#tea_school").attr("value", data.school);
+				$("#tea_number").attr("value", data.teacherNO);
+				$("#tea_name").attr("value", data.realname);
+				$("#tea_email").attr("value", data.email);
+				$("#tea_phone").attr("value", data.phone);
+			}else if(data.success == "false"){
+				alert("错误");
+			}
+		},
+		error : function() {
+		}
+	});
+});
+
+//更新教师信息
+$(document).ready(function(){
+	$("#save_btn_tea").click(function(){
+		$("#tea_school").attr("readonly", true);
+		$("#tea_number").attr("readonly", true);
+		$("#tea_name").attr("readonly", true);
+		$("#tea_email").attr("readonly", true);
+		$("#tea_phone").attr("readonly", true);
+		$("#save_btn_tea").hide();
+		
+		$.ajax({
+			type: "post",
+			url: "/HomeworkWeb/teacher/info",
+			data: {
+				school:$("#tea_school").val(),
+				teacherNO:$("#tea_number").val(),
+				realName:$("#tea_name").val(),
+				email:$("#tea_email").val(),
+				phone:$("#tea_phone").val()
+			},
+			dataType : "json",
+			success : function(data) {
+				if(data.result == "true"){
+					$("#tea_school").attr("value", school);
+					$("#tea_number").attr("value", teacherNO);
+					$("#tea_name").attr("value", realName);
+					$("#tea_email").attr("value", eamil);
+					$("#tea_phone").attr("value", phone);
 				}else if(data.result == "false"){
 					alert("错误");
 					$("#save_btn_tea").removeAttr("disabled");
