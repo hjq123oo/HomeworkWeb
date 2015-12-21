@@ -31,10 +31,10 @@ $(document).ready(function(){
 						type:"post",
 						url:b,
 						success:function(data){
-							alert("成功添加");
+							$("#joinCourse").html("已添加");
 						},
 						error:function(){
-							alert(b);
+							alert("加入课程失败");
 						}
 					});
 				});
@@ -43,4 +43,13 @@ $(document).ready(function(){
 
 			});
 	});
+});
+
+$(function(){
+	document.onkeydown = function(e){
+		var ev = document.all?window.event:e;
+		if(ev.keyCode==13){
+			$("#search").click();
+		}
+	}
 });
