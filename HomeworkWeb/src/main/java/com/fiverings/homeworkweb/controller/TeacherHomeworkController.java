@@ -90,10 +90,10 @@ public class TeacherHomeworkController {
 	@ResponseBody
 	public Map<String, String> addHomework(@PathVariable("courseId") Integer courseId,
 			@RequestParam("name") String name,@RequestParam("content") String content,
-			@RequestParam("endTime") String strEndTime,@RequestParam(value="file")  MultipartFile file) {
+			@RequestParam("endTime") String strEndTime) {
 		
 		
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd HH:mm");
 		
 		Date endTime = null;
 		try {

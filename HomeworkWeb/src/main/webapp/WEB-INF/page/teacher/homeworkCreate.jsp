@@ -43,8 +43,8 @@ height="60"/></a></div>
 				<div class="title">作业信息</div>
 				<div class="form">
 					
-						<label for="title">作业标题: </label>
-						<input id="title" name="title" type="text"></input>
+						<label for="titleName">作业标题: </label>
+						<input id="titleName" name="title" type="text"></input>
 						<br><br>
 						<label for="content">作业内容: </label>
 						<textarea id="content" name="content"></textarea>
@@ -82,7 +82,7 @@ height="60"/></a></div>
 								
 							</script>
 						<br><br>
-						<label for="file">提交附件: </label>
+						<label for="file">上传附件: </label>
 						
 						<button id="chooseFile">浏览</button>
 						<span id="fileName"></span>
@@ -104,20 +104,34 @@ height="60"/></a></div>
 			});
 			
 			
+			var uploadUrl = "/HomeworkWeb/teacher/course/"+getUrlParam("courseId")+"/homework/upload";
 			var url = "/HomeworkWeb/teacher/course/"+getUrlParam("courseId")+"/homework/add";
 			
+			
+			 $("#submit").click(function () {
+                 $.ajax({
+                	 type:"post",
+                	 url:url,
+                	 data:{name:$("#titleName").val(),content:$("#content").val(),endTime:$("#end_time").val()},
+                	 dataType:"json",
+                	 success:function(data){
+                		 alert(1);
+                	 }
+                 });
+				 
+             });
 			
 			
 			$("#file").fileupload({
 				dataType: 'json',
-				url: url,
-				formData:{name:$("title").val(),content:$("content").val(),endTime:$("endTime").val()},
+				url: uploadUrl,
+				
 				add: function (e, data) {
 					
 					$("#fileName").html(data.files[0].name);
 		           
 		            $("#submit").click(function () {
-		                  
+		                  	alert(2);
 		                    data.submit();
 		                });
 		        },
@@ -132,11 +146,6 @@ height="60"/></a></div>
 			            progress + '%'
 			        );
 			    }
-			});
-			
-			$("#submit").click(function(){
-				alert("a");
-				
 			});
 			
 		});	

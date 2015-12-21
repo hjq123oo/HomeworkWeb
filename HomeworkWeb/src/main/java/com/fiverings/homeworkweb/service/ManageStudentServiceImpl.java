@@ -90,6 +90,7 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 			StudentHomework studentHomework = new StudentHomework();
 			studentHomework.setStudent(student);
 			studentHomework.setHomework(it.next());
+			studentHomework.setSubmitNum(0);
 			studentHomeworkJpaRepository.save(studentHomework);
 		}
 		
