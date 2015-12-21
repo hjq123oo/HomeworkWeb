@@ -72,4 +72,10 @@ public class PageController {
 	public String homeworkCreate() {
 		return "teacher/homeworkCreate";
 	}
+	
+	
+	@RequestMapping("/teacher/homework")
+	public String homework() {
+		return "teacher/homework";
+	}
 }

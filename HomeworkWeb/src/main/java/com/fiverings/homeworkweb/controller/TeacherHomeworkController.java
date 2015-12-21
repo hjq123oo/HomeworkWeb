@@ -164,21 +164,15 @@ public class TeacherHomeworkController {
 		return result;
 	}
 
-	@RequestMapping(value = "/teacher/course/{courseId}/homework/{homeworkId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/teacher/homework/{homeworkId}", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> getHomework(@PathVariable("courseId") Integer courseId,
-			@PathVariable("homeworkId") Integer homeworkId) {
+	public Map<String, Object> getHomework(@PathVariable("homeworkId") Integer homeworkId) {
 
 		Homework homework = manageHomeworkService.getHomework(homeworkId);
 
-		Map<String, String> result = new HashMap<String, String>();
+		Map<String, Object> result = new HashMap<String, Object>();
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-
-		result.put("id", "" + homework.getHomeworkId());
-		result.put("name", homework.getName());
-		result.put("content", homework.getContent());
-		result.put("endTime", sdf.format(homework.getEndTime()));
+		result.put("homework", homework);
 
 		return result;
 	}

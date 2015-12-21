@@ -23,7 +23,18 @@ public class ManageHomeworkServiceImpl implements ManageHomeworkService{
 
 	
 	public Homework getHomework(Integer homeworkId) {
-		return homeworkJpaRepository.findOne(homeworkId);
+		Homework returnHomework = new Homework();
+		
+		Homework homework = homeworkJpaRepository.findOne(homeworkId);
+		
+		returnHomework.setHomeworkId(homework.getHomeworkId());
+		returnHomework.setName(homework.getName());
+		returnHomework.setStartTime(homework.getStartTime());
+		returnHomework.setEndTime(homework.getEndTime());
+		returnHomework.setContent(homework.getContent());
+		returnHomework.setFilePath(homework.getFilePath());
+		
+		return returnHomework;
 	}
 
 

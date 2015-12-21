@@ -9,7 +9,7 @@
     	}  
  	
  	Date.prototype.getString = function(){
- 		return this.getFullYear()+"-"+(this.getMonth()+1)+"-"+this.getDate()+" "+this.getHours()+":"+this.getMinutes();
+ 		return this.getFullYear()+"/"+(this.getMonth()+1)+"/"+this.getDate()+" "+this.getHours()+":"+this.getMinutes();
  	}
  	
  	Date.prototype.format = function(fmt)   

@@ -144,8 +144,8 @@
     				+"<td>"+startTime+"</td>"
     				+"<td>"+endTime+"</td>"
     				+"<td>"+homework.submitStudentNum+"</td>"
-    				+"<td><input type='image' value='detail' class='image' src='../images/detail.jpg' onclick='window.location.href='/HomeworkWeb/teacher/homework?homeworkId="+homework.homeworkId+"''></td>"
-    				+"<td><input type='image' value='submit' class='image' src='../images/edit.jpg' onclick='window.location.href='/HomeworkWeb/teacher/correct?homeworkId="+homework.homeworkId+"''></td>"
+    				+"<td><input type='image' value='detail' class='image' src='../images/detail.jpg' onclick='window.location.href=&apos;/HomeworkWeb/teacher/homework.html?homeworkId="+homework.homeworkId+"&apos;'></td>"
+    				+"<td><input type='image' value='submit' class='image' src='../images/edit.jpg' onclick='window.location.href=&apos;/HomeworkWeb/teacher/correct.html?homeworkId="+homework.homeworkId+"&apos;'></td>"
  					+"</tr>"
     		);
     	          
