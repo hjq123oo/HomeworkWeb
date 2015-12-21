@@ -87,58 +87,104 @@ height="60"/></a></div>
 						<button id="chooseFile">浏览</button>
 						<span id="fileName"></span>
 						<input id="file" type="file" name="file" class="upload_file" style="display:none;"/>
-						<div id="progress" style="width:100px;border:solid 1px #CCCCCC;">
-    						<div class="bar" style="width: 0%;height:18px;background:green;"></div>
-						</div>
+						
 	
 						
 						<br><br>
 						<button id="submit" class="submit">提交</button>
 						
 					
+					<div id="blackDiv">
+					</div>
+	
+	
+				</div>
+			</div>
+		</div>
+		
+		
+		<div id="blackDiv">
+		</div>
+		
+		
+		<div id="waitDiv">
+			<div><img id="upload" src="../images/upload.png"/></div>
+			<div>上传中......</div>
+		
+			<div id="progress">
+    			<div class="bar" style="width: 0%;height:18px;background:green;"></div>
+			</div>
+		</div>
+				
 	 
 		<script>
+		
 		$(function () {
+			
+			var isUploadFile = false;
+			var courseId=getUrlParam("courseId");
 			$("#chooseFile").click(function(){
 				$("#file").click();
 			});
 			
 			
-			var uploadUrl = "/HomeworkWeb/teacher/course/"+getUrlParam("courseId")+"/homework/upload";
-			var url = "/HomeworkWeb/teacher/course/"+getUrlParam("courseId")+"/homework/add";
+			var uploadUrl = "/HomeworkWeb/teacher/course/"+courseId+"/homework/upload";
+			var url = "/HomeworkWeb/teacher/course/"+courseId+"/homework/add";
 			
 			
 			 $("#submit").click(function () {
-                 $.ajax({
-                	 type:"post",
-                	 url:url,
-                	 data:{name:$("#titleName").val(),content:$("#content").val(),endTime:$("#end_time").val()},
-                	 dataType:"json",
-                	 success:function(data){
-                		 alert(1);
-                	 }
-                 });
-				 
+				 if(!isUploadFile){
+					 $("#waitDiv").show();
+					 $("#blackDiv").show();
+					 
+					 $.ajax({
+	                	 type:"post",
+	                	 url:url,
+	                	 data:{name:$("#titleName").val(),content:$("#content").val(),endTime:$("#end_time").val()},
+	                	 dataType:"json",
+	                	 success:function(data){
+	                		  $('#progress .bar').css(
+	          			            'width',
+	          			            100 + '%'
+	          			        );
+	                		  
+	                		  window.location.href="course.html?courseId="+courseId;
+	                	 },
+	                	 error:function(){
+	                		 alert("上传异常");
+	                		 $("#waitDiv").hide();
+	                		 $("#blackDiv").hide();
+	                	 }
+	                 });
+					 
+				 }
+                
              });
 			
 			
 			$("#file").fileupload({
 				dataType: 'json',
 				url: uploadUrl,
-				
+			
 				add: function (e, data) {
 					
 					$("#fileName").html(data.files[0].name);
-		           
+					isUploadFile = true;
 		            $("#submit").click(function () {
-		                  	alert(2);
+		            		$("#waitDiv").show();
+							$("#blackDiv").show();
+		        			$("#file").fileupload('option','formData',{name:$("#titleName").val(),content:$("#content").val(),endTime:$("#end_time").val()});
 		                    data.submit();
 		                });
 		        },
 			    done:function(e,data){
-			        alert(data.result.success);
-			        alert(data.result.fileName);
+			    	window.location.href="course.html?courseId="+courseId;
 			    },
+			    fail: function(e, data) {
+			    	 alert("上传异常");
+            		 $("#waitDiv").hide();
+            		 $("#blackDiv").hide();
+		    	},
 			    progressall: function (e, data) {
 			        var progress = parseInt(data.loaded / data.total * 100, 10);
 			        $('#progress .bar').css(
@@ -150,9 +196,6 @@ height="60"/></a></div>
 			
 		});	
 		</script>	
-				</div>
-			</div>
-		</div>
 	</body>
 </html>
 		
