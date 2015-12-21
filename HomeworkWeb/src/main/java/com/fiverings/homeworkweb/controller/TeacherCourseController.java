@@ -65,6 +65,7 @@ public class TeacherCourseController {
 	@RequestMapping(value = "/teacher/course/add", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> addCourse(
+			@RequestParam("school") String school,
 			@RequestParam("college") String college,
 			@RequestParam("name") String name,
 			@RequestParam("number") String number,
@@ -77,11 +78,12 @@ public class TeacherCourseController {
 			@RequestParam("endTime") String strEndTime){
 		
 		
-		Integer teacherId = (Integer)session.getAttribute("id");
+		//Integer teacherId = (Integer)session.getAttribute("id");
+		Integer teacherId = 1;
 		
 		Integer lateInterval = Integer.parseInt(strLateInterval);
 		Integer latePercent = Integer.parseInt(strLatePercent);
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd"); 
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd HH:mm"); 
 		
 		Date endTime = null;
 		try {
@@ -92,6 +94,7 @@ public class TeacherCourseController {
 		
 		
 		Course course = new Course();
+		course.setSchool(school);
 		course.setCollege(college);
 		course.setEndTime(endTime);
 		course.setIntroduction(introduction);

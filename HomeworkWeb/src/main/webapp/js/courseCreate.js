@@ -1,0 +1,18 @@
+﻿$(document).ready(function(){
+	$("#submit").click(function(){
+		$("#submit").attr("disabled","true");
+		$.ajax({
+        	 type:"post",
+        	 url:"/HomeworkWeb/teacher/course/add",
+        	 data:{school:$("#school").val(),college:$("#college").val(),name:$("#name").val(),number:$("#number").val(),specialty:$("#specialty").val(),introduction:$("#introduction").val(),time:$("#time").val(),place:$("#place").val(),lateInterval:$("#lateInterval").find("option:selected").text(),latePercent:$("#latePercent").find("option:selected").text(),endTime:$("#endTime").val()},
+        	 dataType:"json",
+        	 success:function(data){
+        		 window.location.href="courseCenter.html"
+        	 },
+        	 error:function(){
+        		 alert("提交异常");
+        	 }
+         });
+		$("#submit").attr("disabled","false");
+	});
+});
