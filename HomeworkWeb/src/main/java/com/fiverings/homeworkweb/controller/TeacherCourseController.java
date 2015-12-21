@@ -35,8 +35,7 @@ public class TeacherCourseController {
 	@RequestMapping(value = "/teacher/course/all", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, List<Course>> getAllTeacherCourse() {
-		//Integer teacherId = (Integer)session.getAttribute("id");
-		Integer teacherId = 1;
+		Integer teacherId = (Integer)session.getAttribute("id");
 		Map<String, List<Course>> result = new HashMap<String, List<Course>>();
 
 		List<Course> courses = manageTeacherService.getCourses(teacherId);
@@ -77,8 +76,7 @@ public class TeacherCourseController {
 			@RequestParam("endTime") String strEndTime){
 		
 		
-		//Integer teacherId = (Integer)session.getAttribute("id");
-		Integer teacherId = 1;
+		Integer teacherId = (Integer)session.getAttribute("id");
 		
 		Integer lateInterval = Integer.parseInt(strLateInterval);
 		Integer latePercent = Integer.parseInt(strLatePercent);

@@ -96,6 +96,7 @@
     		var param = window.location.search;
     		var courseId = getUrlParam("courseId");
     		
+    		
     		$("#homeworkCreate").click(function(){
     			window.location.href='homeworkCreate.html?courseId='+courseId;
     		});
@@ -124,12 +125,12 @@
     			
     		    
 	    		$.each(course.homeworks, function(i, homework){
-	    			addHomework(homework);
+	    			addHomework(course.studentNum,homework);
 	    		});
 	  		});
     	});
     	
-    	function addHomework(homework){
+    	function addHomework(studentNum,homework){
     		var date = new Date();
     		date.setTime(homework.startTime);
     		var startTime = date.getString();
@@ -143,9 +144,9 @@
     				+"<td>"+homework.name+"</td>"
     				+"<td>"+startTime+"</td>"
     				+"<td>"+endTime+"</td>"
-    				+"<td>"+homework.submitStudentNum+"</td>"
-    				+"<td><input type='image' value='detail' class='image' src='../images/detail.jpg' onclick='window.location.href=&apos;/HomeworkWeb/teacher/homework.html?homeworkId="+homework.homeworkId+"&apos;'></td>"
-    				+"<td><input type='image' value='submit' class='image' src='../images/edit.jpg' onclick='window.location.href=&apos;/HomeworkWeb/teacher/correct.html?homeworkId="+homework.homeworkId+"&apos;'></td>"
+    				+"<td>"+homework.submitStudentNum+"/"+studentNum+"</td>"
+    				+"<td><input type='image' value='detail' class='image' src='../images/detail.jpg' onclick='window.location.href=&apos;homework.html?homeworkId="+homework.homeworkId+"&apos;'></td>"
+    				+"<td><input type='image' value='submit' class='image' src='../images/edit.jpg' onclick='window.location.href=&apos;correct.html?homeworkId="+homework.homeworkId+"&apos;'></td>"
  					+"</tr>"
     		);
     	          

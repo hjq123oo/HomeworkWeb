@@ -33,8 +33,7 @@ public class StudentCourseController {
 	@RequestMapping(value = "/student/course/all", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, List<Course>> getAllStudentCourse(){
-		//Integer studentId = (Integer)session.getAttribute("id");
-		Integer studentId = 1;
+		Integer studentId = (Integer)session.getAttribute("id");
 		
 		Map<String, List<Course>> result = new HashMap<String, List<Course>>();
 		List<Course> courses = manageStudentService.getCourses(studentId);
@@ -46,12 +45,12 @@ public class StudentCourseController {
 	
 	@RequestMapping(value = "/student/course/{courseId}", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> getStudentCourse(@PathVariable Integer courseId){
-		Integer studentId = (Integer)session.getAttribute("id");
+	public Map<String, Object> getStudentCourse(@PathVariable Integer courseId){
+		Course course = manageCourseService.getCourse(courseId);
 		
-		Map<String, String> result = new HashMap<String, String>();
+		Map<String, Object> result = new HashMap<String, Object>();
 
-		result.put("success", "true");
+		result.put("course", course);
 		
 		return result;
 	}
@@ -60,20 +59,17 @@ public class StudentCourseController {
 	@RequestMapping(value = "/student/course/{courseId}", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> joinCourse(@PathVariable Integer courseId){
-		//Integer studentId = (Integer)session.getAttribute("id");
-		Integer studentId = 1;
+		Integer studentId = (Integer)session.getAttribute("id");
 		
 		Map<String, String> result = new HashMap<String, String>();
 		
 		Student student = manageStudentService.addCourse(studentId,courseId);
 		
-		result.put("success", "true");
-		
-//		if (student==null){
-//			result.put("success","false");
-//		}else{
-//			result.put("success", "true");
-//		}
+		if (student==null){
+			result.put("success","false");
+		}else{
+			result.put("success", "true");
+		}
 		
 		return result;
 	}
@@ -81,8 +77,7 @@ public class StudentCourseController {
 	@RequestMapping(value = "/student/search/{courseId}", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> searchCourse(@PathVariable Integer courseId){
-		//Integer studentId = (Integer)session.getAttribute("id");
-		Integer studentId = 1;
+		Integer studentId = (Integer)session.getAttribute("id");
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 		
