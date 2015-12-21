@@ -99,9 +99,6 @@
 						<td class = "first_col"><label for="create-5">课程截止时间：</label></td>
 							<td><input id="end_time" type="text" readonly="readonly"><td/>
 							<script>
-							
-							
-							
 							$(function(){
 								Date.prototype.format = function(fmt)   
 								{  

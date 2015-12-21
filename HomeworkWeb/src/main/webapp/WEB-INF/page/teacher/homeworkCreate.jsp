@@ -8,8 +8,10 @@
 		<link rel="stylesheet" type="text/css" href="../css/default.css" />
 		<link rel="stylesheet" type="text/css" href="../css/form.css" />
 		<link rel="stylesheet" type="text/css" href="../css/homework.css" />
-		<script src="../js/jquery-2.1.3.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/jquery.datetimepicker.css" />
 		
+		<script src="../js/jquery-2.1.3.min.js"></script>
+		<script src="../js/jquery.datetimepicker.js"></script>
 		<script src="../js/jquery.ui.widget.js"></script>
 		<script src="../js/jquery.iframe-transport.js"></script>
 		<script src="../js/jquery.fileupload.js"></script>
@@ -46,6 +48,39 @@ height="60"/></a></div>
 						<br><br>
 						<label for="content">作业内容: </label>
 						<textarea id="content" name="content"></textarea>
+						<br><br>
+						<label for="submissionTime">提交时间：</label>
+						<input id="end_time" type="text" readonly="readonly">
+						<script>
+							$(function(){
+								Date.prototype.format = function(fmt)   
+								{  
+								  var o = {   
+								    "M+" : this.getMonth()+1,                 //月份   
+								    "d+" : this.getDate(),                    //日   
+								    "h+" : this.getHours(),                   //小时   
+								    "m+" : this.getMinutes(),                 //分   
+								    "s+" : this.getSeconds(),                 //秒   
+								    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+								    "S"  : this.getMilliseconds()             //毫秒   
+								  };   
+								  if(/(y+)/.test(fmt))   
+								    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+								  for(var k in o)   
+								    if(new RegExp("("+ k +")").test(fmt))   
+								  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+								  return fmt;   
+								}  
+								
+							
+								var minDate = new Date().format("yyyy-MM-dd hh:mm:ss");
+								$("#end_time").datetimepicker({
+									minDate: minDate
+									//minDate:;
+								});
+							});
+								
+							</script>
 						<br><br>
 						<label for="file">提交附件: </label>
 						

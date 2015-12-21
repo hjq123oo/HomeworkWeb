@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	$("#search").click(function(){
 		var a = "/HomeworkWeb/student/search/"+$("#courseId").val();
+		var b = "/HomeworkWeb/student/course/"+$("#courseId").val();
 		$.getJSON(a,function(data){
 			if(data.success == "true"){
 				document.getElementById("courselist").style.display="";
@@ -24,6 +25,19 @@ $(document).ready(function(){
 			
 			if(data.choise == "true"){
 				$("#joinCourse").html("已添加");
+			}else{
+				$("#joinCourse").click(function(){
+					$.ajax({
+						type:"post",
+						url:b,
+						success:function(data){
+							alert("成功添加");
+						},
+						error:function(){
+							alert(b);
+						}
+					});
+				});
 			}
 				
 

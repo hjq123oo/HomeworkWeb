@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fiverings.homeworkweb.model.Course;
+import com.fiverings.homeworkweb.model.Student;
 import com.fiverings.homeworkweb.service.ManageCourseService;
 import com.fiverings.homeworkweb.service.ManageStudentService;
 
@@ -59,12 +60,20 @@ public class StudentCourseController {
 	@RequestMapping(value = "/student/course/{courseId}", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> joinCourse(@PathVariable Integer courseId){
-		Integer studentId = (Integer)session.getAttribute("id");
-		
+		//Integer studentId = (Integer)session.getAttribute("id");
+		Integer studentId = 1;
 		
 		Map<String, String> result = new HashMap<String, String>();
-
+		
+		Student student = manageStudentService.addCourse(studentId,courseId);
+		
 		result.put("success", "true");
+		
+//		if (student==null){
+//			result.put("success","false");
+//		}else{
+//			result.put("success", "true");
+//		}
 		
 		return result;
 	}
