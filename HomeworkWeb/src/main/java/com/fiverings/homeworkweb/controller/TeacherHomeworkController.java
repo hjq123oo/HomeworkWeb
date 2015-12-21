@@ -1,5 +1,7 @@
 package com.fiverings.homeworkweb.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,14 +10,18 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fiverings.homeworkweb.global.FileRootUtil;
 import com.fiverings.homeworkweb.model.Homework;
 import com.fiverings.homeworkweb.service.ManageCourseService;
 import com.fiverings.homeworkweb.service.ManageHomeworkService;
@@ -34,12 +40,58 @@ public class TeacherHomeworkController {
 	@Resource
 	ManageStudentHomeworkService manageStudentHomeworkService;
 	
+	@Resource
+	HttpSession session;
+	
+	@RequestMapping(value="/teacher/course/{courseId}/homework/upload",method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> uploadHomework(@PathVariable Integer courseId,@RequestParam(value="file")  MultipartFile file) {
+		
+		
+		File f=new File(FileRootUtil.getFileTemp()+courseId+"/"+file.getOriginalFilename());  
+		
+	
+		try {
+			if (!f.exists()) {
+				if (!f.getParentFile().exists()) {
+					// 如果目标文件所在的目录不存在，则创建父目录
+					if (!f.getParentFile().mkdirs()) {
+	
+						return null;
+					}
+				}
+					if (!f.createNewFile()) {
+						return null;
+					}
+				
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		Map<String, String> result = new HashMap<String, String>();
+		
+		try {
+			FileUtils.copyInputStreamToFile(file.getInputStream(),f );
+			
+		} catch (IOException e) {
+			result.put("success", "false");
+			e.printStackTrace();
+			return result;
+		} 
+		
+
+		result.put("success", "true");
+		result.put("fileName", file.getOriginalFilename());
+		return result;
+	}
 	
 	@RequestMapping(value = "/teacher/course/{courseId}/homework/add", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, String> addHomework(@PathVariable("courseId") Integer courseId,
 			@RequestParam("name") String name,@RequestParam("content") String content,
-			@RequestParam("endTime") String strEndTime) {
+			@RequestParam("endTime") String strEndTime,@RequestParam(value="file")  MultipartFile file) {
+		
 		
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		

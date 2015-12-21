@@ -36,8 +36,9 @@ public class FileRootLoadListener implements ServletContextListener {
 			e.printStackTrace();
 		}
     	String fileRoot = prop.getProperty("file.root");
-    	
+    	String fileTemp = prop.getProperty("file.temp");
         FileRootUtil.setFileRoot(fileRoot);
+        FileRootUtil.setFileTemp(fileTemp);
     }
 	
 }

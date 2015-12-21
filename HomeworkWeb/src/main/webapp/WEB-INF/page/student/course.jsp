@@ -21,7 +21,7 @@
 	</head>
 
 	<body>
-	<input id="file" type="file" name="file" data-url="/HomeworkWeb/student_homework/add" multiple/>
+	<input id="file" type="file" name="file" data-url="/HomeworkWeb/student_homework/add"/>
 	 
 	<script>
 	$(function () {
@@ -45,10 +45,7 @@
 	</script>
 	
 	
-	<div id="progress">
-    	<div class="bar" style="width: 0%;height:18px;background:green;"></div>
-	</div>
-	
+
     <div id="nav">
 		<div id="logo"><a href="home.html"><img src="../images/logo.png" alt="LOGO" width="200" height="60"/></a></div>
         <div id="navarea">
