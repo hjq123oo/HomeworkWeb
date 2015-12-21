@@ -125,7 +125,7 @@
     	$(function(){
     		var param = window.location.search;
     		var courseId = getUrlParam("courseId");
-    		$.getJSON("/HomeworkWeb/teacher/course/"+courseId,function(data){
+    		$.getJSON("/HomeworkWeb/student/course/"+courseId,function(data){
     			var course = data.course;
     			$("#teacherName").html(course.teacher.realname);
 

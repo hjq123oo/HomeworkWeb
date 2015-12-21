@@ -45,12 +45,12 @@ public class StudentCourseController {
 	
 	@RequestMapping(value = "/student/course/{courseId}", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> getStudentCourse(@PathVariable Integer courseId){
-		Integer studentId = (Integer)session.getAttribute("id");
+	public Map<String, Object> getStudentCourse(@PathVariable Integer courseId){
+		Course course = manageCourseService.getCourse(courseId);
 		
-		Map<String, String> result = new HashMap<String, String>();
+		Map<String, Object> result = new HashMap<String, Object>();
 
-		result.put("success", "true");
+		result.put("course", course);
 		
 		return result;
 	}
