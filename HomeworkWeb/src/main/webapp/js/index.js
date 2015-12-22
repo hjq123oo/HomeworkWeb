@@ -17,7 +17,7 @@ $(document).ready(function(){
 						window.location.href = "/HomeworkWeb/student/home";
 					}
 					else if(data.user == "teacher"){
-						window.location.href = "/HomeworkWeb/teacher/courseCenter";
+						window.location.href = "/HomeworkWeb/teacher/home";
 					}
 					$("#loginBtn").removeAttr("disabled");
 				}else if(data.result == "false"){
