@@ -107,7 +107,8 @@ public class ManageHomeworkServiceImpl implements ManageHomeworkService{
 		
 		String path = "/file/course/" + homework.getCourse().getCourseId() + "/homework/" + homeworkId + "/";
 		
-		String filePath = path + "all.zip";
+		String fileName = homework.getCourse().getName()+"-"+homework.getName()+".zip";
+		String filePath = path + fileName;
 		File file = new File( FileRootUtil.getFileRoot()+filePath);
 		
 		try {
