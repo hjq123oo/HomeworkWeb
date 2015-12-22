@@ -38,8 +38,6 @@ $(document).ready(function(){
 				}
 			});	
 		}
-		
-		
 	});
 	
 	//获取教师账号
@@ -62,9 +60,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	
-	
-	$("#modify_oldPwd").keyup(function(){
+	$("#modify_oldPwd").change(function(){
 		if($("#modify_oldPwd").val() == "" || $("#modify_oldPwd").val() == null){
 			$("#messOldPwd").text("请务必填写该内容");
 			$("#save_btn").attr("disabled",true);
