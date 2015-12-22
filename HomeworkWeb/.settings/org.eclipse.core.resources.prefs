@@ -1,6 +1,6 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
->>>>>>>=74569399b3333582259ac40364043e71556c522b
+>>>>>>>=1fd09ad805d428091dddfa189fb3adc69ca6af61
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/java/com/fiverings/homeworkweb/controller/LoginController.java=UTF-8
@@ -34,21 +34,16 @@ encoding//src/main/webapp/WEB-INF/page/register.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/page/student/course.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/page/student/courseCenter.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/page/student/home.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/page/student/homework.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/page/student/modifyPwd.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/page/student/personalInfo.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/page/student/searchPage.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/page/teacher/course.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/page/teacher/courseCenter.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/page/teacher/courseCreate.jsp=UTF-8
-<<<<<<< HEAD
 encoding//src/main/webapp/WEB-INF/page/teacher/homework.jsp=UTF-8
-=======
-<<<<<<< HEAD
-encoding//src/main/webapp/WEB-INF/page/teacher/modifyPwd.jsp=UTF-8
-=======
->>>>>>> 501b2b5f58799079e75b7a91b881cbc40ee11ec3
 encoding//src/main/webapp/WEB-INF/page/teacher/homeworkCreate.jsp=UTF-8
->>>>>>> 1fd09ad805d428091dddfa189fb3adc69ca6af61
+encoding//src/main/webapp/WEB-INF/page/teacher/modifyPwd.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/page/teacher/personalInfo.jsp=UTF-8
 encoding//src/main/webapp/css/courseCreate.css=UTF-8
 encoding//src/main/webapp/css/default.css=UTF-8
