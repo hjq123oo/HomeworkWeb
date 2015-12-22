@@ -1,6 +1,7 @@
 package com.fiverings.homeworkweb.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,8 +39,10 @@ public class StudentHomework implements Serializable{
 	@Column(name="submit_num",nullable=false,columnDefinition = "int default 0")
 	Integer submitNum;
 	
+	@Column(name="submit_time")
+	private Date submitTime;
 	
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -97,6 +100,16 @@ public class StudentHomework implements Serializable{
 	public void setSubmitNum(Integer submitNum) {
 		this.submitNum = submitNum;
 	}
+
+	public Date getSubmitTime() {
+		return submitTime;
+	}
+
+
+	public void setSubmitTime(Date submitTime) {
+		this.submitTime = submitTime;
+	}
+
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

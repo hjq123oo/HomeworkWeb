@@ -5,9 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		
 		<link rel="stylesheet" type="text/css" href="../css/default.css" />
-		<link rel="stylesheet" type="text/css" href="../css/form.css" />
+		
 		<link rel="stylesheet" href="../css/table.css">
 		<link rel="stylesheet" href="../css/correct.css">
+		
+		<script src="../js/jquery-2.1.3.min.js"></script>
+		<script src="../js/util.js"></script>
 		<title>五环作业网</title>
 		
 		
@@ -32,12 +35,12 @@
     </div>
 
 	<div id="container">
-		<div id="main">
-			<div class="point"></div>
-			<div class="title">查看批改</div>
-			<div class="form">
+		<div id="main" >
+			
+			
+			
 				
-			    <table class="bordered" style="width:90%;">
+			    <table id="table" class="bordered" style="width:80%;">
                     <thead>
                         <tr>    
                             <th>学号</th>
@@ -45,75 +48,109 @@
 		                    <th>学院</th>
 		                    <th>班级</th>
 		                    <th>作业&nbsp&nbsp<button>打包下载</button></th>
+		                    <th>提交时间</th>
 							<th>分数</th>
 							
                         </tr>
                     </thead>
-                        <tr>
-                            <td>13301001</td>        
-                            <td>赵一</td>
-                            <td>软件学院</td>
-							<td>1302</td>
-							<td><img src="images/file.png" width="40px" height="40px"/>13301001_赵一_第一次作业 <a href="#">下载</a></td>
-							<td><input type="text" size="2" tabindex="1"/></td>
-							
-						</tr>        
-						<tr> 
-							<td>13301002</td>  
-							<td>钱二</td>
-							<td>软件学院</td>
-							<td>1302</td>
-							<td><img src="images/file.png" width="40px" height="40px"/>13301002_钱二_第一次作业 <a href="#">下载</a></td>
-							<td><input type="text" size="2" tabindex="2"/></td>
-							
-							
-						</tr>
-						<tr>
-							<td>13301003</td>    
-							<td>张三</td>
-							<td>软件学院</td>
-							<td>1302</td>
-							<td><img src="images/file.png" width="40px" height="40px"/>13301003_张三_第一次作业 <a href="#">下载</a></td>
-							<td><input type="text" size="2" tabindex="3"/></td>
-							
-							
-						</tr>    
-						<tr>
-						    <td>13301004</td>   
-							<td>李四</td>
-							<td>软件学院</td>
-							<td>1302</td>
-							<td><img src="images/file.png" width="40px" height="40px"/>13301004_李四_第一次作业 <a href="#">下载</a></td>
-							<td><input type="text" size="2" tabindex="4"/></td>
-							
-							
-                        </tr>
-						<tr>
-						    <td>13301005</td>  
-							<td>周五</td>
-							<td>软件学院</td>
-							<td>1302</td>
-							<td><img src="images/file.png" width="40px" height="40px"/>13301005_周五_第一次作业 <a href="#">下载</a></td>
-							<td><input type="text" size="2" tabindex="5"/></td>
-							
-						</tr>
-						<tr>
-							<td>13301006</td>   
-							<td>吴六</td>
-							<td>软件学院</td>
-							<td>1302</td>
-							<td><img src="images/file.png" width="40px" height="40px"/>13301006_吴六_第一次作业 <a href="#">下载</a></td>
-							<td><input type="text" size="2" tabindex="6"/></td>
-						</tr>
-						<tr>
-							<td colspan="6"><center><button>保存修改</button></center></td>
-						</tr>
+                          			
+						
 					</table>
 					
-			</div>
+			
 		</div>
 	</div>
-    
+    <script>
+   		 $(function(){
+   			function addStudentHomework(i,studentHomework){
+   				var student = studentHomework.student;
+   				
+   				var submitNum = studentHomework.submitNum;
+   				
+   			
+   				var submitTime = "";
+   				var filePath = "";
+   				var fileName = "";
+   				if(submitNum != 0){
+   					var date = new Date();
+   					date.setTime(studentHomework.submitTime);
+   					submitTime = date.getString();
+   					
+   					filePath = studentHomework.filePath;
+   					fileName = filePath.substring(filePath.lastIndexOf("/")+1);
+   				}
+   				
+   				
+   				var score = studentHomework.score;
+   				if(score == null){
+   					score = "";
+   				}
+   				
+   				if(submitNum==0){
+   					$("#table").append(	
+   		   					"<tr>"+
+   		                        "<td>"+student.studentNO+"</td>"+      
+   		                        "<td>"+student.realname+"</td>"+
+   		                        "<td>"+student.college+"</td>"+
+   		                        "<td>"+student.className+"</td>"+
+   								"<td>未提交</td>"+
+   								 "<td></td>"+
+   								"<td><input type='text' id='"+studentHomework.id+"' size='2' tabindex='"+(i+1)+"' readOnly/></td>"+	
+   							"</tr>"        
+   		   				);
+   				}else{
+   					$("#table").append(	
+   		   					"<tr>"+
+   		                        "<td>"+student.studentNO+"</td>"+      
+   		                        "<td>"+student.realname+"</td>"+
+   		                        "<td>"+student.college+"</td>"+
+   		                        "<td>"+student.className+"</td>"+
+   								"<td><img src='../images/file.png' width='40px' height='40px'/>"+fileName+"&nbsp;<a href='/HomeworkWeb"+filePath+"'>下载</a></td>"+
+   								 "<td>"+submitTime+"</td>"+
+   								"<td><input type='text' id='"+studentHomework.id+"' size='2' tabindex='"+(i+1)+"' value='"+score+"'/></td>"+	
+   							"</tr>"        
+   		   				);
+   					
+   					$("#"+studentHomework.id).change(function(){
+   						
+   						$.ajax({
+   							type: "PUT",
+   							url: "/HomeworkWeb/teacher/student_homework/"+studentHomework.id,
+   							data: {
+   								score:$("#"+studentHomework.id).val()
+   							},
+   							dataType : "json",
+   							success : function(data) {
+   								if(data.success == "false"){
+   									alert("修改异常");
+   								}
+   							},
+   							error : function() {
+   								alert("修改异常");
+   							}
+   						});
+   						
+   					});
+   				}
+   				
+   				
+   			}
+   			 
+   			 
+    		var homeworkId = getUrlParam("homeworkId");
+    		
+    		
+    		$.getJSON("/HomeworkWeb/teacher/homework/"+homeworkId+"/student_homework/all",function(data){
+    			var studentHomeworks = data.studentHomeworks;
+    		    
+	    		$.each(studentHomeworks, function(i, studentHomework){
+	    			addStudentHomework(i,studentHomework);
+	    		});
+	  		});
+    		
+    		
+    	});
+    </script>
 	</body>
 </html>
 		

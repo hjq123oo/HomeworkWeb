@@ -1,7 +1,6 @@
 package com.fiverings.homeworkweb.controller;
 
-import java.io.File;
-import java.io.IOException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,7 +11,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FileUtils;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fiverings.homeworkweb.global.FileRootUtil;
 import com.fiverings.homeworkweb.model.Homework;
+import com.fiverings.homeworkweb.model.StudentHomework;
 import com.fiverings.homeworkweb.service.ManageCourseService;
 import com.fiverings.homeworkweb.service.ManageHomeworkService;
 import com.fiverings.homeworkweb.service.ManageStudentHomeworkService;
@@ -64,43 +63,12 @@ public class TeacherHomeworkController {
 		Date date = new Date();
 		homework.setStartTime(date);
 	
-		String filePath = "file/course/"+courseId+"/"+date.getTime()+"/"+file.getOriginalFilename();
-		homework.setFilePath(filePath);
-		
-		manageCourseService.addHomework(courseId, homework);
 		
 		
-		File f = new File(FileRootUtil.getFileRoot() + filePath);
-
-		try {
-			if (!f.exists()) {
-				if (!f.getParentFile().exists()) {
-					// 如果目标文件所在的目录不存在，则创建父目录
-					if (!f.getParentFile().mkdirs()) {
-
-						return null;
-					}
-				}
-				if (!f.createNewFile()) {
-					return null;
-				}
-
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		manageCourseService.addHomework(courseId, homework,file);
+		
 		Map<String, String> result = new HashMap<String, String>();
-
-		try {
-			FileUtils.copyInputStreamToFile(file.getInputStream(), f);
-
-		} catch (IOException e) {
-			result.put("success", "false");
-			e.printStackTrace();
-			return result;
-		}
-
+		
 		result.put("success", "true");
 		
 		return result;
@@ -176,64 +144,42 @@ public class TeacherHomeworkController {
 
 		return result;
 	}
+	
+	
+	@RequestMapping(value = "/teacher/homework/{homeworkId}/student_homework/all", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getAllStudentHomework(@PathVariable("homeworkId") Integer homeworkId) {
 
-	/*
-	 * @RequestMapping(value = "/teacher/homework/all/student_homework/all",
-	 * method = RequestMethod.GET)
-	 * 
-	 * @ResponseBody public Map<String, String> saveCorrect() {
-	 * 
-	 * 
-	 * Map<String, String> result = new HashMap<String, String>();
-	 * 
-	 * result.put("success", "true");
-	 * 
-	 * return result; }
-	 * 
-	 * 
-	 * 
-	 * @RequestMapping(value =
-	 * "/teacher/homework/{homeworkId}/student_homework/all", method =
-	 * RequestMethod.GET)
-	 * 
-	 * @ResponseBody public Map<String, String>
-	 * getStudentHomeworkByHoemwork(@RequestParam("homeworkId") Integer
-	 * homeworkId) {
-	 * 
-	 * 
-	 * Homework homework = manageHomeworkService.getHomework(homeworkId);
-	 * 
-	 * List<StudentHomework> studentHomeworks = homework.getStudentHomeworks();
-	 * 
-	 * Map<String, String> result = new HashMap<String, String>();
-	 * 
-	 * for(StudentHomework studentHomework : studentHomeworks){ Student student
-	 * = studentHomework.getStudent(); result.put("studentId",
-	 * ""+student.getStudentId()); result.put("homeworkId", homeworkId);
-	 * result.put("studentNO",student.getStudentNO());
-	 * result.put("name",student.getStudentNO());
-	 * result.put("college",student.getCollege());
-	 * result.put("className",student.getClassName());
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 * return result; }
-	 * 
-	 * 
-	 * @RequestMapping(value = "/teacher/homework/all/student_homework/all",
-	 * method = RequestMethod.GET)
-	 * 
-	 * @ResponseBody public Map<String, String> saveCorrect() {
-	 * 
-	 * 
-	 * Map<String, String> result = new HashMap<String, String>();
-	 * 
-	 * result.put("success", "true");
-	 * 
-	 * return result; }
-	 * 
-	 */
+		
+		List<StudentHomework> studentHomeworks = manageHomeworkService.getStudentHomeworks(homeworkId);
+				
+		Map<String, Object> result = new HashMap<String, Object>();
+
+		result.put("studentHomeworks", studentHomeworks);
+		
+		return result;
+	}
+
+	
+	@RequestMapping(value = "/teacher/student_homework/{studentHomeworkId}", method = RequestMethod.PUT)
+	@ResponseBody
+	public Map<String, Object> updateStudentHomeworkScore(@PathVariable("studentHomeworkId") Integer studentHomeworkId,
+			@RequestParam Integer score) {
+
+		StudentHomework studentHomework = new StudentHomework();
+		studentHomework.setId(studentHomeworkId);
+		studentHomework.setScore(score);
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		if( null == manageStudentHomeworkService.updateScore(studentHomework)){
+			result.put("success", "false");
+			return result;
+		}
+		
+
+		result.put("success", "true");
+		
+		return result;
+	}
 
 }

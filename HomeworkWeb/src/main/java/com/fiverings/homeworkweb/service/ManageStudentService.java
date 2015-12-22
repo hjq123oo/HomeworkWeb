@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fiverings.homeworkweb.model.Course;
 import com.fiverings.homeworkweb.model.Student;
+import com.fiverings.homeworkweb.model.StudentHomework;
 
 public interface ManageStudentService {
 	Student create(Student student);
@@ -19,4 +20,8 @@ public interface ManageStudentService {
 	List<Course> getCourses(Integer studentId);
 	
 	List<Student> getAllStudents();
+	
+	List<StudentHomework> getStudentHomeworks(Integer studentId);
+	
+	List<StudentHomework> getStudentHomeworks(Integer studentId,Integer courseId);
 }

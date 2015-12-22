@@ -10,6 +10,10 @@
 		<link rel="stylesheet" type="text/css" href="../css/homework.css" />
 		<link rel="stylesheet" type="text/css" href="../css/info.css" />
 		<script src="../js/jquery-2.1.3.min.js"></script>
+		<script src="../js/jquery.datetimepicker.js"></script>
+		<script src="../js/jquery.ui.widget.js"></script>
+		<script src="../js/jquery.iframe-transport.js"></script>
+		<script src="../js/jquery.fileupload.js"></script>
 		<script src="../js/util.js"></script>
 		<title>五环作业网</title>
 		
@@ -46,31 +50,133 @@
 				<label>作业内容: </label>
 				<textarea id="content" style = "resize:none" readOnly="true"></textarea>
 				<br><br>
-				<label>截止时间: </label>
+				<label>截止时间:</label>
 				<input id="end_time" type="text" readonly="readonly">
 				<br><br>
-				<label>附件:&nbsp&nbsp&nbsp&nbsp</label>
-				<img src="../images/file.png" width="60px" height="60px"/><a id="download" href="#">下载</a>
-				<br><br>
-					
 				
+				<div id="annex" style="display:none;">
+				<label>附件:&nbsp&nbsp&nbsp&nbsp</label>
+				
+				<img src="../images/file.png" width="60px" height="60px"/>
+				<span id="annexName"></span>&nbsp;&nbsp;
+				<a id="download" href="#">下载</a>
+				</div>
+				<br><br>
+				<button id="submit">提交作业</button>
+				<input id="file" type="file" name="file" class="upload_file" style="display:none;"/>
+				<br><br>
+				<label>提交情况:&nbsp;&nbsp;</label><span id="isSubmit"></span>
+				<div id="allFile">
+				</div>
+				<br/>
+				<br/>
 			</div>
 		</div>
 	</div>
+	
+	
+			
+		<div id="blackDiv">
+		</div>
+		
+		
+		<div id="waitDiv">
+			<div><img id="upload" src="../images/upload.png"/></div>
+			<div>上传中......</div>
+		
+			<div id="progress">
+    			<div class="bar" style="width: 0%;height:18px;background:green;"></div>
+			</div>
+		</div>
+	
+	
 	<script>
 	    $(function(){
 	    	var homeworkId = getUrlParam("homeworkId");
-	    	$.getJSON("/HomeworkWeb/teacher/homework/"+homeworkId,function(data){
+	    	var homeworkUrl = "/HomeworkWeb/teacher/homework/"+homeworkId;
+	    	var allFileUrl = "/HomeworkWeb/student/homework/"+homeworkId+"/student_homework/all";
+	    	var url = "/HomeworkWeb/student/homework/"+homeworkId+"/student_homework/add";
+	    	
+	    	
+	    	$.getJSON(homeworkUrl,function(data){
 	    		$("#titleName").val(data.homework.name);
 	    		$("#content").html(data.homework.content);
 	    		var date = new Date();
 	    		date.setTime(data.homework.endTime);
-	    		
-	    		
 	    		$("#end_time").val(date.getString());
-	    		$("#download").attr("href","/HomeworkWeb/"+data.homework.filePath);
+	    		
+	    		var filePath = data.homework.filePath;
+	    		if(filePath != null){
+	    			var fileName = filePath.substring(filePath.lastIndexOf("/")+1);
+	    			$("#annexName").html(fileName);
+	    			$("#download").attr("href","/HomeworkWeb"+data.homework.filePath);
+	    			$("#annex").show();
+	    		}
+	    		
 	    	});
+	    	
+	    	
+	    	$.getJSON(allFileUrl,function(data){
+	    		var fileArr = data.allFile;
+	    		var length = fileArr.length;
+	    		if(length == 0){
+	    			$("#isSubmit").html("未提交");
+	    		}else{
+	    			$("#isSubmit").html("已提交");
+	    			
+	    			
+	    			for(var i=length-1;i>=0;i--){
+	    				var filePath = fileArr[i];
+	    				var fileName = filePath.substring(filePath.lastIndexOf("/")+1);
+	    				
+	    				$("#allFile").append(
+	    						"<div>"+
+	    						"<img src='../images/file.png' width='60px' height='60px'/>"+
+	    						fileName+"&nbsp;&nbsp;"+
+	    						"<a href='/HomeworkWeb"+filePath+"'>下载</a>"+
+	    						"</div>"
+	    				);
+	    			}
+	    		}
+	    		
+	    	});
+	    	
+	    
+	    	
+	    	$("#submit").click(function(){
+	    		$("#file").click();
+	    	});
+	    	
+	    	$("#file").fileupload({
+				dataType: 'json',
+				url: url,
+				
+				
+				add: function (e, data) {
+		           
+		            $("#waitDiv").show();
+					$("#blackDiv").show();
+		            data.submit();
+		        },
+			    done:function(e,data){
+			    	window.location.href="homework.html?homeworkId="+homeworkId;
+			    },
+			    fail: function(e, data) {
+			    	 alert("上传异常");
+            		 $("#waitDiv").hide();
+            		 $("#blackDiv").hide();
+		    	},
+			    progressall: function (e, data) {
+			        var progress = parseInt(data.loaded / data.total * 100, 10);
+			        $('#progress .bar').css(
+			            'width',
+			            progress + '%'
+			        );
+			    }
+			});
 	    });
+	    
+	    
     </script>
 	</body>
 </html>

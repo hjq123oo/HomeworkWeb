@@ -49,9 +49,14 @@
 				<label>截止时间: </label>
 				<input id="end_time" type="text" readonly="readonly">
 				<br><br>
+				
+				<div id="annex" style="display:none;">
 				<label>附件:&nbsp&nbsp&nbsp&nbsp</label>
-				<img src="../images/file.png" width="60px" height="60px"/><a id="download" href="#">下载</a>
-				<br><br>
+				
+				<img src="../images/file.png" width="60px" height="60px"/>
+				<span id="annexName"></span>&nbsp;&nbsp;
+				<a id="download" href="#">下载</a>
+				</div>
 					
 				
 			</div>
@@ -68,7 +73,13 @@
 	    		
 	    		
 	    		$("#end_time").val(date.getString());
-	    		$("#download").attr("href","/HomeworkWeb/"+data.homework.filePath);
+	    		var filePath = data.homework.filePath;
+	    		if(filePath != null){
+	    			var fileName = filePath.substring(filePath.lastIndexOf("/")+1);
+	    			$("#annexName").html(fileName);
+	    			$("#download").attr("href","/HomeworkWeb"+data.homework.filePath);
+	    			$("#annex").show();
+	    		}
 	    	});
 	    });
     </script>

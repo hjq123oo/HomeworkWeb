@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fiverings.homeworkweb.jparepository.HomeworkJpaRepository;
 import com.fiverings.homeworkweb.model.Homework;
+import com.fiverings.homeworkweb.model.Student;
 import com.fiverings.homeworkweb.model.StudentHomework;
 
 @Service("manageHomeworkService")
@@ -49,7 +50,26 @@ public class ManageHomeworkServiceImpl implements ManageHomeworkService{
 		Iterator<StudentHomework> it = studentHomeworks.iterator();
 		
 		while(it.hasNext()){
-			returnStudentHomeworks.add(it.next());
+			StudentHomework returnStudentHomework = new StudentHomework();
+			StudentHomework studentHomework = it.next();
+			
+			returnStudentHomework.setId(studentHomework.getId());
+			returnStudentHomework.setFilePath(studentHomework.getFilePath());
+			returnStudentHomework.setScore(studentHomework.getScore());
+			returnStudentHomework.setSubmitTime(studentHomework.getSubmitTime());
+			returnStudentHomework.setSubmitNum(studentHomework.getSubmitNum());
+		
+			Student returnStudent = new Student();
+			Student student = studentHomework.getStudent();
+			
+			returnStudent.setStudentNO(student.getStudentNO());
+			returnStudent.setRealname(student.getRealname());
+			returnStudent.setCollege(student.getCollege());
+			returnStudent.setClassName(student.getClassName());
+			returnStudentHomework.setStudent(returnStudent);
+		
+			
+			returnStudentHomeworks.add(returnStudentHomework);
 		}
 		
 		return returnStudentHomeworks;
