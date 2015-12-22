@@ -57,7 +57,6 @@
 			if(data.success == "true"){
 				
 				
-				console.log(data.content);
 				
 				$.each(data.content, function(i, item){
 					initHome(item);
