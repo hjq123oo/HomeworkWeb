@@ -45,7 +45,7 @@ body{
     font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
 }
 
-#endTime{
+#cEndTime{
     -webkit-margin-start: 0px;
     position: relative;
     width: 230px;
@@ -110,4 +110,9 @@ textarea{
     padding-left: 7px;
     font-size: 15px;
     font-family: arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
+}
+
+.messInfo{
+	font-size: 10px;
+	color: red;
 }

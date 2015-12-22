@@ -47,35 +47,43 @@
 				<table class = "courseCreate_table">
 					<tr>
 						<td class = "first_col"><label for="create-0">所属学校：</label></td>
-						<td class = "courseCreate_input"><input type="text" id="school"></td>
+						<td class = "courseCreate_input"><input type="text" id="cSchool" value =""></td>
+						<td><label class = "messInfo" id = "cSchoolText"></label></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-0">课程院系：</label></td>
-						<td class = "courseCreate_input"><input type="text" id="college"></td>
+						<td class = "courseCreate_input"><input type="text" id="cCollege" value =""></td>
+						<td><label class = "messInfo" id = "cCollegeText"></label></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-1">课程名称：</label></td>
-						<td class = "courseCreate_input"><input type="text" id="name"></td>
+						<td class = "courseCreate_input"><input type="text" id="cName" value =""></td>
+						<td><label class = "messInfo" id = "cNameText"></label></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-0">课程编号：</label></td>
-						<td class = "courseCreate_input"><input  type="text" id="number"></td>
+						<td class = "courseCreate_input"><input  type="text" id="cNumber"></td>
+						<td><label class = "messInfo" id = "cNumberText"></label></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-0">所属专业：</label></td>
-						<td class = "courseCreate_input"><input  type="text" id="specialty"></td>
+						<td class = "courseCreate_input"><input  type="text" id="cSpecialty"></td>
+						<td><label class = "messInfo" id = "cSpecialtyText"></label></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-0">课程简介：</label></td>
-						<td class = "courseCreate_input"><textarea id="introduction"></textarea></td>
+						<td class = "courseCreate_input"><textarea id="cIntroduction"></textarea></td>
+						<td><label class = "messInfo" id = "cIntroductionText"></label></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-3">上课时间：</label></td>
-						<td class = "courseCreate_input"><input  type="text" id="time"></td>
+						<td class = "courseCreate_input"><input  type="text" id="cTime"></td>
+						<td><label class = "messInfo" id = "cTimeText"></label></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-4">上课地点：</label></td>
-						<td class = "courseCreate_input"><input type="text" id="place"></td>
+						<td class = "courseCreate_input"><input type="text" id="cPlace"></td>
+						<td><label class = "messInfo" id = "cPlaceText"></label></td>
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-5">作业迟交扣分：</label></td>
@@ -97,7 +105,8 @@
 					</tr>
 					<tr>
 						<td class = "first_col"><label for="create-5">课程截止时间：</label></td>
-							<td><input id="endTime" type="text" readonly="readonly"><td/>
+							<td><input id="cEndTime" type="text" readonly><td/>
+							<td><label class = "messInfo" id = "cEndTimeText"></label></td>
 							<script>
 							$(function(){
 								Date.prototype.format = function(fmt)   
@@ -121,13 +130,14 @@
 								
 							
 								var minDate = new Date().format("yyyy-MM-dd hh:mm:ss");
-								$("#endTime").datetimepicker({
+								$("#cEndTime").datetimepicker({
 									minDate: minDate
 									//minDate:;
 								});
 							});
 								
 							</script>
+							
 					</tr>
 					<tr>
 						<td></td>
