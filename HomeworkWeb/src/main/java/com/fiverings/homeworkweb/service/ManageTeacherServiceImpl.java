@@ -108,16 +108,24 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 	
 		List<Course> courses = teacherJpaRepository.findOne(teacherId).getCourses();
 		
-		List<Homework> returnHomework = new ArrayList<Homework>();
+		List<Homework> returnHomeworks = new ArrayList<Homework>();
 		
 		Iterator<Course> it = courses.iterator();
 		while(it.hasNext()){
 			Course course = it.next();
-			List<Homework> newHomeworks = new ArrayList<Homework>();
 			
-			newHomeworks = course.getHomeworks();
-			returnHomework.addAll(newHomeworks);
+			List<Homework> newHomeworks = course.getHomeworks();
+			
+			for(int i = 0; i < newHomeworks.size(); i++){
+				Homework tempHomework = new Homework();
+				
+				tempHomework.setHomeworkId(newHomeworks.get(i).getHomeworkId());
+				tempHomework.setEndTime(newHomeworks.get(i).getEndTime());
+				tempHomework.setName(newHomeworks.get(i).getName());
+				tempHomework.setContent(newHomeworks.get(i).getContent());
+				returnHomeworks.add(tempHomework);
+			}
 		}
-		return returnHomework;
+		return returnHomeworks;
 	}
 }

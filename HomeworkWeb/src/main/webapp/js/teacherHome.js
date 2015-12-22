@@ -2,11 +2,12 @@ $(document).ready(function(){
 	
 	//初始化教师主页
 	function initTeacherHome(item){
+		
 		var date = new Date();
 		date.setTime(item.endTime);
 		var str = date.getHomeworkString();
 		var strArray = str.split("#");
-		
+
 		$("#homeworkul").append(
 			"<li>"
 			+ "<time class='timepoint'>"	
@@ -32,17 +33,19 @@ $(document).ready(function(){
 		},
 		dataType : "json",
 		success : function(data) {
-			if(data.success == "true"){				
-				$.each(data.content, function(i, item){
+			if(data.success == "true"){			
+				console.log();
+				$.each(data.studentHomeworks, function(i, item){
 					initTeacherHome(item);
 				});			
-			}else if(data.result == "false"){
+			}else if(data.success == "false"){
 				
 			}
 		},
 		
 		error : function() {
-			alert("false");
+			alert("fddd");
+			
 		}
 	});	
 	

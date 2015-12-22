@@ -197,7 +197,6 @@ public class TeacherHomeworkController {
 			return result;
 		}
 		
-
 		result.put("success", "true");
 		
 		return result;
@@ -216,6 +215,7 @@ public class TeacherHomeworkController {
 		
 		if(homeworks.size() == 0){
 			result.put("success", "false");
+			return result;
 		}
 		else{
 			result.put("success", "true");
