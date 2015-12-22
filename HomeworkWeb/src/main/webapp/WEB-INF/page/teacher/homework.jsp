@@ -46,7 +46,10 @@
 				<label>作业内容: </label>
 				<textarea id="content" style = "resize:none" readOnly="true"></textarea>
 				<br><br>
-				<label>截止时间: </label>
+				<label for="fullScore">作业满分:</label>
+				<input id="fullScore" type="text"  readonly="readonly">
+				<br><br>
+				<label>截止时间:</label>
 				<input id="end_time" type="text" readonly="readonly">
 				<br><br>
 				
@@ -68,6 +71,7 @@
 	    	$.getJSON("/HomeworkWeb/teacher/homework/"+homeworkId,function(data){
 	    		$("#titleName").val(data.homework.name);
 	    		$("#content").html(data.homework.content);
+	    		$("#fullScore").val(data.homework.fullScore);
 	    		var date = new Date();
 	    		date.setTime(data.homework.endTime);
 	    		

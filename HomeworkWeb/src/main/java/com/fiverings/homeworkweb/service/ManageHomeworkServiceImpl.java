@@ -38,6 +38,7 @@ public class ManageHomeworkServiceImpl implements ManageHomeworkService{
 		returnHomework.setEndTime(homework.getEndTime());
 		returnHomework.setContent(homework.getContent());
 		returnHomework.setFilePath(homework.getFilePath());
+		returnHomework.setFullScore(homework.getFullScore());
 		
 		return returnHomework;
 	}

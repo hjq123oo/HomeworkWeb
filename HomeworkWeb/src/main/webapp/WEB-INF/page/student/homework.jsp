@@ -50,10 +50,13 @@
 				<label>作业内容: </label>
 				<textarea id="content" style = "resize:none" readOnly="true"></textarea>
 				<br><br>
+				<label for="fullScore">作业满分:</label>
+				<input id="fullScore" type="text"  readonly="readonly">
+				<br><br>
 				<label>截止时间:</label>
 				<input id="end_time" type="text" readonly="readonly">
 				<br><br>
-				
+			
 				<div id="annex" style="display:none;">
 				<label>附件:&nbsp&nbsp&nbsp&nbsp</label>
 				
@@ -101,6 +104,7 @@
 	    	$.getJSON(homeworkUrl,function(data){
 	    		$("#titleName").val(data.homework.name);
 	    		$("#content").html(data.homework.content);
+	    		$("#fullScore").val(data.homework.fullScore);
 	    		var date = new Date();
 	    		date.setTime(data.homework.endTime);
 	    		$("#end_time").val(date.getString());
