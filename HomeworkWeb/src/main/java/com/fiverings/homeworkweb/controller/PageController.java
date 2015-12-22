@@ -95,8 +95,11 @@ public class PageController {
 		return "teacher/correct";
 	}
 	
-	@RequestMapping("/student/student_homework/rest")
-	public String getHomeworks() {
-		return "student/home";
+
+	
+	
+	@RequestMapping("/teacher/score")
+	public String getTeacherScore() {
+		return "teacher/score";
 	}
 }
