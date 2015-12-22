@@ -90,7 +90,6 @@ public class PageController {
 		return "student/homework";
 	}
 	
-	
 	@RequestMapping("/teacher/correct")
 	public String teacherCorrect() {
 		return "teacher/correct";

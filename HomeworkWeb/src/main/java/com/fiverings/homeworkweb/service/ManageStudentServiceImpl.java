@@ -186,12 +186,9 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 		return returnStudentHomeworks;
 	}
 	
-	
-	
 	//得到学生该课程的所有作业
 	@Transactional
 	public List<StudentHomework> getStudentHomeworks(Integer studentId,Integer courseId) {
-		
 		
 		List<Homework> homeworks = courseJpaRepository.findOne(courseId).getHomeworks();
 		
