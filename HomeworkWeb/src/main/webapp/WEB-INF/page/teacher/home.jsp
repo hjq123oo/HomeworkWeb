@@ -1,4 +1,6 @@
 ﻿<!DOCTYPE html>
+
+<html>
 	<head>
 		<title>五环作业网</title>
 		
@@ -11,6 +13,7 @@
 		<script src = "../js/jquery-2.1.3.min.js"></script>
 		<script src = "../js/util.js"></script>
 		<script src = "../js/home.js"></script>
+		
 	</head>
 
 	<body>
@@ -20,11 +23,12 @@
         <div id="navarea">
 			
             <ul id="navs">
-                <li class="navItem"><a href="home"><span>首页</span></a></li>
-                <li class="navItem"><a href="courseCenter"><span>课程中心</span></a></li>
-                <li class="navItem"><a href="notice"><span>公告</span></a></li>
-			               
-                <li id = "info"><a href="personalInfo" ><img src="../images/user.jpg"></a></li>
+                <li class="navItem"><a href="home.html"><span>首页</span></a></li>
+                <li class="navItem"><a href="courseCenter.html"><span>课程中心</span></a></li>
+                <li class="navItem"><a href="notice.html"><span>公告</span></a></li>
+               
+
+                <li id = "info"><a href="personalInfo.html" ><img src="../images/user.jpg"></a></li>
 				<li id = "logout"><a href="index.html"><span>注销</span></a></li>
             </ul>
         </div>
@@ -34,7 +38,7 @@
 		
 		<div class="main">
 			
-			<ul class="timeline" id = "homeworkul">
+			<ul class="timeline">
 				截止时间
 			</ul>
 		</div>

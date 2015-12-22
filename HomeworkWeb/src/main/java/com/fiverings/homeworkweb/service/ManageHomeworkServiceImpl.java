@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fiverings.homeworkweb.global.FileRootUtil;
 import com.fiverings.homeworkweb.global.ZipFiles;
 import com.fiverings.homeworkweb.jparepository.HomeworkJpaRepository;
+import com.fiverings.homeworkweb.model.Course;
 import com.fiverings.homeworkweb.model.Homework;
 import com.fiverings.homeworkweb.model.Student;
 import com.fiverings.homeworkweb.model.StudentHomework;
@@ -133,7 +134,6 @@ public class ManageHomeworkServiceImpl implements ManageHomeworkService{
 		ZipFiles.zipFiles(files,file);
 		return filePath;
 	}
-	
 	
 	
 }

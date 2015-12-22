@@ -98,31 +98,32 @@
                         <tr>
                             <td class = "first_col"><span>*</span>帐号：</td>
                             <td><input type="text" name="email" class="input-text" id="reg_account_tea" tabindex="1" value=""></td>
-                            <td class = "info_remind_required">6-18个字符，请使用字母加数字的组合</td>
+                            <td class = "info_remind_required"><label id = "reg_account_tea_text">6-18个字符，请使用字母加数字的组合</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>密码：</td>
                             <td><input type="password" name="email" class="input-text" id="reg_password_tea" tabindex="1" value=""></td>
-                            <td class = "info_remind_required">6-18个字符，请使用字母加数字的组合</td>
+                            <td class = "info_remind_required"><label id = "reg_password_tea_text">6-18个字符，请使用字母加数字的组合</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>确认密码：</td>
                             <td><input type="password" name="email" class="input-text" id="reg_password2_tea" tabindex="1" value=""></td>
-                            <td class = "info_remind_required">请再次输入密码</td>
+                            <td class = "info_remind_required"><label id = "reg_password2_tea_text">请再次输入密码</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>学校：</td>
                             <td><input type="text" name="email" class="input-text" id="reg_school_tea" tabindex="1" value=""></td>
-                            <td class = "info_remind_required">如：北京交通大学</td>
+                            <td class = "info_remind_required"><label id = "reg_school_tea_text">如：北京交通大学</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>工号：</td>
                             <td><input type="text" name="email" class="input-text" id="reg_number_tea" tabindex="1" value=""></td>
-                            <td class = "info_remind_required">如：13301043</td>
+                            <td class = "info_remind_required"><label id = "reg_number_tea_text">如：13301043</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>姓名：</td>
                             <td><input type="text" name="email" class="input-text" id="reg_name_tea" tabindex="1" value=""></td>
+                            <td class = "info_remind_required"><label id = "reg_name_tea_text">如：张三</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col">常用邮箱：</td>

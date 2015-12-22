@@ -16,9 +16,9 @@ public class PageController {
 		return "register";
 	}
 	
-	@RequestMapping("/teacher/courseCenter")
+	@RequestMapping("/teacher/home")
 	public String teacherCourseCenter() {
-		return "teacher/courseCenter";
+		return "teacher/home";
 	}
 	
 
@@ -95,8 +95,4 @@ public class PageController {
 		return "teacher/correct";
 	}
 	
-	@RequestMapping("/student/student_homework/rest")
-	public String getHomeworks() {
-		return "student/home";
-	}
 }

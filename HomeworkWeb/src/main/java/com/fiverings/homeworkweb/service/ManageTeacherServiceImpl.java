@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fiverings.homeworkweb.jparepository.CourseJpaRepository;
 import com.fiverings.homeworkweb.jparepository.TeacherJpaRepository;
 import com.fiverings.homeworkweb.model.Course;
+import com.fiverings.homeworkweb.model.Homework;
 import com.fiverings.homeworkweb.model.Teacher;
 
 @Service("manageTeacherService")
@@ -101,5 +102,22 @@ public class ManageTeacherServiceImpl implements ManageTeacherService{
 		return courseJpaRepository.save(course);
 	}
 	
+	//获取教师的所有作业
+	@Transactional
+	public List<Homework> getHomeworks(Integer teacherId) {
 	
+		List<Course> courses = teacherJpaRepository.findOne(teacherId).getCourses();
+		
+		List<Homework> returnHomework = new ArrayList<Homework>();
+		
+		Iterator<Course> it = courses.iterator();
+		while(it.hasNext()){
+			Course course = it.next();
+			List<Homework> newHomeworks = new ArrayList<Homework>();
+			
+			newHomeworks = course.getHomeworks();
+			returnHomework.addAll(newHomeworks);
+		}
+		return returnHomework;
+	}
 }

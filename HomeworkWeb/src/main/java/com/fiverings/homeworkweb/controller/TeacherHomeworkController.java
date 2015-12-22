@@ -12,6 +12,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 
+
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,7 @@ import com.fiverings.homeworkweb.model.StudentHomework;
 import com.fiverings.homeworkweb.service.ManageCourseService;
 import com.fiverings.homeworkweb.service.ManageHomeworkService;
 import com.fiverings.homeworkweb.service.ManageStudentHomeworkService;
+import com.fiverings.homeworkweb.service.ManageTeacherService;
 
 @Controller
 public class TeacherHomeworkController {
@@ -36,6 +39,9 @@ public class TeacherHomeworkController {
 
 	@Resource
 	ManageStudentHomeworkService manageStudentHomeworkService;
+	
+	@Resource
+	ManageTeacherService ManageteacherService;
 
 	@Resource
 	HttpSession session;
@@ -187,6 +193,27 @@ public class TeacherHomeworkController {
 
 		result.put("success", "true");
 		
+		return result;
+	}
+	
+	//获得教师的所有作业
+	@RequestMapping(value = "/teacher/teacher_homework/all", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getAllHomeworks() {
+		
+		Integer teacherId = (Integer)session.getAttribute("id");
+		
+		List<Homework> homeworks = ManageteacherService.getHomeworks(teacherId);
+				
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		if(homeworks.size() == 0){
+			result.put("success", "false");
+		}
+		else{
+			result.put("success", "true");
+			result.put("studentHomeworks", homeworks);
+		}
 		return result;
 	}
 
