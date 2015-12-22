@@ -47,7 +47,7 @@
                             <th>姓名</th>
 		                    <th>学院</th>
 		                    <th>班级</th>
-		                    <th>作业&nbsp&nbsp<button>打包下载</button></th>
+		                    <th>作业&nbsp&nbsp<button id="pack" style="display:none;">打包下载</button></th>
 		                    <th>提交时间</th>
 							<th>分数</th>
 							
@@ -141,8 +141,21 @@
     		
     		
     		$.getJSON("/HomeworkWeb/teacher/homework/"+homeworkId+"/student_homework/all",function(data){
+    		
+    			
+    			$("#pack").click(function(){
+    				window.location.href="/HomeworkWeb"+data.packagePath;
+    			});
+    			
+    			
+    			if(data.packagePath != null){
+    				$("#pack").show();
+    			}
+    			
     			var studentHomeworks = data.studentHomeworks;
     		    
+    			
+    			
 	    		$.each(studentHomeworks, function(i, studentHomework){
 	    			addStudentHomework(i,studentHomework);
 	    		});

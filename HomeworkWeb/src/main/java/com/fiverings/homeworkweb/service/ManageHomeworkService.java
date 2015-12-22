@@ -11,5 +11,5 @@ public interface ManageHomeworkService {
 	
 	List<StudentHomework> getStudentHomeworks(Integer homeworkId); 
 	
-
+	String zipStudentHomeworks(Integer homeworkId);
 }
