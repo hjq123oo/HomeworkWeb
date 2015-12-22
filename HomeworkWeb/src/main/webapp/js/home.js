@@ -53,16 +53,12 @@
 			
 		},
 		dataType : "json",
-		success : function(data) {
-<<<<<<< HEAD
-			if(data.success == "true"){				
-=======
+		success : function(data) {			
 			if(data.success == "true"){
 				
 				
 				console.log(data.content);
 				
->>>>>>> 552826405d87fccdb54294cf6fb1981b974318f6
 				$.each(data.content, function(i, item){
 					initHome(item);
 				});			

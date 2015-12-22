@@ -95,14 +95,8 @@ public class PageController {
 		return "teacher/correct";
 	}
 	
-<<<<<<< HEAD
-=======
-
-	
-	
 	@RequestMapping("/teacher/score")
 	public String getTeacherScore() {
 		return "teacher/score";
 	}
->>>>>>> 552826405d87fccdb54294cf6fb1981b974318f6
 }
