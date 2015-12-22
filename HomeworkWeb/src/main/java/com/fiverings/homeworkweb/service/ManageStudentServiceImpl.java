@@ -176,7 +176,7 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 			returnHomework.setStartTime(homework.getStartTime());
 			returnHomework.setEndTime(homework.getEndTime());
 			returnHomework.setSubmitStudentNum(homework.getSubmitStudentNum());
-		
+			returnHomework.setContent(homework.getContent());
 			returnStudentHomework.setHomework(returnHomework);
 			
 		
