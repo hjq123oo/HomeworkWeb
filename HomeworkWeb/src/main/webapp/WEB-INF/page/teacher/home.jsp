@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/home.css" />
 		<script src = "../js/jquery-2.1.3.min.js"></script>
 		<script src = "../js/util.js"></script>
-		<script src = "../js/home.js"></script>
+		<script src = "../js/teacherHome.js"></script>
 		
 	</head>
 
