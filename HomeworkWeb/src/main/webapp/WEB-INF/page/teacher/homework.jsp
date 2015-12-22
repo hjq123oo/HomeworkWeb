@@ -68,7 +68,7 @@
 	    		
 	    		
 	    		$("#end_time").val(date.getString());
-	    		$("#download").attr("href","/HomeworkWeb/"+data.homework.filePath);
+	    		$("#download").attr("href","/HomeworkWeb"+data.homework.filePath);
 	    	});
 	    });
     </script>

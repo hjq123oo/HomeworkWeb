@@ -64,7 +64,7 @@ public class TeacherHomeworkController {
 		Date date = new Date();
 		homework.setStartTime(date);
 	
-		String filePath = "file/course/"+courseId+"/"+date.getTime()+"/"+file.getOriginalFilename();
+		String filePath = "/file/course/"+courseId+"/"+date.getTime()+"/"+file.getOriginalFilename();
 		homework.setFilePath(filePath);
 		
 		manageCourseService.addHomework(courseId, homework);

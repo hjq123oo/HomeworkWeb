@@ -12,6 +12,10 @@ public class ManageStudentHomeworkServiceImpl implements ManageStudentHomeworkSe
 	@Resource
 	private StudentHomeworkJpaRepository studentHomeworkJpaRepository;
 
+	
+	public StudentHomework getStudentHomework(Integer studentId,Integer homeworkId){
+		return studentHomeworkJpaRepository.find(studentId, homeworkId);
+	}
 
 	public StudentHomework updateScore(StudentHomework studentHomework) {
 		StudentHomework persistStudentHomework = studentHomeworkJpaRepository.findOne(studentHomework.getId());
