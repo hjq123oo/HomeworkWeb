@@ -1,15 +1,24 @@
 package com.fiverings.homeworkweb.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fiverings.homeworkweb.global.FileRootUtil;
 import com.fiverings.homeworkweb.jparepository.CourseJpaRepository;
 import com.fiverings.homeworkweb.jparepository.HomeworkJpaRepository;
 import com.fiverings.homeworkweb.jparepository.StudentHomeworkJpaRepository;
@@ -139,5 +148,61 @@ public class ManageCourseServiceImpl implements ManageCourseService{
 		return homework;
 	}
 	
+	
+	@Transactional
+	public Homework addHomework(Integer courseId, Homework homework,MultipartFile file) {
+		Course course = courseJpaRepository.findOne(courseId);
+		homework.setCourse(course);
+		homework.setSubmitStudentNum(0);
+		
+		String filePath = "/file/course/"+courseId+"/"+(new Date()).getTime()+"/"+file.getOriginalFilename();
+		homework.setFilePath(filePath);
+		
+		File f = new File(FileRootUtil.getFileRoot() + filePath);
+
+		try {
+			if (!f.exists()) {
+				if (!f.getParentFile().exists()) {
+					// 如果目标文件所在的目录不存在，则创建父目录
+					if (!f.getParentFile().mkdirs()) {
+
+						return null;
+					}
+				}
+				if (!f.createNewFile()) {
+					return null;
+				}
+
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		
+
+		try {
+			FileUtils.copyInputStreamToFile(file.getInputStream(), f);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		homeworkJpaRepository.save(homework);
+		
+		List<Student> students = course.getStudents();
+		
+		Iterator<Student> it = students.iterator();
+		
+		while(it.hasNext()){
+			StudentHomework studentHomework = new StudentHomework();
+			studentHomework.setStudent(it.next());
+			studentHomework.setHomework(homework);
+			studentHomework.setSubmitNum(0);
+			studentHomeworkJpaRepository.save(studentHomework);
+		}
+		
+		return homework;
+	}
 	
 }

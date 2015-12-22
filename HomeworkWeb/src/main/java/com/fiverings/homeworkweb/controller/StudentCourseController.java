@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fiverings.homeworkweb.model.Course;
 import com.fiverings.homeworkweb.model.Student;
 import com.fiverings.homeworkweb.service.ManageCourseService;
+import com.fiverings.homeworkweb.service.ManageStudentHomeworkService;
 import com.fiverings.homeworkweb.service.ManageStudentService;
 
 
@@ -26,6 +27,9 @@ public class StudentCourseController {
 	
 	@Resource
 	private ManageCourseService manageCourseService;
+	
+	@Resource
+	private ManageStudentHomeworkService manageStudentHomeworkService;
 	
 	@Resource
 	private HttpSession session;
@@ -46,7 +50,12 @@ public class StudentCourseController {
 	@RequestMapping(value = "/student/course/{courseId}", method = RequestMethod.GET)
 	@ResponseBody
 	public Map<String, Object> getStudentCourse(@PathVariable Integer courseId){
+		Integer studentId = (Integer)session.getAttribute("id");
+		
+		
+		
 		Course course = manageCourseService.getCourse(courseId);
+		
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 

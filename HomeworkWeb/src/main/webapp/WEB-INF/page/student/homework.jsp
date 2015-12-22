@@ -50,17 +50,25 @@
 				<label>作业内容: </label>
 				<textarea id="content" style = "resize:none" readOnly="true"></textarea>
 				<br><br>
-				<label>截止时间: </label>
+				<label>截止时间:</label>
 				<input id="end_time" type="text" readonly="readonly">
 				<br><br>
-				<label>附件:&nbsp&nbsp&nbsp&nbsp</label>
-				<img src="../images/file.png" width="60px" height="60px"/><a id="download" href="#">下载</a>
-				<br><br>
-					
-				<button id="submit">提交作业</button>
-				<span id="fileName"></span>
-				<input id="file" type="file" name="file" class="upload_file" style="display:none;"/>
 				
+				<div id="annex" style="display:none;">
+				<label>附件:&nbsp&nbsp&nbsp&nbsp</label>
+				
+				<img src="../images/file.png" width="60px" height="60px"/>
+				<span id="annexName"></span>&nbsp;&nbsp;
+				<a id="download" href="#">下载</a>
+				</div>
+				<br><br>
+				<button id="submit">提交作业</button>
+				<input id="file" type="file" name="file" class="upload_file" style="display:none;"/>
+				<br><br>
+				<label>提交情况:</label><span id="isSubmit"></span>
+				<div id="allFile">
+				</div>
+			
 			</div>
 		</div>
 	</div>
@@ -84,19 +92,52 @@
 	<script>
 	    $(function(){
 	    	var homeworkId = getUrlParam("homeworkId");
-	    	var url = "/student/homework/"+homeworkId+"/student_homework/add";
-	    	$.getJSON("/HomeworkWeb/teacher/homework/"+homeworkId,function(data){
+	    	var homeworkUrl = "/HomeworkWeb/teacher/homework/"+homeworkId;
+	    	var allFileUrl = "/HomeworkWeb/student/homework/"+homeworkId+"/student_homework/all";
+	    	var url = "/HomeworkWeb/student/homework/"+homeworkId+"/student_homework/add";
+	    	
+	    	
+	    	$.getJSON(homeworkUrl,function(data){
 	    		$("#titleName").val(data.homework.name);
 	    		$("#content").html(data.homework.content);
 	    		var date = new Date();
 	    		date.setTime(data.homework.endTime);
-	    		
-	    		
 	    		$("#end_time").val(date.getString());
-	    		$("#download").attr("href","/HomeworkWeb"+data.homework.filePath);
+	    		
+	    		var filePath = data.homework.filePath;
+	    		if(filePath != null){
+	    			var fileName = filePath.substring(filePath.lastIndexOf("/")+1);
+	    			$("#annexName").html(fileName);
+	    			$("#download").attr("href","/HomeworkWeb"+data.homework.filePath);
+	    			$("#annex").show();
+	    		}
+	    		
 	    	});
 	    	
 	    	
+	    	$.getJSON(allFileUrl,function(data){
+	    		var fileArr = data.allFile;
+	    		var length = fileArr.length;
+	    		if(length == 0){
+	    			$("#isSubmit").html("未提交");
+	    		}else{
+	    			for(var i=length-1;i>=0;i--){
+	    				var filePath = fileArr[i];
+	    				var fileName = filePath.substring(filePath.lastIndexOf("/")+1);
+	    				
+	    				$("#allFile").append(
+	    						"<div>"+
+	    						"<img src='../images/file.png' width='60px' height='60px'/>"+
+	    						fileName+"&nbsp;&nbsp;"+
+	    						"<a href='/HomeworkWeb"+filePath+"'>下载</a>"+
+	    						"</div>"
+	    				);
+	    			}
+	    		}
+	    		
+	    	});
+	    	
+	    
 	    	
 	    	$("#submit").click(function(){
 	    		$("#file").click();
@@ -108,13 +149,13 @@
 				
 				
 				add: function (e, data) {
-		            alert(1);
+		           
 		            $("#waitDiv").show();
 					$("#blackDiv").show();
 		            data.submit();
 		        },
 			    done:function(e,data){
-			    	
+			    	window.location.href="homework.html?homeworkId="+homeworkId;
 			    },
 			    fail: function(e, data) {
 			    	 alert("上传异常");

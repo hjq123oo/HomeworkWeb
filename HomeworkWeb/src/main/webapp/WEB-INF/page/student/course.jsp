@@ -164,7 +164,8 @@
     				+"<td>"+endTime+"</td>"
     				+"<td>"+homework.submitStudentNum+"/"+studentNum+"</td>"
     				+"<td><input type='image' value='detail' class='image' src='../images/detail.jpg' onclick='window.location.href=&apos;homework.html?homeworkId="+homework.homeworkId+"&apos;'></td>"
-    				+"<td><input type='image' value='submit' class='image' src='../images/edit.jpg' onclick='document.getElementById('file').click();'></td>"		
+    				+"<td></td>"	
+    				+"<td></td>"
  					+"</tr>"
     		);
     	          

@@ -1,7 +1,6 @@
 package com.fiverings.homeworkweb.controller;
 
-import java.io.File;
-import java.io.IOException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,7 +11,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FileUtils;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fiverings.homeworkweb.global.FileRootUtil;
 import com.fiverings.homeworkweb.model.Homework;
 import com.fiverings.homeworkweb.service.ManageCourseService;
 import com.fiverings.homeworkweb.service.ManageHomeworkService;
@@ -64,43 +62,12 @@ public class TeacherHomeworkController {
 		Date date = new Date();
 		homework.setStartTime(date);
 	
-		String filePath = "/file/course/"+courseId+"/"+date.getTime()+"/"+file.getOriginalFilename();
-		homework.setFilePath(filePath);
-		
-		manageCourseService.addHomework(courseId, homework);
 		
 		
-		File f = new File(FileRootUtil.getFileRoot() + filePath);
-
-		try {
-			if (!f.exists()) {
-				if (!f.getParentFile().exists()) {
-					// 如果目标文件所在的目录不存在，则创建父目录
-					if (!f.getParentFile().mkdirs()) {
-
-						return null;
-					}
-				}
-				if (!f.createNewFile()) {
-					return null;
-				}
-
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		manageCourseService.addHomework(courseId, homework,file);
+		
 		Map<String, String> result = new HashMap<String, String>();
-
-		try {
-			FileUtils.copyInputStreamToFile(file.getInputStream(), f);
-
-		} catch (IOException e) {
-			result.put("success", "false");
-			e.printStackTrace();
-			return result;
-		}
-
+		
 		result.put("success", "true");
 		
 		return result;
