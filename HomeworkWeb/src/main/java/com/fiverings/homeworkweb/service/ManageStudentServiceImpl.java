@@ -149,40 +149,29 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 	}
 
 	@Transactional
-	public List<StudentHomework> getStudentHomeworks(Integer studentId) {
+	public List<Homework> getRestStudentHomeworks(Integer studentId) {
 		
 		List<StudentHomework> studentHomeworks = studentJpaRepository.findOne(studentId).getStudentHomeworks();
 		
-		List<StudentHomework> returnStudentHomeworks = new ArrayList<StudentHomework>();
-		
+		List<Homework> returnStudentHomeworks = new ArrayList<Homework>();
 		
 		Iterator<StudentHomework> it = studentHomeworks.iterator();
 		
 		while(it.hasNext()){
-			StudentHomework returnStudentHomework = new StudentHomework();
 			StudentHomework studentHomework = it.next();
 			
-			returnStudentHomework.setId(studentHomework.getId());
-			returnStudentHomework.setScore(studentHomework.getScore());
-			returnStudentHomework.setSubmitNum(studentHomework.getSubmitNum());
-			returnStudentHomework.setSubmitTime(studentHomework.getSubmitTime());
-			returnStudentHomework.setFilePath(studentHomework.getFilePath());
-			
-			
-			Homework returnHomework = new Homework();
-			Homework homework = studentHomework.getHomework();
-			returnHomework.setHomeworkId(homework.getHomeworkId());
-			returnHomework.setName(homework.getName());
-			returnHomework.setStartTime(homework.getStartTime());
-			returnHomework.setEndTime(homework.getEndTime());
-			returnHomework.setSubmitStudentNum(homework.getSubmitStudentNum());
-			returnHomework.setContent(homework.getContent());
-			returnStudentHomework.setHomework(returnHomework);
-			
+			//作业没有提交
+			if(studentHomework.getSubmitNum() == 0){
 		
-			returnStudentHomeworks.add(returnStudentHomework);
+				Homework returnHomework = new Homework();
+				Homework homework = studentHomework.getHomework();
+				returnHomework.setName(homework.getName());
+				returnHomework.setEndTime(homework.getEndTime());
+				returnHomework.setContent(homework.getContent());
+				
+				returnStudentHomeworks.add(returnHomework);
+			}	
 		}
-		
 		return returnStudentHomeworks;
 	}
 	

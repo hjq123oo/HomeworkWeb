@@ -1,23 +1,46 @@
-window.checkArray = new Array(8);
+$(document).ready(function(){
+	window.checkArray = new Array(8);
 
-function initInfo(){
-	for(i = 0; i < 8; i++){
-		checkArray[i] = false;
+	function initInfo(){
+		for(i = 0; i < 8; i++){
+			checkArray[i] = false;
+		}
 	}
-}
-
-function checkRole(){
-	var teaEle = document.getElementById("role_teacher");
-	var stuEle = document.getElementById("role_student");
 	
-	if(teaEle.checked){
-		document.getElementById("regDiv_tea").style.display="block"; 
-		document.getElementById("regDiv_stu").style.display="none";  
-	}else if(stuEle.checked){
-		document.getElementById("regDiv_tea").style.display="none";  
-		document.getElementById("regDiv_stu").style.display="block";  
+	//检查角色
+	function checkRole(){
+		var teaEle = document.getElementById("role_teacher");
+		var stuEle = document.getElementById("role_student");
+		
+		if(teaEle.checked){
+			document.getElementById("regDiv_tea").style.display="block"; 
+			document.getElementById("regDiv_stu").style.display="none";  
+		}else if(stuEle.checked){
+			document.getElementById("regDiv_tea").style.display="none";  
+			document.getElementById("regDiv_stu").style.display="block";  
+		}
 	}
-}
+	
+	$("#reg_account_stu").keyup(function(){
+		var value = $("#reg_account_stu").val();
+		if(value == "" || value == null){
+			$("#reg_account_stu_text").text("账号信息不得为空");
+		}else{
+			if(value.length <= 6 || value.length >= 18){
+				$("#reg_account_stu_text").text("账号信息为6-18个字符");
+			}
+			else{
+				document.getElementById(text).innerHTML = "";
+				checkArray[0] = true;
+			}
+		}
+	});
+	
+});
+
+
+
+
 
 //检查账号信息
 function checkStuAccount(infoId){

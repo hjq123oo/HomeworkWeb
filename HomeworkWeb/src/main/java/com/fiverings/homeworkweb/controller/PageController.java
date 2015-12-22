@@ -94,4 +94,9 @@ public class PageController {
 	public String teacherCorrect() {
 		return "teacher/correct";
 	}
+	
+	@RequestMapping("/student/student_homework/rest")
+	public String getHomeworks() {
+		return "student/home";
+	}
 }
