@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 
+
+import com.fiverings.homeworkweb.model.Homework;
 import com.fiverings.homeworkweb.model.StudentHomework;
 import com.fiverings.homeworkweb.service.ManageCourseService;
 import com.fiverings.homeworkweb.service.ManageHomeworkService;
@@ -87,16 +90,17 @@ public class StudentHomeworkController {
 		
 	}
 	
-	@RequestMapping(value = "/student/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/student/student_homework/rest", method = RequestMethod.GET)
 	@ResponseBody
-	public Map<String, String> getHomeworks() {
+	public Map<String, Object> getHomeworks() {
 
 		Integer studentId = (Integer)session.getAttribute("id");
 		
-		List<StudentHomework> homeworkList = new ArrayList<StudentHomework>();
-		Map<String, String> result = new HashMap<String, String>();
+		List<Homework> homeworkList = new ArrayList<Homework>();
 		
-		homeworkList = manageStudentService.getStudentHomeworks(studentId);
+		Map<String, Object> result = new HashMap<String, Object>();
+		
+		homeworkList = manageStudentService.getRestStudentHomeworks(studentId);
 		
 		if(homeworkList.size() == 0){
 			result.put("success", "false");
@@ -105,17 +109,18 @@ public class StudentHomeworkController {
 		//如果存在需提交作业
 		else{
 			result.put("success", "true");
-			result.put("homeworkNum", String.valueOf(homeworkList.size()));
-			String returnStr = "";
-			for(int i = 0; i < homeworkList.size(); i++){
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd%hh:mm");  
-				String dateStr = sdf.format(homeworkList.get(i).getHomework().getEndTime());
-				String nameStr = homeworkList.get(i).getHomework().getName();
-				String contentStr = homeworkList.get(i).getHomework().getContent();
-				
-				returnStr += dateStr + "#" + nameStr + "#" + contentStr + "&";
-			}
-			result.put("homeworkContent", returnStr);
+			//result.put("homeworkNum", String.valueOf(homeworkList.size()));
+			result.put("content", homeworkList);
+//			String returnStr = "";
+//			for(int i = 0; i < homeworkList.size(); i++){
+//				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd%hh:mm");  
+//				String dateStr = sdf.format(homeworkList.get(i).getHomework().getEndTime());
+//				String nameStr = homeworkList.get(i).getHomework().getName();
+//				String contentStr = homeworkList.get(i).getHomework().getContent();
+//				
+//				returnStr += dateStr + "#" + nameStr + "#" + contentStr + "&";
+//			}
+//			result.put("homeworkContent", returnStr);
 		}
 		return result;
 	}

@@ -12,6 +12,10 @@
  		return this.getFullYear()+"/"+(this.getMonth()+1)+"/"+this.getDate()+" "+this.getHours()+":"+this.getMinutes();
  	}
  	
+ 	Date.prototype.getHomeworkString = function(){
+ 		return this.getFullYear()+"/"+(this.getMonth()+1)+"/"+this.getDate()+"#"+this.getHours()+":"+this.getMinutes();
+ 	}
+ 	
  	Date.prototype.format = function(fmt)   
 	{  
 	  var o = {   
