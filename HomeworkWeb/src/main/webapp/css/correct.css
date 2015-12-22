@@ -19,3 +19,12 @@ button{
     background-image: -o-linear-gradient(#599bdc, #3072b3);
     background-image: linear-gradient(#599bdc, #3072b3);
 }
+
+.bordered{
+	
+	margin:75px auto;
+}
+
+
+
+

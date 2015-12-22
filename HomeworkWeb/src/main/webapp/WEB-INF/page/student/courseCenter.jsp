@@ -11,7 +11,7 @@
         <link href="../css/courseCenter.css" type="text/css" rel="stylesheet">
 
         <script src="../js/jquery-2.1.3.min.js"></script>
-        <script src="../js/courseCenter.js" type="text/javascript"></script>
+        <script src="../js/studentCourseCenter.js" type="text/javascript"></script>
     </head>
     <body>
 	 <div id="nav">
@@ -38,16 +38,6 @@
         	<li class="course_block" id="search" onclick="window.location.href='searchPage'">
               <div id="searchcourse" style="background: url(../images/search.png) 0px 0px no-repeat"></div>
           	</li>
-          	
-	       	<script>
-	       	$(function(){
-		  		$.getJSON("/HomeworkWeb/student/course/all",function(data){
-		    		$.each(data.courses, function(i, item){
-		    			initCourse(item);
-		    		});
-		  		});
-	       	});
-	    	</script>
         </ul>
     </div>
         <script src="js/prefixfree.min.js" type="text/javascript"></script>
