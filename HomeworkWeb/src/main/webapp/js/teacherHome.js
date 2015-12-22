@@ -1,7 +1,7 @@
-﻿$(document).ready(function(){
+$(document).ready(function(){
 	
-	//初始化学生主页
-	function initHome(item){
+	//初始化教师主页
+	function initTeacherHome(item){
 		var date = new Date();
 		date.setTime(item.endTime);
 		var str = date.getHomeworkString();
@@ -22,28 +22,29 @@
 		);
 	}
 	
-	//学生获取所有作业
+	//教师获取所有作业
 	$.ajax({
 		type: "get",
-		url: "/HomeworkWeb/student/student_homework/rest",
+		url: "/HomeworkWeb/teacher/teacher_homework/all",
 		
 		data: {
 			
 		},
 		dataType : "json",
-		success : function(data) {				
-
-			if(data.success == "true"){
+		success : function(data) {
+			if(data.success == "true"){				
 				$.each(data.content, function(i, item){
-					initHome(item);
+					initTeacherHome(item);
 				});			
 			}else if(data.result == "false"){
-				alert("加载数据失败");
+				
 			}
 		},
 		
 		error : function() {
-			alert("加载数据失败");
+			alert("false");
 		}
 	});	
+	
+	
 });
