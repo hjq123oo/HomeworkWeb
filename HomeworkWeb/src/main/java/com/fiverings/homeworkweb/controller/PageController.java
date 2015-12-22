@@ -86,7 +86,13 @@ public class PageController {
 	}
 	
 	@RequestMapping("/student/homework")
-	public String studenthomework() {
+	public String studentHomework() {
 		return "student/homework";
+	}
+	
+	
+	@RequestMapping("/teacher/correct")
+	public String teacherCorrect() {
+		return "teacher/correct";
 	}
 }

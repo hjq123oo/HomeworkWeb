@@ -65,7 +65,7 @@
 				<button id="submit">提交作业</button>
 				<input id="file" type="file" name="file" class="upload_file" style="display:none;"/>
 				<br><br>
-				<label>提交情况:</label><span id="isSubmit"></span>
+				<label>提交情况:&nbsp;&nbsp;</label><span id="isSubmit"></span>
 				<div id="allFile">
 				</div>
 				<br/>
@@ -122,6 +122,9 @@
 	    		if(length == 0){
 	    			$("#isSubmit").html("未提交");
 	    		}else{
+	    			$("#isSubmit").html("已提交");
+	    			
+	    			
 	    			for(var i=length-1;i>=0;i--){
 	    				var filePath = fileArr[i];
 	    				var fileName = filePath.substring(filePath.lastIndexOf("/")+1);

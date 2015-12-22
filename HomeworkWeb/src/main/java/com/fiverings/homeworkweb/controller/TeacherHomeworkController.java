@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fiverings.homeworkweb.model.Homework;
+import com.fiverings.homeworkweb.model.StudentHomework;
 import com.fiverings.homeworkweb.service.ManageCourseService;
 import com.fiverings.homeworkweb.service.ManageHomeworkService;
 import com.fiverings.homeworkweb.service.ManageStudentHomeworkService;
@@ -143,64 +144,42 @@ public class TeacherHomeworkController {
 
 		return result;
 	}
+	
+	
+	@RequestMapping(value = "/teacher/homework/{homeworkId}/student_homework/all", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getAllStudentHomework(@PathVariable("homeworkId") Integer homeworkId) {
 
-	/*
-	 * @RequestMapping(value = "/teacher/homework/all/student_homework/all",
-	 * method = RequestMethod.GET)
-	 * 
-	 * @ResponseBody public Map<String, String> saveCorrect() {
-	 * 
-	 * 
-	 * Map<String, String> result = new HashMap<String, String>();
-	 * 
-	 * result.put("success", "true");
-	 * 
-	 * return result; }
-	 * 
-	 * 
-	 * 
-	 * @RequestMapping(value =
-	 * "/teacher/homework/{homeworkId}/student_homework/all", method =
-	 * RequestMethod.GET)
-	 * 
-	 * @ResponseBody public Map<String, String>
-	 * getStudentHomeworkByHoemwork(@RequestParam("homeworkId") Integer
-	 * homeworkId) {
-	 * 
-	 * 
-	 * Homework homework = manageHomeworkService.getHomework(homeworkId);
-	 * 
-	 * List<StudentHomework> studentHomeworks = homework.getStudentHomeworks();
-	 * 
-	 * Map<String, String> result = new HashMap<String, String>();
-	 * 
-	 * for(StudentHomework studentHomework : studentHomeworks){ Student student
-	 * = studentHomework.getStudent(); result.put("studentId",
-	 * ""+student.getStudentId()); result.put("homeworkId", homeworkId);
-	 * result.put("studentNO",student.getStudentNO());
-	 * result.put("name",student.getStudentNO());
-	 * result.put("college",student.getCollege());
-	 * result.put("className",student.getClassName());
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 * return result; }
-	 * 
-	 * 
-	 * @RequestMapping(value = "/teacher/homework/all/student_homework/all",
-	 * method = RequestMethod.GET)
-	 * 
-	 * @ResponseBody public Map<String, String> saveCorrect() {
-	 * 
-	 * 
-	 * Map<String, String> result = new HashMap<String, String>();
-	 * 
-	 * result.put("success", "true");
-	 * 
-	 * return result; }
-	 * 
-	 */
+		
+		List<StudentHomework> studentHomeworks = manageHomeworkService.getStudentHomeworks(homeworkId);
+				
+		Map<String, Object> result = new HashMap<String, Object>();
+
+		result.put("studentHomeworks", studentHomeworks);
+		
+		return result;
+	}
+
+	
+	@RequestMapping(value = "/teacher/student_homework/{studentHomeworkId}", method = RequestMethod.PUT)
+	@ResponseBody
+	public Map<String, Object> updateStudentHomeworkScore(@PathVariable("studentHomeworkId") Integer studentHomeworkId,
+			@RequestParam Integer score) {
+
+		StudentHomework studentHomework = new StudentHomework();
+		studentHomework.setId(studentHomeworkId);
+		studentHomework.setScore(score);
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		if( null == manageStudentHomeworkService.updateScore(studentHomework)){
+			result.put("success", "false");
+			return result;
+		}
+		
+
+		result.put("success", "true");
+		
+		return result;
+	}
 
 }
