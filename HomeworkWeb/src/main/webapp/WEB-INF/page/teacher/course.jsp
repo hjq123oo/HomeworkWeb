@@ -101,7 +101,6 @@
     			window.location.href='homeworkCreate.html?courseId='+courseId;
     		});
     		
-    		
     		$("#score").click(function(){
     			window.location.href='score.html?courseId='+courseId;
     		});
