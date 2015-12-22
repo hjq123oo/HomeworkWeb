@@ -75,6 +75,11 @@ public class ManageHomeworkServiceImpl implements ManageHomeworkService{
 			returnStudentHomework.setStudent(returnStudent);
 		
 			
+			Homework returnHomework = new Homework();
+			returnHomework.setFullScore(studentHomework.getHomework().getFullScore());
+			returnStudentHomework.setHomework(returnHomework);
+			returnStudentHomework.setDeduction(studentHomework.getDeduction());
+			
 			returnStudentHomeworks.add(returnStudentHomework);
 		}
 		

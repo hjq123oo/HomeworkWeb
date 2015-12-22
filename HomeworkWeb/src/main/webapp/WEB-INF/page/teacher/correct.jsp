@@ -40,7 +40,7 @@
 			
 			
 				
-			    <table id="table" class="bordered" style="width:80%;">
+			    <table id="table" class="bordered" style="width:90%;">
                     <thead>
                         <tr>    
                             <th>学号</th>
@@ -49,7 +49,10 @@
 		                    <th>班级</th>
 		                    <th>作业&nbsp&nbsp<button id="pack" style="display:none;">打包下载</button></th>
 		                    <th>提交时间</th>
+		                    <th>满分</th>
+		                    <th>扣分</th>
 							<th>分数</th>
+							<th>实际分数</th>
 							
                         </tr>
                     </thead>
@@ -71,6 +74,9 @@
    				var submitTime = "";
    				var filePath = "";
    				var fileName = "";
+   				var fullScore = studentHomework.homework.fullScore;
+   				var deduction = 0;
+   				var realScore = 0;
    				if(submitNum != 0){
    					var date = new Date();
    					date.setTime(studentHomework.submitTime);
@@ -78,12 +84,16 @@
    					
    					filePath = studentHomework.filePath;
    					fileName = filePath.substring(filePath.lastIndexOf("/")+1);
+   					deduction = studentHomework.deduction;
    				}
    				
    				
    				var score = studentHomework.score;
    				if(score == null){
    					score = "";
+   				}
+   				if(score-deduction>0){
+   					realScore = score-deduction;
    				}
    				
    				if(submitNum==0){
@@ -94,8 +104,11 @@
    		                        "<td>"+student.college+"</td>"+
    		                        "<td>"+student.className+"</td>"+
    								"<td>未提交</td>"+
-   								 "<td></td>"+
-   								"<td><input type='text' id='"+studentHomework.id+"' size='2' tabindex='"+(i+1)+"' readOnly/></td>"+	
+   								"<td></td>"+
+   								"<td>"+fullScore+"</td>"+
+   								"<td>"+deduction+"</td>"+
+   								"<td><input type='text' id='"+studentHomework.id+"' size='2' tabindex='"+(i+1)+"' readOnly/></td>"+
+   								"<td></td>"+
    							"</tr>"        
    		   				);
    				}else{
@@ -106,8 +119,11 @@
    		                        "<td>"+student.college+"</td>"+
    		                        "<td>"+student.className+"</td>"+
    								"<td><img src='../images/file.png' width='40px' height='40px'/>"+fileName+"&nbsp;<a href='/HomeworkWeb"+filePath+"'>下载</a></td>"+
-   								 "<td>"+submitTime+"</td>"+
-   								"<td><input type='text' id='"+studentHomework.id+"' size='2' tabindex='"+(i+1)+"' value='"+score+"'/></td>"+	
+   								"<td>"+submitTime+"</td>"+
+   								"<td>"+fullScore+"</td>"+
+   								"<td>"+deduction+"</td>"+
+   								"<td><input type='text' id='"+studentHomework.id+"' size='2' tabindex='"+(i+1)+"' value='"+score+"' class='{}'/></td>"+
+   								"<td id='realScore"+studentHomework.id+"'>"+realScore+"</td>"+
    							"</tr>"        
    		   				);
    					
@@ -123,7 +139,14 @@
    							success : function(data) {
    								if(data.success == "false"){
    									alert("修改异常");
+   								}else{
+   									realScore = $("#"+studentHomework.id).val()-deduction;
+   									if(realScore<0){
+   					   					realScore = 0;
+   					   				}
+   									$("#realScore"+studentHomework.id).text(realScore);
    								}
+   								
    							},
    							error : function() {
    								alert("修改异常");
