@@ -36,6 +36,8 @@ public class ManageStudentHomeworkServiceImpl implements ManageStudentHomeworkSe
 
 	public StudentHomework updateScore(StudentHomework studentHomework) {
 		StudentHomework persistStudentHomework = studentHomeworkJpaRepository.findOne(studentHomework.getId());
+		
+		
 		persistStudentHomework.setScore(studentHomework.getScore());
 		return studentHomeworkJpaRepository.save(persistStudentHomework);
 	}
@@ -67,9 +69,27 @@ public class ManageStudentHomeworkServiceImpl implements ManageStudentHomeworkSe
 				+ (submitNum + 1) + type;
 
 		String filePath = path + fileName;
-
 		
-		studentHomework.setSubmitTime(new Date());
+		Date date = new Date();
+		studentHomework.setSubmitTime(date);
+		
+		//添加扣分数目
+		long timeDeviationMilliseconds = date.getTime()-studentHomework.getHomework().getEndTime().getTime();
+		if(timeDeviationMilliseconds<=0){
+			studentHomework.setDeduction(0);
+		}else{
+		Integer timeDeviationHours = (Integer)((int)(timeDeviationMilliseconds/3600000));
+		Integer lateInterval = studentHomework.getHomework().getCourse().getLateInterval();
+		Integer latePercent = studentHomework.getHomework().getCourse().getLatePercent();
+		Integer fullScore = studentHomework.getHomework().getFullScore();
+		Integer deductScore = (timeDeviationHours/lateInterval+1)*(latePercent*fullScore/100);
+		if (deductScore>fullScore){
+			deductScore=fullScore;
+		}
+		studentHomework.setDeduction(deductScore);
+		}
+		
+		
 		studentHomework.setSubmitNum(submitNum+1);
 		studentHomework.setFilePath(filePath);
 		
