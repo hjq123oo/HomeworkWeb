@@ -15,4 +15,5 @@ public interface ManageStudentHomeworkService {
 	
 	List<String> getAllStudentHomwrokFilePath(Integer studentId, Integer homeworkId);
 	
+	Integer getScore(Integer studentId, Integer homeworkId);
 }

@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fiverings.homeworkweb.model.Course;
 import com.fiverings.homeworkweb.model.Homework;
+import com.fiverings.homeworkweb.model.Student;
 
 public interface ManageCourseService {
 	
@@ -16,5 +17,7 @@ public interface ManageCourseService {
 	Homework addHomework(Integer courseId,Homework homework);
 	
 	Homework addHomework(Integer courseId, Homework homework,MultipartFile file);
+	
+	List<Student> getStudents(Integer courseId);
 	/*Integer getStudentNum(Integer courseId);*/
 }

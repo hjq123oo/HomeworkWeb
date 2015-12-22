@@ -109,6 +109,27 @@ public class ManageCourseServiceImpl implements ManageCourseService{
 		return (Integer)query.getSingleResult();
 	}*/
 	
+	@Transactional
+	public List<Student> getStudents(Integer courseId){
+		List<Student> students = courseJpaRepository.findOne(courseId).getStudents();
+		
+		List<Student> returnStudents = new ArrayList<Student>();
+		
+		Iterator<Student> it = students.iterator();
+		
+		while(it.hasNext()){
+			Student student = it.next();
+			
+			Student returnStudent = new Student();
+			returnStudent.setStudentId(student.getStudentId());
+			returnStudent.setStudentNO(student.getStudentNO());
+			returnStudent.setRealname(student.getRealname());
+			
+			returnStudents.add(returnStudent);
+		}
+		
+		return returnStudents;
+	}
 	
 	@Transactional
 	public List<Homework> getHomeworks(Integer courseId){
@@ -116,13 +137,36 @@ public class ManageCourseServiceImpl implements ManageCourseService{
 		
 		Iterator<Homework> it = homeworks.iterator();
 		
-		List<Homework> returnHomework = new ArrayList<Homework>();
+		List<Homework> returnHomeworks = new ArrayList<Homework>();
 		
 		while(it.hasNext()){
-			returnHomework.add(it.next());
+			Homework returnHomework = new Homework();
+			Homework homework = it.next();
+			
+			returnHomework.setHomeworkId(homework.getHomeworkId());
+			returnHomework.setName(homework.getName());
+			/*
+			List<StudentHomework> returnStudentHomeworks = new ArrayList<StudentHomework>();
+			List<StudentHomework> studentHomeworks = homework.getStudentHomeworks();
+			
+			for(StudentHomework studentHomework : studentHomeworks){
+				StudentHomework returnStudentHomework = new StudentHomework();
+				
+				Student returnStudent =  new Student();
+				Student student =  studentHomework.getStudent();
+				
+				returnStudent.setStudentNO(student.getStudentNO());
+				returnStudent.setRealname(student.getRealname());				
+				
+				returnStudentHomework.setStudent(returnStudent);
+				returnStudentHomeworks.add(returnStudentHomework);
+			}
+			returnHomework.setStudentHomeworks(returnStudentHomeworks);
+			*/
+			returnHomeworks.add(returnHomework);
 		}
 	
-		return returnHomework;
+		return returnHomeworks;
 		
 	}
 
@@ -204,5 +248,7 @@ public class ManageCourseServiceImpl implements ManageCourseService{
 		
 		return homework;
 	}
+	
+	
 	
 }
