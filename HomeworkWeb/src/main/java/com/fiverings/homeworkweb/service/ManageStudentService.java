@@ -22,4 +22,6 @@ public interface ManageStudentService {
 	List<Student> getAllStudents();
 	
 	List<StudentHomework> getStudentHomeworks(Integer studentId);
+	
+	List<StudentHomework> getStudentHomeworks(Integer studentId,Integer courseId);
 }

@@ -68,7 +68,8 @@
 				<label>提交情况:</label><span id="isSubmit"></span>
 				<div id="allFile">
 				</div>
-			
+				<br/>
+				<br/>
 			</div>
 		</div>
 	</div>

@@ -143,19 +143,31 @@
     			$("#courseIntroduction").html(course.introduction);
     			
     		    
-	    		$.each(course.homeworks, function(i, homework){
-	    			addHomework(course.studentNum,homework);
+	    		$.each(data.studentHomeworks, function(i, studentHomework){
+	    			addStudentHomework(course.studentNum,studentHomework);
 	    		});
 	  		});
     	});
     	
-    	function addHomework(studentNum,homework){
+    	function addStudentHomework(studentNum,studentHomework){
+    		var homework = studentHomework.homework;
     		var date = new Date();
     		date.setTime(homework.startTime);
     		var startTime = date.getString();
     		
     		date.setTime(homework.endTime);
     		var endTime = date.getString();
+    		
+    		var isSubmit = "已提交";
+    		if(studentHomework.submitNum == 0){
+    			isSubmit = "未提交";
+    		}
+    		
+    		var score = "未批改";
+    		if(studentHomework.score != null){
+    			score = studentHomework.score ;
+    		}
+    		
     		$("#homeworks").append(
     				"<tr>"
     				+"<td>"+homework.homeworkId+"</td>"
@@ -164,8 +176,8 @@
     				+"<td>"+endTime+"</td>"
     				+"<td>"+homework.submitStudentNum+"/"+studentNum+"</td>"
     				+"<td><input type='image' value='detail' class='image' src='../images/detail.jpg' onclick='window.location.href=&apos;homework.html?homeworkId="+homework.homeworkId+"&apos;'></td>"
-    				+"<td></td>"	
-    				+"<td></td>"
+    				+"<td>"+isSubmit+"</td>"	
+    				+"<td>"+score+"</td>"
  					+"</tr>"
     		);
     	          

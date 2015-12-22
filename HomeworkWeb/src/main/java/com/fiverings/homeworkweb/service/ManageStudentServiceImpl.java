@@ -187,4 +187,43 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 	}
 	
 	
+	
+	//得到学生该课程的所有作业
+	@Transactional
+	public List<StudentHomework> getStudentHomeworks(Integer studentId,Integer courseId) {
+		
+		
+		List<Homework> homeworks = courseJpaRepository.findOne(courseId).getHomeworks();
+		
+		Iterator<Homework> it = homeworks.iterator();
+		
+		List<StudentHomework> returnStudentHomeworks = new ArrayList<StudentHomework>();
+		
+		while(it.hasNext()){
+			StudentHomework returnStudentHomework = new StudentHomework();
+			StudentHomework studentHomework = studentHomeworkJpaRepository.find(studentId, it.next().getHomeworkId());
+			
+			returnStudentHomework.setId(studentHomework.getId());
+			returnStudentHomework.setScore(studentHomework.getScore());
+			returnStudentHomework.setSubmitNum(studentHomework.getSubmitNum());
+			returnStudentHomework.setSubmitTime(studentHomework.getSubmitTime());
+			returnStudentHomework.setFilePath(studentHomework.getFilePath());
+			
+			
+			Homework returnHomework = new Homework();
+			Homework homework = studentHomework.getHomework();
+			returnHomework.setHomeworkId(homework.getHomeworkId());
+			returnHomework.setName(homework.getName());
+			returnHomework.setStartTime(homework.getStartTime());
+			returnHomework.setEndTime(homework.getEndTime());
+			returnHomework.setSubmitStudentNum(homework.getSubmitStudentNum());
+			returnHomework.setContent(homework.getContent());
+			returnStudentHomework.setHomework(returnHomework);
+			
+		
+			returnStudentHomeworks.add(returnStudentHomework);
+		}
+		
+		return returnStudentHomeworks;
+	}
 }
