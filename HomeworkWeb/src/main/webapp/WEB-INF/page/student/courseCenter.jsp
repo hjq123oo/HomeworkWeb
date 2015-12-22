@@ -11,7 +11,7 @@
         <link href="../css/courseCenter.css" type="text/css" rel="stylesheet">
 
         <script src="../js/jquery-2.1.3.min.js"></script>
-        <script src="../js/courseCenter.js" type="text/javascript"></script>
+        <script src="../js/studentCourseCenter.js" type="text/javascript"></script>
     </head>
     <body>
 	 <div id="nav">
