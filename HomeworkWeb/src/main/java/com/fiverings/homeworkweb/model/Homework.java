@@ -42,6 +42,17 @@ public class Homework implements Serializable{
 	@Column(name="submit_student_num",nullable=false,columnDefinition = "int default 0")
 	private Integer submitStudentNum;
 	
+	@Column(name="full_score")
+	private Integer fullScore;
+	
+	public Integer getFullScore() {
+		return fullScore;
+	}
+
+	public void setFullScore(Integer fullScore) {
+		this.fullScore = fullScore;
+	}
+
 	public Integer getSubmitStudentNum() {
 		return submitStudentNum;
 	}

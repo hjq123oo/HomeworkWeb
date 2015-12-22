@@ -32,19 +32,19 @@
 		success : function(data) {
 			if(data.success == "true"){
 				
-				alert("true");
+				
 				console.log(data.content);
 				
 				$.each(data.content, function(i, item){
 					initHome(item);
 				});			
 			}else if(data.result == "false"){
-				
+				alert("加载数据失败");
 			}
 		},
 		
 		error : function() {
-			alert("false");
+			alert("加载数据失败");
 		}
 	});	
 });

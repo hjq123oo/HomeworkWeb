@@ -43,6 +43,19 @@ public class StudentHomework implements Serializable{
 	private Date submitTime;
 	
 	
+	@Column(name="deduction")
+	private Integer deduction;
+	
+	public Integer getDeduction() {
+		return deduction;
+	}
+
+
+	public void setDeduction(Integer deduction) {
+		this.deduction = deduction;
+	}
+
+
 	public Integer getId() {
 		return id;
 	}
