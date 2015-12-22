@@ -157,8 +157,16 @@ public class TeacherHomeworkController {
 
 		result.put("studentHomeworks", studentHomeworks);
 		
+	
+		String packagePath = manageHomeworkService.zipStudentHomeworks(homeworkId);
+		
+		result.put("packagePath", packagePath);
+		
 		return result;
 	}
+	
+	
+
 
 	
 	@RequestMapping(value = "/teacher/student_homework/{studentHomeworkId}", method = RequestMethod.PUT)

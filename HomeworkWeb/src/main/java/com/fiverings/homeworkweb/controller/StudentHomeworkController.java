@@ -61,7 +61,7 @@ public class StudentHomeworkController {
 	public Map<String, String> uploadHomework(@PathVariable Integer homeworkId,@RequestParam(value="file")  MultipartFile file) {
 
 		Integer studentId = (Integer)session.getAttribute("id");
-		studentId = 1;
+	
 		manageStudentHomeworkService.uploadStudentHomework(studentId, homeworkId, file);
 		
 		
@@ -78,7 +78,7 @@ public class StudentHomeworkController {
 	public Map<String, List<String>> getHomeworks(@PathVariable Integer homeworkId) {
 
 		Integer studentId = (Integer)session.getAttribute("id");
-		studentId = 1;
+		
 	
 		List<String> allFile = manageStudentHomeworkService.getAllStudentHomwrokFilePath(studentId, homeworkId);
 		

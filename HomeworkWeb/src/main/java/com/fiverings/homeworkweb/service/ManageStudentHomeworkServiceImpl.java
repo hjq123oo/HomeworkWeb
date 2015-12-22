@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fiverings.homeworkweb.global.FileRootUtil;
+import com.fiverings.homeworkweb.jparepository.HomeworkJpaRepository;
 import com.fiverings.homeworkweb.jparepository.StudentHomeworkJpaRepository;
 import com.fiverings.homeworkweb.model.Homework;
 import com.fiverings.homeworkweb.model.Student;
@@ -25,6 +26,9 @@ import com.fiverings.homeworkweb.model.StudentHomework;
 public class ManageStudentHomeworkServiceImpl implements ManageStudentHomeworkService {
 	@Resource
 	private StudentHomeworkJpaRepository studentHomeworkJpaRepository;
+	
+	@Resource
+	private HomeworkJpaRepository homeworkJpaRepository;
 
 	public StudentHomework getStudentHomework(Integer studentId, Integer homeworkId) {
 		return studentHomeworkJpaRepository.find(studentId, homeworkId);
@@ -54,6 +58,11 @@ public class ManageStudentHomeworkServiceImpl implements ManageStudentHomeworkSe
 		// 提交次数
 		int submitNum = studentHomework.getSubmitNum();
 
+		
+		if(submitNum == 0){
+			homework.setSubmitStudentNum(homework.getSubmitStudentNum()+1);
+		}
+		
 		String fileName = student.getStudentNO() + "-" + student.getRealname() + "-" + homework.getName() + "-"
 				+ (submitNum + 1) + type;
 
@@ -63,6 +72,8 @@ public class ManageStudentHomeworkServiceImpl implements ManageStudentHomeworkSe
 		studentHomework.setSubmitTime(new Date());
 		studentHomework.setSubmitNum(submitNum+1);
 		studentHomework.setFilePath(filePath);
+		
+		
 		
 		//保存文件
 		File f = new File(FileRootUtil.getFileRoot() + filePath);
@@ -96,7 +107,7 @@ public class ManageStudentHomeworkServiceImpl implements ManageStudentHomeworkSe
 		}
 
 		
-		
+		homeworkJpaRepository.save(homework);
 		return studentHomeworkJpaRepository.save(studentHomework);
 	}
 
