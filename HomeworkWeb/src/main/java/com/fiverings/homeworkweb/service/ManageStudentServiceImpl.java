@@ -148,4 +148,43 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 		return returnCourses;
 	}
 
+	@Transactional
+	public List<StudentHomework> getStudentHomeworks(Integer studentId) {
+		
+		List<StudentHomework> studentHomeworks = studentJpaRepository.findOne(studentId).getStudentHomeworks();
+		
+		List<StudentHomework> returnStudentHomeworks = new ArrayList<StudentHomework>();
+		
+		
+		Iterator<StudentHomework> it = studentHomeworks.iterator();
+		
+		while(it.hasNext()){
+			StudentHomework returnStudentHomework = new StudentHomework();
+			StudentHomework studentHomework = it.next();
+			
+			returnStudentHomework.setId(studentHomework.getId());
+			returnStudentHomework.setScore(studentHomework.getScore());
+			returnStudentHomework.setSubmitNum(studentHomework.getSubmitNum());
+			returnStudentHomework.setSubmitTime(studentHomework.getSubmitTime());
+			returnStudentHomework.setFilePath(studentHomework.getFilePath());
+			
+			
+			Homework returnHomework = new Homework();
+			Homework homework = studentHomework.getHomework();
+			returnHomework.setHomeworkId(homework.getHomeworkId());
+			returnHomework.setName(homework.getName());
+			returnHomework.setStartTime(homework.getStartTime());
+			returnHomework.setEndTime(homework.getEndTime());
+			returnHomework.setSubmitStudentNum(homework.getSubmitStudentNum());
+		
+			returnStudentHomework.setHomework(returnHomework);
+			
+		
+			returnStudentHomeworks.add(returnStudentHomework);
+		}
+		
+		return returnStudentHomeworks;
+	}
+	
+	
 }

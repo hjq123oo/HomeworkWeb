@@ -52,7 +52,7 @@ public class StudentCourseController {
 	public Map<String, Object> getStudentCourse(@PathVariable Integer courseId){
 		Integer studentId = (Integer)session.getAttribute("id");
 		
-		
+		manageStudentService.get
 		
 		Course course = manageCourseService.getCourse(courseId);
 		
