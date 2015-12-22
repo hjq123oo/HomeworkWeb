@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fiverings.homeworkweb.model.Course;
+import com.fiverings.homeworkweb.model.Homework;
 import com.fiverings.homeworkweb.service.ManageCourseService;
 import com.fiverings.homeworkweb.service.ManageTeacherService;
 
@@ -115,6 +116,17 @@ public class TeacherCourseController {
 	}
 
 	
-	
+	@RequestMapping(value = "/teacher/course/{courseId}/student_homework/all", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> getAllCourseStudentHomework(@PathVariable Integer courseId) {
+		
+		List<Homework> homeworks = manageCourseService.getHomeworks(courseId);
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+
+		result.put("course", homeworks);
+		
+		return result;
+	}
 	
 }

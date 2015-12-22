@@ -54,17 +54,25 @@
 		},
 		dataType : "json",
 		success : function(data) {
+<<<<<<< HEAD
 			if(data.success == "true"){				
+=======
+			if(data.success == "true"){
+				
+				
+				console.log(data.content);
+				
+>>>>>>> 552826405d87fccdb54294cf6fb1981b974318f6
 				$.each(data.content, function(i, item){
 					initHome(item);
 				});			
 			}else if(data.result == "false"){
-				
+				alert("加载数据失败");
 			}
 		},
 		
 		error : function() {
-			alert("false");
+			alert("加载数据失败");
 		}
 	});	
 	

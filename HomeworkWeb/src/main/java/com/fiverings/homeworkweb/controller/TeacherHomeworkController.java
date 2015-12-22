@@ -50,7 +50,8 @@ public class TeacherHomeworkController {
 	@ResponseBody
 	public Map<String, String> uploadHomework(@PathVariable Integer courseId,
 			@RequestParam(value = "file") MultipartFile file, @RequestParam("name") String name,
-			@RequestParam("content") String content, @RequestParam("endTime") String strEndTime) {
+			@RequestParam("content") String content, @RequestParam("endTime") String strEndTime
+			,@RequestParam("fullScore") String strFullScore) {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
@@ -61,6 +62,8 @@ public class TeacherHomeworkController {
 			e.printStackTrace();
 		}
 
+		Integer fullScore = Integer.parseInt(strFullScore);
+		
 		Homework homework = new Homework();
 
 		homework.setName(name);
@@ -68,7 +71,7 @@ public class TeacherHomeworkController {
 		homework.setEndTime(endTime);
 		Date date = new Date();
 		homework.setStartTime(date);
-	
+		homework.setFullScore(fullScore);
 		
 		
 		manageCourseService.addHomework(courseId, homework,file);
@@ -84,7 +87,7 @@ public class TeacherHomeworkController {
 	@ResponseBody
 	public Map<String, String> addHomework(@PathVariable("courseId") Integer courseId,
 			@RequestParam("name") String name, @RequestParam("content") String content,
-			@RequestParam("endTime") String strEndTime) {
+			@RequestParam("fullScore") String strFullScore,@RequestParam("endTime") String strEndTime) {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 
@@ -95,13 +98,17 @@ public class TeacherHomeworkController {
 			e.printStackTrace();
 		}
 
+		Integer fullScore = Integer.parseInt(strFullScore);
+		
 		Homework homework = new Homework();
 
+		
 		homework.setName(name);
 		homework.setContent(content);
 		homework.setEndTime(endTime);
 		homework.setStartTime(new Date());
-
+		homework.setFullScore(fullScore);
+		
 		manageCourseService.addHomework(courseId, homework);
 
 		Map<String, String> result = new HashMap<String, String>();

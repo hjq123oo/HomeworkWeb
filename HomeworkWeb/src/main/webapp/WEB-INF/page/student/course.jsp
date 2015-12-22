@@ -82,7 +82,7 @@
 					<li><b>课程名称：</b><span id="courseName"></span></li>
 					<li><b>上课时间：</b><span id="courseTime"></span></li>
 					<li><b>上课地点：</b><span id="coursePlace"></span></li>
-					<li><b>作业迟交扣分：</b>迟交<span id="courseLateInterval"></span>小时扣<span id="courseLatePercent"></span>%</li>
+					<li style="color:red;"><b>作业迟交扣分：</b>每迟交<span id="courseLateInterval"></span>小时扣<span id="courseLatePercent"></span>%</li>
 					<li><b>选课人数：</b><span id="courseStudentNum"></span></li>
                     <li><b>课程简介：</b><span id="courseIntroduction"></span></li>
                 </ul>

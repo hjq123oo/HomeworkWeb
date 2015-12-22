@@ -49,7 +49,10 @@ height="60"/></a></div>
 						<label for="content">作业内容: </label>
 						<textarea id="content" name="content"></textarea>
 						<br><br>
-						<label for="submissionTime">提交时间：</label>
+						<label for="fullScore">作业满分:</label>
+						<input id="fullScore" type="text">
+						<br><br>
+						<label for="submissionTime">截止时间:</label>
 						<input id="end_time" type="text" readonly="readonly">
 						<script>
 							$(function(){
@@ -140,7 +143,7 @@ height="60"/></a></div>
 					 $.ajax({
 	                	 type:"post",
 	                	 url:url,
-	                	 data:{name:$("#titleName").val(),content:$("#content").val(),endTime:$("#end_time").val()},
+	                	 data:{name:$("#titleName").val(),content:$("#content").val(),fullScore:$("#fullScore").val(),endTime:$("#end_time").val()},
 	                	 dataType:"json",
 	                	 success:function(data){
 	                		  $('#progress .bar').css(
@@ -173,7 +176,7 @@ height="60"/></a></div>
 		            $("#submit").click(function () {
 		            		$("#waitDiv").show();
 							$("#blackDiv").show();
-		        			$("#file").fileupload('option','formData',{name:$("#titleName").val(),content:$("#content").val(),endTime:$("#end_time").val()});
+		        			$("#file").fileupload('option','formData',{name:$("#titleName").val(),content:$("#content").val(),fullScore:$("#fullScore").val(),endTime:$("#end_time").val()});
 		                    data.submit();
 		                });
 		        },
