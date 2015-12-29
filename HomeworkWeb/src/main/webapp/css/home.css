@@ -11,6 +11,11 @@ h2:hover{
 	text-decoration:underline;
 }
 
+h2{
+	text-decoration:underline;
+	cursor:pointerï¼›
+}
+
 .main{
 	width: 90%;
 	max-width: 60em;
@@ -32,7 +37,7 @@ body {
 	position: relative;
 } 
 
-/* Öá */
+/* ï¿½ï¿½ */
 .timeline:before {
 	content: '';
 	position: absolute;
@@ -48,7 +53,7 @@ body {
 	position: relative;
 }
 
-/* Ê±¼ä */
+/* Ê±ï¿½ï¿½ */
 .timeline > li .timepoint {
 	display: block;
 	width: 25%;
@@ -73,7 +78,7 @@ body {
 
 
 
-/* ÄÚÈÝ */
+/* ï¿½ï¿½ï¿½ï¿½ */
 .timeline > li .timelabel {
 	margin: 0 0 15px 25%;
 	background: #6cbfee;
@@ -108,7 +113,7 @@ body {
 
 
 
-/* Í¼±ê */
+/* Í¼ï¿½ï¿½ */
 .timeline > li .timeicon {
 	width: 40px;
 	height: 40px;
