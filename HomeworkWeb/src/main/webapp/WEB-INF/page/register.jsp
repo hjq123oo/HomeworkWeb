@@ -9,7 +9,7 @@
         <script src="js/jquery-2.1.3.min.js"></script>
 		<script src="js/register.js"></script>
     </head>
-    <body  style="margin: 0px" onload="initInfo()">
+    <body  style="margin: 0px">
         <div class="header">
             <div class="w">
                 <div id="logo">
@@ -33,61 +33,61 @@
                         <tr>
                             <td class = "first_col"><span>*</span>帐号：</td>
                             <td><input type="text" name="stu_account" class="input-text" id="reg_account_stu" tabindex="1" 
-                                oninput = "checkStuAccount(this.id)"></td>
+                                ></td>
                             <td class = "info_remind_required" ><label id = "reg_account_stu_text">6-18个字符，请使用字母加数字的组合</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>密码：</td>
                             <td><input type="password" name="stu_pwd" class="input-text" id="reg_password_stu" tabindex="1"
-                                oninput = "checkStuPassword(this.id, 1)"></td>
+                                ></td>
                             <td class = "info_remind_required"><label id = "reg_password_stu_text">6-18个字符，请使用字母加数字的组合</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>确认密码：</td>
                             <td><input type="password" name="stu_pwd2" class="input-text" id="reg_password_stu2" tabindex="1"
-                                oninput = "checkStuPassword(this.id, 2)"></td>
+                                ></td>
                             <td class = "info_remind_required"><label id = "reg_password_stu2_text">请再次输入密码</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>学校：</td>
                             <td><input type="text" name="stu_school" class="input-text" id="reg_school_stu" tabindex="1" 
-                                oninput = "checkStuInfo(this.id, 1)"></td>
+                                ></td>
                             <td class = "info_remind_required"><label id = "reg_school_stu_text">如：北京交通大学</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>学院：</td>
                             <td><input type="text" name="stu_dept" class="input-text" id="reg_dept_stu" tabindex="1"
-                                oninput = "checkStuInfo(this.id, 2)"></td>
+                                ></td>
                             <td class = "info_remind_required"><label id = "reg_dept_stu_text">如：软件学院</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>班级：</td>
                             <td><input type="text" name="stu_class" class="input-text" id="reg_class_stu" tabindex="1"
-                                oninput = "checkStuInfo(this.id, 3)"></td>
+                                ></td>
                             <td class = "info_remind_required"><label id = "reg_class_stu_text">如：1302</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>学号：</td>
                             <td><input type="text" name="stu_number" class="input-text" id="reg_number_stu" tabindex="1"
-                                oninput = "checkStuInfo(this.id, 4)" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" style="ime-mode:Disabled"></td>
+                                 style="ime-mode:Disabled"></td>
                             <td class = "info_remind_required"><label id = "reg_number_stu_text">如：13301043</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col"><span>*</span>姓名：</td>
                             <td><input type="text" name="stu_name" class="input-text" id="reg_name_stu" tabindex="1"
-                                oninput = "checkStuInfo(this.id, 5)"></td>
+                                ></td>
                             <td class = "info_remind_required"><label id = "reg_name_stu_text">如：张三</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col">常用邮箱：</td>
                             <td><input type="text" name="stu_email" class="input-text" id="reg_email_stu" tabindex="1"
-                                oninput = "checkEmailInfo(this.id)"></td>
+                                ></td>
                             <td class = "info_remind"><label id = "reg_email_stu_text">请填写有效邮箱地址</label></td>
                         </tr>
                         <tr>
                             <td class = "first_col">联系电话：</td>
                             <td><input type="text" name="stu_phone" class="input-text" id="reg_phone_stu" tabindex="1" value=""></td>
-                            <td class = "info_remind">请填写有效联系方式</td>
+                            <td class = "info_remind"></td>
                         </tr>
                     </table>
                     <input type = "button" class="reg_btn" id = "stu_reg" value="注册" />

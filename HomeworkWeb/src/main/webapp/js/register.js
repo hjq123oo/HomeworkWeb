@@ -239,6 +239,10 @@ function checkEmailInfo(infoId){
 	}
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2a693063615897ffd83fc4a5da453868189ebe44
 
 //ajax响应学生注册
 $(document).ready(function(){

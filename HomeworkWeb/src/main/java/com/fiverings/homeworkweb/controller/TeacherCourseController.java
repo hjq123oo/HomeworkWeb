@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fiverings.homeworkweb.model.Course;
 import com.fiverings.homeworkweb.model.Homework;
+import com.fiverings.homeworkweb.model.Student;
+import com.fiverings.homeworkweb.model.StudentHomework;
 import com.fiverings.homeworkweb.service.ManageCourseService;
+import com.fiverings.homeworkweb.service.ManageStudentHomeworkService;
 import com.fiverings.homeworkweb.service.ManageTeacherService;
 
 @Controller
@@ -29,6 +32,9 @@ public class TeacherCourseController {
 	
 	@Resource
 	private ManageCourseService manageCourseService;
+	
+	@Resource
+	private ManageStudentHomeworkService manageStudentHomeworkService;
 	
 	@Resource
 	private HttpSession session;
@@ -120,11 +126,42 @@ public class TeacherCourseController {
 	@ResponseBody
 	public Map<String, Object> getAllCourseStudentHomework(@PathVariable Integer courseId) {
 		
+		List<Student> students = manageCourseService.getStudents(courseId);
+		
 		List<Homework> homeworks = manageCourseService.getHomeworks(courseId);
+		
 		
 		Map<String, Object> result = new HashMap<String, Object>();
 
-		result.put("course", homeworks);
+		
+		
+		int studentNum = students.size();
+		int homeworkNum = homeworks.size();
+		
+		Integer[] scores = new Integer[studentNum*homeworkNum];
+		
+		for(int i=0;i<studentNum;i++){
+			for(int j=0;j<homeworkNum;j++){
+				StudentHomework studentHomework = manageStudentHomeworkService.getStudentHomework(students.get(i).getStudentId(),homeworks.get(j).getHomeworkId());
+				if(studentHomework.getSubmitNum() == 0){
+					scores[i*homeworkNum+j] = 0;
+				}else if(studentHomework.getScore() == null){
+					scores[i*homeworkNum+j] = null;
+				}else{
+					int score = studentHomework.getScore() - studentHomework.getDeduction();
+					if(score <= 0){
+						score = 0;
+					}
+					scores[i*homeworkNum+j] = score;
+					
+				}
+			}
+		}
+		
+		result.put("students", students);
+		result.put("homeworks", homeworks);
+		result.put("scores", scores);
+		
 		
 		return result;
 	}

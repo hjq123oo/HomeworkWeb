@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		
 		<link rel="stylesheet" type="text/css" href="../css/default.css" />
-		<link rel="stylesheet" type="text/css" href="../css/form.css" />
+		
 		<link rel="stylesheet" href="../css/table.css">
 		
 		<script src="../js/jquery-2.1.3.min.js"></script>
@@ -36,35 +36,18 @@
 
 	<div id="container">
 		<div id="main">
-			<div class="point"></div>
-			<div class="title">分数统计</div>
-			<div class="form"  style="margin-top:75px;">
-			    <table class="bordered" style="width:90%;">
+			
+			
+			    <table id="table" class="bordered" style="width:90%;margin:75px auto;">
                     <thead>
-                        <tr>    
-							<th>学号</th>
-                            <th>姓名</th>
-                            <th>Homework1</th>
-		                    <th>Homework2</th>
-		                    <th>Homework3</th>
-		                    <th>Homework4</th>
-							<th>Homework5</th>
-							<th>总分</th>
+                        <tr id="headTR">    
+						
                         </tr>
                     </thead>
-                        <tr>
-							<td>13301001</td>
-                            <td>赵一</td>        
-                            <td>10</td>
-                            <td>9</td>
-							<td>8</td>
-							<td>9</td>
-							<td>8</td>
-							<td>44</td>
-						</tr>        
+                            
 				
 					</table>
-			</div>
+			
 		</div>
 	</div>
     
@@ -73,14 +56,44 @@
     $(function(){
 		var courseId = getUrlParam("courseId");		
 		
-		$.getJSON("/teacher/course/"+courseId+"/student_homework/all",function(data){
-			var course = data.course;
-		
+		var url = "/HomeworkWeb/teacher/course/"+courseId+"/student_homework/all";
+		$.getJSON(url,function(data){
 			
-		    
-    		$.each(course.homeworks, function(i, homework){
-    			addHomework(course.studentNum,homework);
-    		});
+			var students = data.students;
+			var homeworks = data.homeworks;
+			var scores = data.scores;
+			
+			var stuLength = students.length;
+			var hwLength = homeworks.length;
+			
+			
+			$("#headTR").append("<th>学号</th>");
+			$("#headTR").append("<th>姓名</th>");
+
+			for(var i=0;i<hwLength;i++){
+				$("#headTR").append("<th>"+homeworks[i].name+"</th>");
+			}
+			
+			$("#headTR").append("<th>总分</th>");
+			
+			
+			for(var i=0;i<stuLength;i++){
+				var total = 0;
+				var row="<tr>";
+				row = row + "<td>"+students[i].studentNO+"</td>";
+				row = row + "<td>"+students[i].realname+"</td>";
+				for(var j=0;j<hwLength;j++){
+					if(scores[i*hwLength+j] == null){
+						row = row + "<td>未评分</td>";
+					}else{
+						row =  row + "<td>"+scores[i*hwLength+j]+"</td>";
+						total = total + scores[i*hwLength+j];
+					}
+				}
+				row = row + "<td>"+total+"</td>";
+				row += "</tr>";
+				$("#table").append(row);
+			}
   		});
 	});
     </script>
