@@ -20,6 +20,19 @@
 			+ "</div>"
 			+ "</li>"
 		);
+
+		<div class="good_img">
+			<img src="" id = "goodsImg"/>
+		</div>
+		<div class="good_name">
+			<p id = "goodsName">0</p>
+		</div>
+		<div class="good_price">
+			<p id="price">0</p>
+		</div>		
+		<input type="text" value="0" id="good_num" />
+		<p class="total_price" id="total_price">$0</p>
+		<button class="delete">remove</button>
 	}
 	
 	//学生获取所有作业

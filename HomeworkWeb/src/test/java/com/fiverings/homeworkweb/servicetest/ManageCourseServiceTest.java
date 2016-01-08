@@ -53,8 +53,6 @@ public class ManageCourseServiceTest {
 		homework.setEndTime(new Date());
 		homework.setName("132");
 		
-		manageCourseService.addHomework(1, homework);
-		
-		
+		manageCourseService.addHomework(1, homework);	
 	}
 }
